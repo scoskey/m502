@@ -16,7 +16,7 @@ We often say that mathematics is the study of certain abstract truths, but in wh
 
 A *set*, like many structures you have studied before, is characterized by *axioms*. But the axioms of set theory are much more complex than those for geometry, groups, fields, or vector spaces. Thus the set theory unit will begin by introducing and discussing each axiom one by one. We will then explore how sets may be used to build nearly all objects studied in traditional mathematics. Along the way we will also study many set-theoretic concepts that are useful in other areas: ordinals, cardinals, and the mathematics of the infinite.
 
-In the model theory unit we will study *theories*, which are general axiom systems, and their \emph{models}, which are universes satisfying the axioms. We use these to study the nature of formal proof itself, distinguishing between *syntactic* and *semantic* implications. This study culminates with Gödel's completeness theorem, which has numerous applications both in logic and in other areas.
+In the model theory unit we will study *theories*, which are general axiom systems, and their \emph{models}, which are universes satisfying the axioms. We use these to study the nature of formal proof itself, distinguishing between *syntactic* and *semantic* implications. This study culminates with Godel's completeness theorem, which has numerous applications both in logic and in other areas.
 
 ## Course learning outcomes
 
