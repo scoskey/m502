@@ -1,4 +1,5 @@
 # Math 502 course notes
+
 Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
 ## Part I: Set theory
@@ -32,8 +33,8 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Proposition: there exists a set with more than one element
 * Proposition: there exists a set with more than two elements
 * In general, one can see how all sets involving {} and $\emptyset$ may be created
-* Comprehension Axiom: Allows to form subsets. This justifies the use of the set-builder notation {z in x | phi(z)}.
-* Naive comprehension {z | P(z)} leads to two problems: the use of non-logical phrases such as "the least natural number that can be defined in fewer than 20 words", and Russell's paradox. The modern comprehension axiom is also called the separation axiom.
+* Comprehension Axiom: Allows to form subsets. This justifies the use of the set-builder notation {z in x \| phi(z)}.
+* Naive comprehension {z \| P(z)} leads to two problems: the use of non-logical phrases such as "the least natural number that can be defined in fewer than 20 words", and Russell's paradox. The modern comprehension axiom is also called the separation axiom.
 * The comprehension axiom is really an axiom scheme. Thus set theory officially has infinitely many axioms.
 
 ### 3. Natural numbers, relations, functions, replacement
@@ -49,7 +50,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Function: 
 * In elementary mathematics, we usually teach that a function is a formula or rule. But in formal mathematics, a function is really its graph.
 * Domain and range: these concepts are valid for binary relations (and in particular for functions). Note both the domain and range of R are subsets of UUR.
-* Cartesian product: Most binary relations, and thus most functions, are constructed as a subset of a cartesian product AxB = {(a,b) | a in A, b in B}.
+* Cartesian product: Most binary relations, and thus most functions, are constructed as a subset of a cartesian product AxB = {(a,b) \| a in A, b in B}.
 * In order to show that the cartisian product exists, we actually need a new axiom!
 * Replacement Axiom: 
 * Once again, the replacement axiom is an axiom scheme.
