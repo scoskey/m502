@@ -1,4 +1,4 @@
-## Homework 1, due Tuesday, January 22
+## Homework 1, due Thursday, January 24
 
 * Interpret each of the symbolic expressions as English mathematical statements.
   * $(\forall N\in\mathbb N)(\exists n&gt;N)(\forall a,b)(n=ab\implies n=a\vee n=b)$
