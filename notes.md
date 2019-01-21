@@ -44,7 +44,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * In general, an ordinal is equal to the collection of ordinals that came before it. Thus the Von Neumann ordinals will be extended into the infinite by setting $\omega={0,1,2,3,...}$, $\omega+1=\\{0,1,2,3,...,\omega\\}$ and so on. Infinity plus one!
 * Thus we have a successor function $S(\alpha)$ or $\alpha+1$ is equal to $\alpha\cup\\{\alpha\\}$. 
 * Another of the most important mathematical objects is a function. You may have seen the definition of a function as a set of ordered pairs (input,output).
-* Ordered pair: (a,b) is defined to be {{a},{a,b}}. We have to check this "works". Observe that other more naive attempts don't work.
+* Ordered pair: (a,b) is defined to be { {a}, {a,b} }. We have to check this "works". Observe that other more naive attempts don't work.
 * Binary relation: any set whose elements are ordered pairs. If R is a set of ordered pairs (a,b) then we write aRb to mean that (a,b) is an element of R. Example: less than
 * Function: 
 * In elementary mathematics, we usually teach that a function is a formula or rule. But in formal mathematics, a function is really its graph.
