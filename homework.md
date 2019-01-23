@@ -1,3 +1,20 @@
+## Homework 2, due Thursday, January 31
+
+* Kunen, exercise I.6.3. Find a model of extensionality plus there is no empty set.
+* Kunen, exercise I.6.15. If $\langle x,y\rangle=\langle x',y'\rangle$ then $x=x'$ and $y=y'$.
+* Decide whether each of the following alternative definitions of $\langle x,y\rangle$ is a good one:
+  * $\langle x,y\rangle= ${ x, {y} }
+  * $\langle x,y\rangle=$ { x, {x,y} }
+  * $\langle x,y\rangle=${ {x}, {{y}} }
+* ...
+
+### Supplemental problems
+
+* Kunen, exercise I.6.11 and I.6.13.
+* The axiom of comprehension begins $\exists y\ldots$. Show that in fact this $y$ is unique.
+* Show that the naive comprehension axiom (I.6.4) is false in the instance when $Q(x)$ is $\neg\exists u(x\in u\wedge u\in x)$.
+* Generalize the previous problem further.
+
 ## Homework 1, due Thursday, January 24
 
 * Interpret each of the symbolic expressions as English mathematical statements.
