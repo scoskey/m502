@@ -19,7 +19,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * In set theory the universe of discourse consists of all possible sets. The only non-logical symbol will be the binary set membership relation $\in$. The remaining set relations and operations will be definable from this one alone.
 * BIG IDEA: In particular everything is a set, even the elements of a set! Thus the universe really consists of hereditary sets.
 
-### 2. Extensionality, pairing, and union; separation
+### 2. Extensionality, pairing, union; also separation
 
 * Set theory is officially the axioms for the set membership relation $\in$.
 * There are many additional set relations and operations, but these can all be defined in terms of $\in$. For example consider subset, union, intersection, and empty set.
@@ -50,6 +50,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Function: 
 * In elementary mathematics, we usually teach that a function is a formula or rule. But in formal mathematics, a function is really its graph.
 * Domain and range: these concepts are valid for binary relations (and in particular for functions). Note both the domain and range of R are subsets of UUR.
+* Injective, surjective, and bijective: ...
 * Cartesian product: Most binary relations, and thus most functions, are constructed as a subset of a cartesian product AxB = {(a,b) \| a in A, b in B}.
 * In order to show that the cartisian product exists, we actually need a new axiom!
 * Replacement Axiom: 
@@ -57,7 +58,20 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Theorem. For any sets A,B we can construct the cartesian product AxB.
 * For example, suppose we have constructed the set N of natural numbers. Then we can construct the cartesian product NxN. We can further construct the less than binary relation on N. If we have already constructed the + and x operations, we can further construct functions such as f(n)=n^2+2n+5.
 
-### 4. Well orders and ordinals
+### 4. More relations, well orders
+
+* We have introduced functions as relations but there are several other special types of relations.
+* Order relations: Like the &lt; relation on R.
+* Def: A (strict) linear order is a binary relation R on a set X satisfying the axioms transitive, irreflexive, and trichotomy
+* Equivalence relations: Like equality, congruence, similarity, isomorphism.
+* Def: An equivalence relation is a binary relation R on a set X satisfying the axioms transitive, reflexive, and symmetric.
+* Isomorpism of linear orders: ...
+* For example, on R &lt; and &gt; are isomorphic. However on [0,1), &lt; and &gt; are not isomorphic.
+* Examples of linear orders: most number sets such as N, Z, Q, R, and the induced ordering on any subset of these.
+* The key example in set theory is the ordering of the ordinals as introduced above. The $\in$ relation is a linear order.
+* 
+
+### 5. Ordinals
 
 * ...
 
