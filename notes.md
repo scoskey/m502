@@ -52,9 +52,9 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Domain and range: these concepts are valid for binary relations (and in particular for functions). Note both the domain and range of R are subsets of UUR.
 * Cartesian product: Most binary relations, and thus most functions, are constructed as a subset of a cartesian product AxB = {(a,b) \| a in A, b in B}.
 * In order to show that the cartisian product exists, we actually need a new axiom!
-* Replacement Axiom: 
+* Replacement Axiom: For each logical formula phi(x,y) satisfying phi(x,y) and phi(x,y') implies y=y', the following is an axiom: For all A, there exists B which is the image of phi restricted to the domain A.
 * Once again, the replacement axiom is an axiom scheme.
-* Theorem. For any sets A,B we can construct the cartesian product AxB.
+* Theorem. For any sets A,B we can construct the cartesian product AxB. Proof: First use replacement to construct each {a}xB, then use replacement to collect them, then use union.
 * For example, suppose we have constructed the set N of natural numbers. Then we can construct the cartesian product NxN. We can further construct the less than binary relation on N. If we have already constructed the + and x operations, we can further construct functions such as f(n)=n^2+2n+5.
 
 ### 4. Well orders and ordinals
