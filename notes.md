@@ -55,21 +55,28 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * In order to show that the cartisian product exists, we actually need a new axiom!
 * Replacement Axiom: For each logical formula phi(x,y) satisfying phi(x,y) and phi(x,y') implies y=y', the following is an axiom: For all A, there exists B which is the image of phi restricted to the domain A.
 * Once again, the replacement axiom is an axiom scheme.
-* Theorem. For any sets A,B we can construct the cartesian product AxB. Proof: First use replacement to construct each {a}xB, then use replacement to collect them, then use union.
-* For example, suppose we have constructed the set N of natural numbers. Then we can construct the cartesian product NxN. We can further construct the less than binary relation on N. If we have already constructed the + and x operations, we can further construct functions such as f(n)=n^2+2n+5.
+* Theorem. For any sets A,B we can construct the cartesian product AxB.
+* Proof: First, for each b in B we can use replacement with phi(x,y) being "(x,b)=y" and domain A to construct each Ax{b}. Then use replacement with phi(x,y) being "Ax{x}=y" to construct the set {Ax{b} | b in B}. Finally apply union to this to get AxB.
+* For example, suppose we have constructed the set N of natural numbers. Then we can construct the cartesian product NxN. We can further construct the less than binary relation on N. If we have already constructed the + and x operations (which we'll do still later), we can further construct functions such as f(n)=n^2+2n+5.
 
-### 4. More relations, well orders
+### 4. More relations, well-orders
 
 * We have introduced functions as relations but there are several other special types of relations.
 * Order relations: Like the &lt; relation on R.
-* Def: A (strict) linear order is a binary relation R on a set X satisfying the axioms transitive, irreflexive, and trichotomy
+* Def: A (strict) linear order is a binary relation R on a set X (meaning both the domain and range are contained in X) satisfying the axioms transitive, irreflexive, and trichotomy
 * Equivalence relations: Like equality, congruence, similarity, isomorphism.
 * Def: An equivalence relation is a binary relation R on a set X satisfying the axioms transitive, reflexive, and symmetric.
 * Isomorpism of linear orders: ...
 * For example, on R &lt; and &gt; are isomorphic. However on [0,1), &lt; and &gt; are not isomorphic.
 * Examples of linear orders: most number sets such as N, Z, Q, R, and the induced ordering on any subset of these.
 * The key example in set theory is the ordering of the ordinals as introduced above. The $\in$ relation is a linear order.
-* 
+* What is an ordinal really? In addition to being a linear order, one key property is that it only has ...'s that go to the right.
+* Def: A relation R on a set X is called well-founded if for all nonempty subsets Y of X, Y has an R-minimal element (an element y in Y such that for all z in Y it's not true that zRy).
+* Def: A well-founded relation that is also a linear order is called a well-order.
+* Examples: None of Z,Q,R are well-orders, but N and ordinals are.
+* Theorem: A relation R is a well-order iff there is no infinite R-descending sequence.
+* Proof: -&gt; Note that an infinite R-descending sequence has no R-minimal element. &lt;- If R is not well-founded and X has no R-minimal element, pick any x(0) in X and recursively choose x(n+1) in X such that x(n+1) R x(n).
+* (Later we will make the concepts "infinite", "recursively", and "choose" formal.)
 
 ### 5. Ordinals
 
