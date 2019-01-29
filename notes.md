@@ -80,7 +80,29 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
 ### 5. Ordinals
 
-* ...
+* We have already seen two special properties that the Von Neumann ordinals have: They are linear orders with $\in$ as the order relation, and they are well-founded. These two properties can be combined by saying that ordinals are well-ordered by $\in$.
+* But ordinals aren't the only sets with these properties, because for example any set of ordinals would have it: {1,3,5,7}. We need one more property.
+* Def: A set z is transitive if for all x,y, x in y in z implies x in z. In other words, elements of elements are elements. Alternatively, elements are subsets. Alternatively, the union of z is a subset of z. (Confusing note: this use of the word transitive is slightly different than the use for orderings.)
+* The example S={1,3,5,7} fails to be transitive because 4 in 5 in A but 4 notin A.
+* Def: A set alpha is an ordinal if (1) alpha is well-ordered by $\in$ and (2) alpha is a transitive set.
+* The collection of all ordinals is denoted ON or ORD. (We say collection because later we'll see it's not a set.)
+* It will take some work to prove that ORD is really the Von Neumann ordinals that we introduced informally above. Essentially, it is everything you get by starting with 0, taking successors, and taking unions.
+* Although ORD is not a set, we will show it also satisfies the defining properties of each individual ordinal.
+* Theorem: (1) The collection ORD is well-ordered by $\in$; (2) The collection ORD is a transitive class.
+* Before proving this theorem, we prove the corollary: ORD is not a set. If it were, then by definition of ordinal we would have ORD in ORD. This means ORD has an infinite descending sequence, contradicting that it is well-founded.
+* Proof of (2): We must show that if alpha is an ordinal, and z in alpha, then z is an ordinal.
+  * To see z is well-ordered, note that alpha is transitive, so z is a subset of alpha, which means z is well-ordered by epsilon (since well-ordered passes to subsets).
+  * To see z is a transitive set, let x in y in z. Since alpha is transitive, x in alpha. Since alpha is linearly ordered by in, x in z.
+* Proof of (1): We have to show ORD satisfies transitivity, irreflexivity, trichotomy, and well-founded.
+    * transitivity of order: If alpha in beta in gamma, since gamma is a transitive set, we have alpha in gamma.
+    * irreflexivity: If alpha in alpha, then the ordinal alpha would be irreflexive too.
+    * well-founded: Let X be a nonempty subset of ORD. Let alpha in X. If alpha is minimal, great. Otherwise let X'=alpha intersect X, a nonempty subset of alpha. Since alpha is well-ordered, X' has a minimal element, and this works for X too.
+    * trichotomy: Let alpha, beta be given.
+      * claim: the intersection delta of alpha,beta is in ORD. Indeed, the well-ordered property passes to subsets, and the transitive set property passes to intersections.
+      * claim: if delta is a proper subset of alpha, then delta is in alpha. Indeed let xi=min(alpha-delta). Then gamma in xi implies gamma in delta (otherwise the min would be lower), and gamma in delta implies gamma in xi (otherwise xi in gamma in delta, implies xi in delta). Thus delta=xi.
+      * claim: either alpha is contained in beta or beta is contained in alpha. If neither, by the above delta is in alpha intersect beta = delta, contradicting irreflixivity.
+      * Now wlog alpha is a subset of beta, and not equal to beta. Then by the second cliam, alpha is in beta, as desired.
+* Whew!
 
 ## Part II: Model theory
 
