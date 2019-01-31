@@ -1,9 +1,9 @@
 ## Homework 3, due Thursday, February 7
 
 * Which of the following rules hold for a function f?
-  * $f``(A\cup B)=f``A\cup f``B$
-  * $f``(A\cap B)=f``A\cap f``B$
-  * if $A\subset B$ then $f``A\subset f``B$
+  * $f\`\`(A\cup B)=f\`\`A\cup f\`\`B$
+  * $f\`\`(A\cap B)=f\`\`A\cap f\`\`B$
+  * if $A\subset B$ then $f\`\`A\subset f\`\`B$
 * Draw a graph of each of the following relations on $\mathbb R$:
   * $R$ = &lt;
   * $xSy$ iff $x^2=y^2$
