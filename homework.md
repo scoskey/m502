@@ -1,3 +1,28 @@
+## Homework 3, due Thursday, February 7
+
+* Which of the following rules hold for a function f?
+  * $f``(A\cup B)=f``A\cup f``B$
+  * $f``(A\cap B)=f``A\cap f``B$
+  * if $A\subset B$ then $f``A\subset f``B$
+* Draw a graph of each of the following relations on $\mathbb R$:
+  * $R$ = &lt;
+  * $xSy$ iff $x^2=y^2$
+  * $xTy$ iff $x^2=1-y^2$
+* Kunen, exercise I.7.19. If $R$ is a finite relation, then $R$ is well-founded iff $R$ is acyclic.
+* Kunen, exercise I.7.20. If $R$ is a well-order on $X$ and $A\subset X$, then the restriction of $R$ to $A$ is a well-order on $A$.
+* Kunen, exercise I.8.11. If $\alpha$ is an ordinal then $S(\alpha)$ is an ordinal; and $\alpha&lt;S(\alpha)$; and $\gamma&lt;S(\alpha)$ iff $\gamma\leq\alpha$.
+
+### Supplemental problems
+
+* Kunen, exercise I.7.13. The lexicographic product of (strict) linear orders is a strict total order.
+* Kunen, exercise I.7.23. The lexicographic product of two well-orders is again a well-order.
+* If $R,S,T$ are arbitrary relations show that $(R\circ S)\circ T=R\circ(S\circ T)$.
+* If $f$ and $g$ are functions, show that $f\cap g$ is a function. Under what circumstances will $f\cup g$ be a function?
+* Let $\mathcal F$ is a family of functions such that for all $f,g\in F$ we have $f\cup g$ is a function. Show that $\bigcup\mathcal F$ is a function.
+* Show that the class of all ordered pairs is not a set.
+* Kunen, exercise I.7.16. Suppose $[x,y]$ is an arbitrary pairing function and $R$ is a set of such pairs. Then the domain $\set{x:\exists y [x,y]\in R}$ is a set.
+* (2pts) Let $A$ and $B$ be finite *disjoint* sets, and consider the following game. Two players alternate playing an element $\langle a,b\rangle\in A\times B$ subject to the condition that $a$ and $b$ may not *both* have been used already. The game ends when one player is left without a legal move, and that player is the loser. What is an upper bound on the number of moves in this game? Which player has a winning strategy?
+
 ## Homework 2, due Thursday, January 31
 
 * Kunen, exercise I.6.3. Find a model of extensionality plus there is no empty set.
