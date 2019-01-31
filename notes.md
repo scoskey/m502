@@ -75,7 +75,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Def: A well-founded relation that is also a linear order is called a well-order.
 * Examples: None of Z,Q,R are well-orders, but N and ordinals are.
 * Theorem: A relation R is a well-order iff there is no infinite R-descending sequence.
-* Proof: -&gt; Note that an infinite R-descending sequence has no R-minimal element. &lt;- If R is not well-founded and X has no R-minimal element, pick any x(0) in X and recursively choose x(n+1) in X such that x(n+1) R x(n).
+* Proof: $\rightarrow$ Note that an infinite R-descending sequence has no R-minimal element. $\leftarrow$ If R is not well-founded and X has no R-minimal element, pick any x(0) in X and recursively choose x(n+1) in X such that x(n+1) R x(n).
 * (Later we will make the concepts "infinite", "recursively", and "choose" formal.)
 
 ### 5. Ordinals
@@ -122,7 +122,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Theorem: If R is any well-ordered relation on a set A, then R is isomorphic to a unique ordinal. (Remind isomorphic. It means lines dont cross.)
 * Proof:
   * We first show the unique portion of the theorem, by showing that if $\alpha,\beta$ are ordinals and $\alpha\neq\beta$, then $\alpha,\beta$ are not isomorphic to one another. The contrapositive says that if $\alpha,\beta$ are isomorphic then they are identical.
-  * For this, suppose $f\colon\alpha\cong\beta$. We wish to show that f is the identity function. If it isn't the identity function, then there exists $\xi\in\alpha$ which is the first point moved by $f$. (Use the well-foundedness of $\alpha$ here.) If $f(\xi)=\mu&lt;\xi$ then we would also have $f(\mu)=\mu$, contradicting that f is injective. On the other hand if $f(\xi)=\mu&gt;\xi$ then nothing can possibly map to $\xi$, contradicting that $f$ is surjective.
+  * For this, suppose $f\colon\alpha\cong\beta$. We wish to show that f is the identity function. If it isn't the identity function, then there exists $\xi\in\alpha$ which is the first point moved by $f$. (Use the well-foundedness of $\alpha$ here.) If $f(\xi)=\mu<\xi$ then we would also have $f(\mu)=\mu$, contradicting that f is injective. On the other hand if $f(\xi)=\mu>\xi$ then nothing can possibly map to $\xi$, contradicting that $f$ is surjective.
   * We next show the existence portion of the theorem, which will be seen to have an inductive flavor.
   * Let R be a well-ordered relation on A. For each $a\in A$ let pred(a) denote the set of R-predecessors of A. Define a set of "good" elements by G={a:pred(a) is isomorphic to an ordinal}. Using the uniqueness proved above, and the axiom of replacement, we may define a function on G by f(a)=the unique ordinal such that pred(a) is isomorphic to f(a). We now make a series of observations:
     * G is an R-initial segment of A, since if $a\mathrel{R}b\in G$ and $pred(b)\cong\beta$ we can restrict this isomorphism to $pred(a)$.
