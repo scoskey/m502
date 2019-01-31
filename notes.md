@@ -42,7 +42,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * We have promised that set theory is somehow the theory of everything, meaning all other objects of mathematical study can be regarded as sets. Perhaps the most important objects in mathematics are natural numbers. How can these be regarded as objects in the universe of sets?
 * Von Neumann ordinals: an ordinal is a counting number (as opposed to a quantity measuring number). Define 0, 1, 2, 3, etc as particular hereditarily finite sets.
 * We have also promised that set theory is somehow the theory of the infinite, meaning we can study different kinds of infinity using sets. The axiom of infinity will allow us to count into the infinite.
-* In general, an ordinal is equal to the collection of ordinals that came before it. Thus the Von Neumann ordinals will be extended into the infinite by setting $\omega={0,1,2,3,...}$, $\omega+1=\\{0,1,2,3,...,\omega\\}$ and so on. Infinity plus one!
+* In general, an ordinal is equal to the collection of ordinals that came before it. Thus the Von Neumann ordinals will be extended into the infinite by setting $\omega$={0,1,2,3,...}, $\omega+1$={0,1,2,3,...,$\omega$} and so on. Infinity plus one!
 * Thus we have a successor function $S(\alpha)$ or $\alpha+1$ is equal to $\alpha\cup\\{\alpha\\}$. 
 * Another of the most important mathematical objects is a function. You may have seen the definition of a function as a set of ordered pairs (input,output).
 * Ordered pair: (a,b) is defined to be { {a}, {a,b} }. We have to check this "works". Observe that other more naive attempts don't work.
@@ -82,33 +82,59 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
 * We have already seen two special properties that the Von Neumann ordinals have: They are linear orders with $\in$ as the order relation, and they are well-founded. These two properties can be combined by saying that ordinals are well-ordered by $\in$.
 * But ordinals aren't the only sets with these properties, because for example any set of ordinals would have it: {1,3,5,7}. We need one more property.
-* Def: A set z is transitive if for all x,y, x in y in z implies x in z. In other words, elements of elements are elements. Alternatively, elements are subsets. Alternatively, the union of z is a subset of z. (Confusing note: this use of the word transitive is slightly different than the use for orderings.)
-* The example S={1,3,5,7} fails to be transitive because 4 in 5 in A but 4 notin A.
-* Def: A set alpha is an ordinal if (1) alpha is well-ordered by $\in$ and (2) alpha is a transitive set.
+* Def: A set z is transitive if for all x,y, $x\in y\in z$ implies $x \in z$. In other words, elements of elements are elements. Alternatively, elements are subsets. (Confusing note: this use of the word transitive is slightly different than the use for orderings.)
+* The example A={1,3,5,7} fails to be transitive because $4 \in 5 \in A$ but $4 \notin A$.
+* Def: A set $\alpha$ is an ordinal if (1) $\alpha$ is well-ordered by $\in$ and (2) $\alpha$ is a transitive set.
 * The collection of all ordinals is denoted ON or ORD. (We say collection because later we'll see it's not a set.)
 * It will take some work to prove that ORD is really the Von Neumann ordinals that we introduced informally above. Essentially, it is everything you get by starting with 0, taking successors, and taking unions.
 * Although ORD is not a set, we will show it also satisfies the defining properties of each individual ordinal.
 * Theorem: (1) The collection ORD is well-ordered by $\in$; (2) The collection ORD is a transitive class.
 * Before proving this theorem, we prove the corollary: ORD is not a set. If it were, then by definition of ordinal we would have ORD in ORD. This means ORD has an infinite descending sequence, contradicting that it is well-founded.
-* Proof of (2): We must show that if alpha is an ordinal, and z in alpha, then z is an ordinal.
-  * To see z is well-ordered, note that alpha is transitive, so z is a subset of alpha, which means z is well-ordered by epsilon (since well-ordered passes to subsets).
-  * To see z is a transitive set, let x in y in z. Since alpha is transitive, x in alpha. Since alpha is linearly ordered by in, x in z.
+* Proof of (2): We must show that if $\alpha$ is an ordinal, and $z \in \alpha$, then z is an ordinal.
+  * To see z is well-ordered, note that $\alpha$ is transitive, so z is a subset of alpha, which means z is well-ordered by $\in$ (since well-ordered passes to subsets).
+  * To see z is a transitive set, let $x \in y \in z$. Since alpha is transitive, $x \in \alpha$. Since $\alpha$ is linearly ordered by $\in$, $x \in z$.
 * Proof of (1): We have to show ORD satisfies transitivity, irreflexivity, trichotomy, and well-founded.
     * transitivity of order: If alpha in beta in gamma, since gamma is a transitive set, we have alpha in gamma.
-    * irreflexivity: If alpha in alpha, then the ordinal alpha would be irreflexive too.
-    * well-founded: Let X be a nonempty subset of ORD. Let alpha in X. If alpha is minimal, great. Otherwise let X'=alpha intersect X, a nonempty subset of alpha. Since alpha is well-ordered, X' has a minimal element, and this works for X too.
-    * trichotomy: Let alpha, beta be given.
+    * irreflexivity: If $\alpha \in \alpha$, then the ordinal $\alpha$ would be irreflexive too.
+    * well-founded: Let X be a nonempty subset of ORD. Let $\alpha \in X$. If $\alpha$ is minimal, great. Otherwise let $X'=\alpha \cap X$, a nonempty subset of $\alpha$. Since $\alpha$ is well-ordered, $X'$ has a minimal element, and this works for X too.
+    * trichotomy: Let $\alpha, \beta$ be given.
       * claim: the intersection delta of alpha,beta is in ORD. Indeed, the well-ordered property passes to subsets, and the transitive set property passes to intersections.
       * claim: if delta is a proper subset of alpha, then delta is in alpha. Indeed let xi=min(alpha-delta). Then gamma in xi implies gamma in delta (otherwise the min would be lower), and gamma in delta implies gamma in xi (otherwise xi in gamma in delta, implies xi in delta). Thus delta=xi.
       * claim: either alpha is contained in beta or beta is contained in alpha. If neither, by the above delta is in alpha intersect beta = delta, contradicting irreflixivity.
       * Now wlog alpha is a subset of beta, and not equal to beta. Then by the second cliam, alpha is in beta, as desired.
 * Whew!
 
+### 6. More ordinals
+
+* We have defined a set alpha to be an ordinal if it is well-ordered by $\in$ and a transitive set. We have shown the ordinals are a proper class that is itself well-ordered by $\in$ and transitive.
+* The ordinal successor operation: $S(\alpha)$ or $\alpha+1$ = $\alpha \cup \\{\alpha\\}$. In principal this may be carried out on any set, but it is most useful on ordinals because then it always produced another ordinal.
+* What about alpha-1? Our discussion suggests that there will be two kinds of ordinals.
+* Def: an ordinal $\alpha$ is a successor of $\alpha=S(\beta)$ for some $\beta$.
+* Def: an ordinal $\alpha$ is a limit if it is not 0 and not a successor.
+* The ordinal we have called $\omega$ will be our first limit ordinal. We are now just about ready to go to $\omega$ and beyond.
+* Def: an ordinal $\alpha$ is a natural number if it is a successor and all its elements are successors. This gives us a clever way to define finite without really knowing anything about finite or infinite sets!
+* Axiom of Infinity: the collection of natural numbers is a set, called either $\omega$ (thought of as an ordinal) or $\mathbb N$ (thought of as a number set).
+* Kunen's version actually says there exists a set containing 0 and closed under successor. Given such a set one may use comprehension to obtain $\omega$.
+* Proposition: $\omega$ is an ordinal, it is a limit ordinal, and it is the least limit ordinal.
+* Proof: $\omega$ is a subset of ORD, which immediately implies that it is well-ordered by $\in$. Moreover the definition implies $\omega$ is an initial segment of ORD, and this further implies that $\omega$ is a transitive set. Thus $\omega$ is an ordinal. To see that it is a limit ordinal, observe that if it were a successor ordinal then we would have $\omega\in\omega$, contradicting irreflexivity in ORD. Finally every element of $\omega$ is a successor ordinal, so $\omega$ is the first limit ordinal.
+* Once we have that $\omega$ exists, we can construct its finite successors. We can construct further ordinals such as $\omega+\omega$ using the axiom of replacement.
+* We can also construct ordinals by constructing well-ordered relations of various kinds. To motivate this, consider some well-ordered relations that are not ordinals: {1,3,5,7}, {1-1/n}, {1-1/n,1}. Each of these is equivalent to a true ordinal: 4, $\omega$, $\omega+1$.
+* Theorem: If R is any well-ordered relation on a set A, then R is isomorphic to a unique ordinal. (Remind isomorphic. It means lines dont cross.)
+* Proof:
+  * We first show the unique portion of the theorem, by showing that if $\alpha,\beta$ are ordinals and $\alpha\neq\beta$, then $\alpha,\beta$ are not isomorphic to one another. The contrapositive says that if $\alpha,\beta$ are isomorphic then they are identical.
+  * For this, suppose $f\colon\alpha\cong\beta$. We wish to show that f is the identity function. If it isn't the identity function, then there exists $\xi\in\alpha$ which is the first point moved by $f$. (Use the well-foundedness of $\alpha$ here.) If $f(\xi)=\mu&lt;\xi$ then we would also have $f(\mu)=\mu$, contradicting that f is injective. On the other hand if $f(\xi)=\mu&gt;\xi$ then nothing can possibly map to $\xi$, contradicting that $f$ is surjective.
+  * We next show the existence portion of the theorem, which will be seen to have an inductive flavor.
+  * Let R be a well-ordered relation on A. For each $a\in A$ let pred(a) denote the set of R-predecessors of A. Define a set of "good" elements by G={a:pred(a) is isomorphic to an ordinal}. Using the uniqueness proved above, and the axiom of replacement, we may define a function on G by f(a)=the unique ordinal such that pred(a) is isomorphic to f(a). We now make a series of observations:
+    * G is an R-initial segment of A, since if $a\mathrel{R}b\in G$ and $pred(b)\cong\beta$ we can restrict this isomorphism to $pred(a)$.
+    * f is an order-preserving map from G into the ordinals, meaning that $aRb$ implies $f(a)\in f(b)$.
+    * f(G) is an initial segment of the ordinals, since if $\beta\in\alpha=f(a)$ then there is an isomorphism of pred(a) with $\alpha$ carrying some b to $\beta$, and then $f(b)=\beta$.
+  * It follows that the range of f IS an ordinal, call it $\xi$. To complete the proof, it is enough to show that G=A. If this is not the case, then let a be the minimum element of $A\setminus G$. Then pred(a) is exactly G, and it follows that f is an isomorphism of pred(a) with $\xi$. The definition of G now means that $a\in G$ after all, a contradiction!
+* Whew!  
+* Lexicographic ordering.
+
 ## Part II: Model theory
 
-
 ## Part III: Computability theory
-
 
 <script type='text/x-mathjax-config'>
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
