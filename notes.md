@@ -56,7 +56,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Replacement Axiom: For each logical formula phi(x,y) satisfying phi(x,y) and phi(x,y') implies y=y', the following is an axiom: For all A, there exists B which is the image of phi restricted to the domain A.
 * Once again, the replacement axiom is an axiom scheme.
 * Theorem. For any sets A,B we can construct the cartesian product AxB.
-* Proof: First, for each b in B we can use replacement with phi(x,y) being "(x,b)=y" and domain A to construct each Ax{b}. Then use replacement with phi(x,y) being "Ax{x}=y" to construct the set {Ax{b} | b in B}. Finally apply union to this to get AxB.
+* Proof: First, for each b in B we can use replacement with phi(x,y) being "(x,b)=y" and domain A to construct each Ax{b}. Then use replacement with phi(x,y) being "Ax{x}=y" to construct the set {Ax{b} \| b in B}. Finally apply union to this to get AxB.
 * For example, suppose we have constructed the set N of natural numbers. Then we can construct the cartesian product NxN. We can further construct the less than binary relation on N. If we have already constructed the + and x operations (which we'll do still later), we can further construct functions such as f(n)=n^2+2n+5.
 
 ### 4. More relations, well-orders
