@@ -30,7 +30,7 @@
 * Decide whether each of the following alternative definitions of $\langle x,y\rangle$ is a good one:
   * $\langle x,y\rangle= ${ x, {y} }
   * $\langle x,y\rangle=$ { x, {x,y} }
-  * $\langle x,y\rangle=${ {x}, {{y}} }
+  * $\langle x,y\rangle=${ {x}, { {y} } }
 * ...
 
 ### Supplemental problems

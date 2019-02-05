@@ -129,8 +129,33 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
     * f is an order-preserving map from G into the ordinals, meaning that $aRb$ implies $f(a)\in f(b)$.
     * f(G) is an initial segment of the ordinals, since if $\beta\in\alpha=f(a)$ then there is an isomorphism of pred(a) with $\alpha$ carrying some b to $\beta$, and then $f(b)=\beta$.
   * It follows that the range of f IS an ordinal, call it $\xi$. To complete the proof, it is enough to show that G=A. If this is not the case, then let a be the minimum element of $A\setminus G$. Then pred(a) is exactly G, and it follows that f is an isomorphism of pred(a) with $\xi$. The definition of G now means that $a\in G$ after all, a contradiction!
-* Whew!  
-* Lexicographic ordering.
+* Whew!
+
+### 7. Ordinals and induction
+
+* We have seen that if R is a well-order on a set A, then (A,R) is isomorphic to a unique ordinal alpha. This ordinal is called the ordertype or just type of (A,R).
+* Lexicographic ordering. If (A,R) and (B,S) are linear orders, we can form their lexicographic product which is an order on the cartesian product AxB defined by (a,b)&lt;(a',b') iff a&lt;a', or a=a' and b&lt;b'.
+* The product of two ordinals. If alpha and beta are ordinals, then we can take a lexicographic product to get a well-order on pairs. This well-order isn't an ordinal, but one may verify it is well-orderd. By the above it is isomorphic to an ordinal. We actually define alpha.beta to be the lex product beta X alpha. The reason is that we want alpha.beta to be alpha, beta many times. Or in other words each element of beta is replaced by a copy of alpha. E.g. omega.2 is what we previously called omega+omega, whereas 2.omega is just omega.
+* The sum of two ordinals. alpha+beta is the type of the lexicographic order on {0}xalpha union {1}xbeta. Intuitively a copy of alpha is followed by a copy of beta. E.g. we get alpha+alpha = 2 x alpha = alpha.2.
+* Both multiplication and addition are associative but not commutative. A complete list of arithmetic laws can be found in the book on page 41.
+* Ordinals also have a supremum operation sup(X)=union(X). We know supremums exist by well-foundedness of ON, but we actually have a formula for it.
+* We can see in small examples that ordinal multiplication is just repeated ordinal addition. We will also have ordinal exponentiation, which will be repeated ordinal multiplication.
+* We have to be clear about what "repeated" means for infinite ordinals! It is finally time to talk about induction and recursion on the ordinals. Officially, we haven't even proved that the factorial exists!
+* As a preview, recall that recursive definitions on the natural numbers have two parts, a base case and a recursive case. For example, 0!=0 and (n+1)!=(n+1)n!. Recursive definitions on the ordinals have three parts, a base case, a successor case, and a limit case.
+* To use ordinal exponentiation as an example, we will define: alpha^0=1, alpha^(beta+1)=(alpha^beta).alpha, and if lambda is a limit then alpha^lambda = sup{alpha^beta : beta&lt;lambda}.
+* Before stating the transfinite recursion principle, we should probably state the transfinite induction principle/scheme: If phi(x) is a formula, and phi(0) is true and for all beta phi(beta) implies phi(beta+1) and for all lambda (beta&lt;lambda implies phi(beta)) implies phi(lambda), then phi(x) is true of all ordinals.
+* This principle is simply equivalent to the well-ordering of ON. If some phi failed to satisfy the conclusion, there would be a least counterexample, contradicting the hypothesis.
+* A recursive definition is a little more complicated. You are trying to define a function F on all ordinals, and you do so using a function G of all values of F defined so far. In the end, F(alpha) = G( F(0), ... , F(beta), ... ) (beta&lt;alpha).
+* Ex: For the factorial function one uses G(empty)=0 and G(s\_0,...,s\_n-1) = ns\_n-1.
+* Ex: For the fibonacci numbers one uses G(empty)=0, G(1)=1, and G(s\_0,...,s\_n-1)=s\_n-2+s\_n-1.
+* Ex: For ordinal exponentiation with base alpha, one uses G(empty)=1, G(s\_0,...s\_beta)=s\_\beta . alpha, and G(s\_0,...&lt;lambda) = union s\_beta.
+* The transfinite recursion principle: Let G(x) be a proper class function (defined by a function-like formula phi(x,y)). Then there is a proper class function F(x) such that for every alpha we have F(alpha)=G(F\|alpha).
+* The proof is similar to the proof of the classical recursion principle, and it relies on the principle of induction plus replacement. We will content ourselves with a summary in the case of G(s)=n s\|n.
+  * We want to build the function F(n)=n!. We do this by building a sequence of approximations F\_n. Each function F\_n has domain n={0,...,n-1} and behaves like the usual factorial.
+  * We prove by induction that for each n, there exists a unique function F\_n with the property described above. The base case is trivial. The inductive step is true because we can define f\_n+1 (n) = nf\_n(n-1), and check this is unique.
+  * We finally let F(n)=F\_n+1 (n). This is the desired item.
+* The general theorem is proved by: (1) substitute whatever G is into the proof, (2) at limit stages obtain F\_lambda by taking a union of the previous F\_beta's.
+* We can finally make sense of the intuitive idea of doing something iteratively. This will be of fundamental importance to our study of the infinite. Example: epsilon\_0.
 
 ## Part II: Model theory
 
