@@ -148,7 +148,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * A recursive definition is a little more complicated. You are trying to define a function F on all ordinals, and you do so using a function G of all values of F defined so far. In the end, F(alpha) = G( F(0), ... , F(beta), ... ) (beta&lt;alpha).
 * Ex: For the factorial function one uses G(empty)=0 and G(s\_0,...,s\_n-1) = ns\_n-1.
 * Ex: For the fibonacci numbers one uses G(empty)=0, G(1)=1, and G(s\_0,...,s\_n-1)=s\_n-2+s\_n-1.
-* Ex: For ordinal exponentiation with base alpha, one uses G(empty)=1, G(s\_0,...s\_beta)=s\_\beta . alpha, and G(s\_0,...&lt;lambda) = union s\_beta.
+* Ex: For ordinal exponentiation with base alpha, one uses G(empty)=1, G(s\_0,...,s\_beta)=s\_beta . alpha, and G(s\_0,...&lt;lambda) = union s\_beta.
 * The transfinite recursion principle: Let G(x) be a proper class function (defined by a function-like formula phi(x,y)). Then there is a proper class function F(x) such that for every alpha we have F(alpha)=G(F\|alpha).
 * The proof is similar to the proof of the classical recursion principle, and it relies on the principle of induction plus replacement. We will content ourselves with a summary in the case of G(s)=n s\|n.
   * We want to build the function F(n)=n!. We do this by building a sequence of approximations F\_n. Each function F\_n has domain n={0,...,n-1} and behaves like the usual factorial.
