@@ -142,7 +142,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * We can see in small examples that ordinal multiplication is just repeated ordinal addition. We will also have ordinal exponentiation, which will be repeated ordinal multiplication.
 * We have to be clear about what "repeated" means for infinite ordinals! It is finally time to talk about induction and recursion on the ordinals. Officially, we haven't even proved that the factorial exists!
 * As a preview, recall that recursive definitions on the natural numbers have two parts, a base case and a recursive case. For example, 0!=0 and (n+1)!=(n+1)n!. Recursive definitions on the ordinals have three parts, a base case, a successor case, and a limit case.
-* To use ordinal exponentiation as an example, we will define: alpha^0=1, alpha^(beta+1)=(alpha^beta).alpha, and if lambda is a limit then alpha^lambda = sup{alpha^beta : beta&lt;lambda}.
+* To use ordinal exponentiation as an example, we will define: alpha^0=1, alpha^(beta+1) = (alpha^beta).alpha, and if lambda is a limit then alpha^lambda = sup{alpha^beta : beta&lt;lambda}.
 * Before stating the transfinite recursion principle, we should probably state the transfinite induction principle/scheme: If phi(x) is a formula, and phi(0) is true and for all beta phi(beta) implies phi(beta+1) and for all lambda (beta&lt;lambda implies phi(beta)) implies phi(lambda), then phi(x) is true of all ordinals.
 * This principle is simply equivalent to the well-ordering of ON. If some phi failed to satisfy the conclusion, there would be a least counterexample, contradicting the hypothesis.
 * A recursive definition is a little more complicated. You are trying to define a function F on all ordinals, and you do so using a function G of all values of F defined so far. In the end, F(alpha) = G( F(0), ... , F(beta), ... ) (beta&lt;alpha).
@@ -155,7 +155,50 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
   * We prove by induction that for each n, there exists a unique function F\_n with the property described above. The base case is trivial. The inductive step is true because we can define f\_n+1 (n) = nf\_n(n-1), and check this is unique.
   * We finally let F(n)=F\_n+1 (n). This is the desired item.
 * The general theorem is proved by: (1) substitute whatever G is into the proof, (2) at limit stages obtain F\_lambda by taking a union of the previous F\_beta's.
-* We can finally make sense of the intuitive idea of doing something iteratively. This will be of fundamental importance to our study of the infinite. Example: epsilon\_0.
+* We can finally make sense of the intuitive idea of doing something iteratively. This will be of fundamental importance to our study of the infinite.
+* Example: epsilon\_0.
+* Example: transitive closure: Define U^nz inductively, and then tc(z)=UU^nz.
+
+### 8. Power set and cardinality
+
+* We used the axiom of infinity to show that the natural numbers is a set. It is not difficult to build the integers and then rational numbers from the natural numbers. However we have not shown that the set of real numbers exists.
+* The usual definition uses cuts: R = { C : C is a subset of Q satisfying blah blah }. However observe that this is not a valid set builder. We again need another axiom.
+* The Axiom of Power Sets: For any set x, let P(x) denote the collection of all subsets of x. The axiom says that for any set x, the collection P(x) is a set.
+* It is now possible to define real numbers using cuts, as described above.
+* The real numbers are actually just one of many digit-type spaces. Others include Cantor space 2^N^ and Baire space N^N^.
+* Notation: If A and B are sets, then Fun(A,B) or sometimes ^A^B or sometimes B^A^  denotes the space of all functions from A to B. To explain this notation, consider examples like R^n^.
+* Proposition: If A and B are sets, then Fun(A,B) is a set.
+* Proof: A function from A to B is a subset of AxB with the function-like property. Thus the set of all functions can be constructed as a subset of P(AxB) using comprehension.
+
+* Cardinality. Recall that a set A is countable if there exists a sequence (an) enumerating A. In set theory terms, we are just saying that there exists a function from omega to A that is surjective.
+* We have shown that there exist large ordinals like epsilon0. But is this ordinal really large? In fact it is still countable! The reason is that in the construction we are just taking lexicographic products and countable unions. Each of these operations preserves countability. This is the difference between ordinality (length) and cardinality (amount).
+* The power set axiom is what lets things get truly large. Before explaining we recall the notation and terminology of cardinality.
+* We say that \|A\|&le;\|B\| if there is an injection, \|A\|=\|B\| if there is a bijection, and \|A\|&lt;\|B\| if there is an injection but no bijection.
+* Note that so far we have told you how cardinality works, but not what cardinality is. We will remedy this later.
+* Cantor's theorem. If A is any set, then \|A\|&lt;\|P(A)\|.
+* Proof.
+  * The function i(a)={a} is an injection from A to P(A).
+  * Now suppose that f is any function from A to P(A). We will show that some subset D of A is not in the range of f. Thus f is not a bijection. Since f was arbitrary this proves the theorem.
+  * The definition of D is { a in A : a notin f(a) }. This is called a diagonalizer.
+  * Example: suppose f(a)={b,c,z}, f(b)={a,b,c,d}, f(c)={a,d,e,g,h}, f(d)={d,w,z}, .... Then we would let D = {a, c, ...}. This is guaranteed not to be in the range because it differs from every f(x) on the subject of x.
+  * Formally, suppose towards a contradictoin that D is in the range and let f(a)=D. Then ask whether a in D (it implies a notin D) and whether a notin D (it implies a in D).
+* Corollary. There are infinitely many distinct cardinalities, and infinitely many distinct uncountable cardinalities. For example, omega, P(omega), P(P(omega)), etc.
+* Corollary. The digit spaces 2^N^, N^N^, and R are uncountable. The first space is exactly P(omega), and the first space embeds into the latter two.
+* But what is the exact cardinality of N^N^ and R?
+* Cantor-Schroder-Bernstein theorem. If \|A\|&le;\|B\| and \|B\|&le;\|A\| then \|A\|=\|B\|.
+* Proof.
+  * Since there is an injection from B to A, we may replace every element of B by its corresponding element in A and assume without loss of generality that B is a subset of A.
+  * We can now draw a picture of the sets A, B, f(A), f(B), f(f(A)), etc
+  * The picture is divided into "rings" A-B, B-f(A), f(A)-f(B), f(B)-f(f(A)), etc, together with the "inner most ring" C (intersection).
+  * We now divide the rings into three classes, those starting with A, those starting with B, and C:
+    * class 1: A-B, f(A)-f(B), f(f(A))-f(f(B)), etc
+    * class 2: B-f(A), f(B)-f(f(A)), etc
+    * class 3: C
+  * The function f sends the first class down the line, the second class down the line, and the third class to itself.
+  * Now define a function g which applies f to class 1, and the identity to classes 2 and 3. This is a bijection from A to B.
+* Corollary. The digit spaces 2^N^, N^N^, and R are all the same cardinality as P(omega). Proof. We just have to show that there are injections from N^N^ and R back into P(omega). For N^N^, the graph of any element is a subset of NxN. Since NxN is in bijection with N, we can regard it as an element of P(N). For R, exercise.
+
+### 9. Cardinals
 
 ## Part II: Model theory
 
