@@ -1,3 +1,19 @@
+## Homework 4, due Thursday, February 14
+
+* The lexicographic product of two well-orders is again a well-order.
+* Use the recursion theorem to show that the following are functions. (You may assume that you already know that $+,\times$ are functions.)
+  * $f(n)=$ the $n$th prime number
+  * $f(n)=2^n$
+  * $f(n)=n^{n^n}$
+* Kunen, exercise I.11.3.
+
+### Supplemental problems
+
+* Kunen, exercise I.9.6, parts (1)(2)
+* Kunen, exercise I.9.6, parts (3)(4)
+* Show that the cartesian product $A\times B$ can be constructed using the Power Set axiom instead of the Replacement axiom.
+* (2pts) Is there an uncountable subset of $\mathbb R$ which is well-ordered by the usual ordering on $\mathbb R$?
+
 ## Homework 3, due Thursday, February 7
 
 * Which of the following rules hold for a function f?
@@ -31,7 +47,6 @@
   * $\langle x,y\rangle= ${ x, {y} }
   * $\langle x,y\rangle=$ { x, {x,y} }
   * $\langle x,y\rangle=${ {x}, { {y} } }
-* ...
 
 ### Supplemental problems
 
