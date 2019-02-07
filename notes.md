@@ -169,11 +169,10 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Notation: If A and B are sets, then Fun(A,B) or sometimes ^A^B or sometimes B^A^  denotes the space of all functions from A to B. To explain this notation, consider examples like R^n^.
 * Proposition: If A and B are sets, then Fun(A,B) is a set.
 * Proof: A function from A to B is a subset of AxB with the function-like property. Thus the set of all functions can be constructed as a subset of P(AxB) using comprehension.
-
 * Cardinality. Recall that a set A is countable if there exists a sequence (an) enumerating A. In set theory terms, we are just saying that there exists a function from omega to A that is surjective.
 * We have shown that there exist large ordinals like epsilon0. But is this ordinal really large? In fact it is still countable! The reason is that in the construction we are just taking lexicographic products and countable unions. Each of these operations preserves countability. This is the difference between ordinality (length) and cardinality (amount).
 * The power set axiom is what lets things get truly large. Before explaining we recall the notation and terminology of cardinality.
-* We say that \|A\|&le;\|B\| if there is an injection, \|A\|=\|B\| if there is a bijection, and \|A\|&lt;\|B\| if there is an injection but no bijection.
+* We say that \|A\|$\leq$\|B\| if there is an injection, \|A\|=\|B\| if there is a bijection, and \|A\|&lt;\|B\| if there is an injection but no bijection.
 * Note that so far we have told you how cardinality works, but not what cardinality is. We will remedy this later.
 * Cantor's theorem. If A is any set, then \|A\|&lt;\|P(A)\|.
 * Proof.
@@ -185,7 +184,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Corollary. There are infinitely many distinct cardinalities, and infinitely many distinct uncountable cardinalities. For example, omega, P(omega), P(P(omega)), etc.
 * Corollary. The digit spaces 2^N^, N^N^, and R are uncountable. The first space is exactly P(omega), and the first space embeds into the latter two.
 * But what is the exact cardinality of N^N^ and R?
-* Cantor-Schroder-Bernstein theorem. If \|A\|&le;\|B\| and \|B\|&le;\|A\| then \|A\|=\|B\|.
+* Cantor-Schroder-Bernstein theorem. If \|A\|$\leq$\|B\| and \|B\|$\leq$\|A\| then \|A\|=\|B\|.
 * Proof.
   * Since there is an injection from B to A, we may replace every element of B by its corresponding element in A and assume without loss of generality that B is a subset of A.
   * We can now draw a picture of the sets A, B, f(A), f(B), f(f(A)), etc
