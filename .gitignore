@@ -1,3 +1,4 @@
+*.pdf
 private
 .sass-cache
 _site
