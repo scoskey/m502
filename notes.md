@@ -199,6 +199,24 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
 ### 9. Cardinals
 
+* Previously we defined the behavior of |A| in terms of injections and bijections. But what exactly is |A|?
+* One of the earliest definitions of |A| was the set of all sets that are in bijection with A. Thus 3 is the set of all 3-element sets. But this object is a class not a set.
+* Once we again use the idea of representatives, so |A| will be a particular set of size A (if possible). And once again we turn to the ordinals.
+* Def: An ordinal alpha is called a cardinal if it isn't in bijection with any lower ordinal.
+* Ex: 0,1,2,... are all ordinals that are cardinals. omega is also a cardinal. But as we have seen, omega^2^ and so on are not cardinals.
+* Def: If A is any set then |A| = a cardinal kappa such that there is a bijection between A and kappa. Note that if this exists it must be unique.
+* Ex: This supports standard calculations like |{divisors of 10}|=4.
+* Ex: If A is a countable set, then |A|=omega.
+* Question: What is |R|?
+* In principle, there may be sets A which are not in bijection with any ordinals/cardinals. In such a case |A| cannot be defined to be an ordinal or any particular object. Thus to approach cardinals in this way we need an axiom.
+* Axiom of Choice: For any set A, there is a bijection of A with some ordinal. In particular there is a bijection of A with some cardinal kappa.
+* Prop: Every natural number ordinal is a cardinal.
+* Proof: Show by induction that no natural number is in bijection with an earlier one.
+* Prop: Every infinite cardinal is a limit ordinal.
+* Proof: if omega$\leq$alpha, then alpha+1 is in bijection with alpha.
+* Prop: Any limit (union) of cardinals is a cardinal
+* Proof: Let kappa = a union of kappa\_beta's. If kappa is in bijection with some lower xi, then we would have xi&lt;kappa\_beta for some beta. Then we have xi$\leq$kappa\_beta$\leq$kappa$\leq$xi. By Cantor-Schroder-Bernstein there is a bijection between xi and kappa\_alpha, contradicting that kappa\_alpha is a cardinal.
+
 ## Part II: Model theory
 
 ## Part III: Computability theory
