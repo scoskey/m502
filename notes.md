@@ -213,9 +213,25 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Prop: Every natural number ordinal is a cardinal.
 * Proof: Show by induction that no natural number is in bijection with an earlier one.
 * Prop: Every infinite cardinal is a limit ordinal.
-* Proof: if omega$\leq$alpha, then alpha+1 is in bijection with alpha.
+* Proof: Clearly omega+1 is in bijection with omega. Use this to show that if omega$\leq$alpha, then alpha+1 is in bijection with alpha.
 * Prop: Any limit (union) of cardinals is a cardinal
 * Proof: Let kappa = a union of kappa\_beta's. If kappa is in bijection with some lower xi, then we would have xi&lt;kappa\_beta for some beta. Then we have xi$\leq$kappa\_beta$\leq$kappa$\leq$xi. By Cantor-Schroder-Bernstein there is a bijection between xi and kappa\_alpha, contradicting that kappa\_alpha is a cardinal.
+* The next result shows that there are uncountable ordinals. This follows from AC and Cantor's theorem, but we can prove it without AC.
+* Hartog's Theorem: For any set A, there is a cardinal kappa such that there is no injection from kappa to A.
+* Proof.
+  * Let W be the set of binary relations R on subsets of A such that R is a well-order of its domain. (We are using power set to know this exists.) Let kappa be the supremum of the ordertypes of the orderings in W. (We are using replacement to know this exists.)
+  * Then there is no injection from kappa to A. Indeed if there were then the ordering on kappa may be sent through the injection to give a well-ordering on a subset of A. This would again mean that kappa is in kappa.
+  * Finally kappa is a cardinal. Indeed if kappa were in bijection with some alpha&lt;kappa, then there is a subset of A that is alpha-ordered, and we could produce an injection from kappa to A.
+* Applying Hartog's theorem to A=n, we obtain n+1. Applying Hartog's thoerem to A=omega, we obtain the existence of an uncountable cardinal. Applying this repeatedly, we obtain a tower of uncountable cardinals.
+* Def. Given any cardinal kappa, let kappa+ denote the last cardinal that is greater than kappa.
+* Def.
+  * Let aleph0 be the first infinite cardinal, omega
+  * Let aleph(alpha+1) = aleph(alpha)+
+  * Let aleph(lambda) = sup(aleph(beta)), beta&lt;lambda
+* Ordinal arithmetic doesn't increase cardinality. For example:
+* Prop. If kappa is an infinite cardinal then |kappa x kappa|=|kappa|
+* Proof. We must show kappa x kappa is injectible into kappa. Assume it is true for every alpha&lt;kappa. Let R be the usual increasing boxes ordering of kappa x kappa. Then every initial segment of R is contained in some alpha x alpha, and hence injectible into alpha. It follows that R is injectible into kappa. (If it weren't then kappa would be injectible into some initial segment of R and hence into some alpha&lt;kappa contradicting it is a cardinal.)
+* Continuing this logic one can determine that even iterated ordinal exponentiation etc does not increase cardinality. In particular the countable ordinals extend inconceivably far before finally being dominated by aleph1.
 
 ## Part II: Model theory
 
