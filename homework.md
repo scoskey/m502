@@ -1,3 +1,18 @@
+## Homework 5, due Thursday, February 28
+
+* Kunen, exercise I.11.31. Prove that the $\aleph$ sequence is strictly increasing and that every infinite cardinal is in the $\aleph$ sequence.
+* Kunen, exercise I.11.33. Prove that there exists an $\aleph$-fixed point.
+* Show that the Choice Set version of AC and the Choice Function version of AC are equivalent.
+* Kunen, exercise I.12.13. (Without AC) There is a surjective function from $\mathcal P(\omega)$ to $\omega_1$.
+
+### Supplemental problems
+
+* (2pts) Based on Kunen, exercise I.11.6, first part. Give a careful drawing of the graph of a bijection between [0,1] and [0,1/2). Include any helpful explanations with your drawing so it is clear what you mean.
+* Kunen, exercise I.11.35. Prove there is an uncountable ordinal without using Replacement or Choice.
+* Kunen, exercise I.11.36. Every countable strict total ordering is isomorphic to a subset of $\QQ$.
+* Kunen, exercise I.12.17(i). (Without AC) there is an injection from $\omega$ to $A$ iff $A$ is not Dedekind finite.
+* Kunen, exercise I.12.17(ii). (With AC) Dedekind finite is equivalent to finite.
+
 ## Homework 4, due Thursday, February 14
 
 * The lexicographic product of two well-orders is again a well-order.
