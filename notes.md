@@ -199,16 +199,16 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
 ### 9. Cardinals
 
-* Previously we defined the behavior of |A| in terms of injections and bijections. But what exactly is |A|?
-* One of the earliest definitions of |A| was the set of all sets that are in bijection with A. Thus 3 is the set of all 3-element sets. But this object is a class not a set.
-* Once we again use the idea of representatives, so |A| will be a particular set of size A (if possible). And once again we turn to the ordinals.
+* Previously we defined the behavior of \|A\| in terms of injections and bijections. But what exactly is \|A\|?
+* One of the earliest definitions of \|A\| was the set of all sets that are in bijection with A. Thus 3 is the set of all 3-element sets. But this object is a class not a set.
+* Once we again use the idea of representatives, so \|A\| will be a particular set of size A (if possible). And once again we turn to the ordinals.
 * Def: An ordinal alpha is called a cardinal if it isn't in bijection with any lower ordinal.
 * Ex: 0,1,2,... are all ordinals that are cardinals. omega is also a cardinal. But as we have seen, omega^2^ and so on are not cardinals.
-* Def: If A is any set then |A| = a cardinal kappa such that there is a bijection between A and kappa. Note that if this exists it must be unique.
-* Ex: This supports standard calculations like |{divisors of 10}|=4.
-* Ex: If A is a countable set, then |A|=omega.
-* Question: What is |R|?
-* In principle, there may be sets A which are not in bijection with any ordinals/cardinals. In such a case |A| cannot be defined to be an ordinal or any particular object. Thus to approach cardinals in this way we need an axiom.
+* Def: If A is any set then \|A\| = a cardinal kappa such that there is a bijection between A and kappa. Note that if this exists it must be unique.
+* Ex: This supports standard calculations like \|{divisors of 10}\|=4.
+* Ex: If A is a countable set, then \|A\|=omega.
+* Question: What is \|R\|?
+* In principle, there may be sets A which are not in bijection with any ordinals/cardinals. In such a case \|A\| cannot be defined to be an ordinal or any particular object. Thus to approach cardinals in this way we need an axiom.
 * Axiom of Choice: For any set A, there is a bijection of A with some ordinal. In particular there is a bijection of A with some cardinal kappa.
 * Prop: Every natural number ordinal is a cardinal.
 * Proof: Show by induction that no natural number is in bijection with an earlier one.
@@ -232,6 +232,47 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Prop. If kappa is an infinite cardinal then |kappa x kappa|=|kappa|
 * Proof. We must show kappa x kappa is injectible into kappa. Assume it is true for every alpha&lt;kappa. Let R be the usual increasing boxes ordering of kappa x kappa. Then every initial segment of R is contained in some alpha x alpha, and hence injectible into alpha. It follows that R is injectible into kappa. (If it weren't then kappa would be injectible into some initial segment of R and hence into some alpha&lt;kappa contradicting it is a cardinal.)
 * Continuing this logic one can determine that even iterated ordinal exponentiation etc does not increase cardinality. In particular the countable ordinals extend inconceivably far before finally being dominated by aleph1.
+* Ordinal exponentiation vs cardinal exponentiation
+
+### 10. Axiom of choice
+
+* We have said that the axiom of choice allows us to regard all cardinals as special ordinals that are not in bijection with any smaller ordinal. But what does the axiom say exactly?
+* Axiom of Choice: If F is a set of nonempty sets which are pairwise disjoint, then there exists a set C such that \|C cap A\|=1 for all A in F.
+* In other words, C is a choice or selection of one element from each member of the family.
+* Observe the disjointness assumption is necessary, since for instance F={ {2}, {2,3}, {3} } does not have a choice set.
+* There is a non-disjoint version: If F is a family of nonempty sets, then there exists a function c:F to UF such that c(a) in A for all A in F.
+* So in the above example, we could have c({2})=2, c({2,3})=2, and c({3})=3 without any contradiction.
+* Exercise: The two statements are equivalent.
+* The Axiom of Choice may seem somewhat arbitrary, but it turns out it is used many times over in modern mathematics:
+  * Every set has an ordinal cardinality
+  * The union of countable sets is countable
+  * The product of nonempty sets is nonempty
+  * Every vector space has a basis
+  * There exists a Lebesgue nonmeasurable set
+* Ok, the Axiom of Choice is fundamental, and it seems innocent enough. So why is it controversial? Unlike the other axioms it is non-constructive in the sense that it doesn't tell you exactly what the elements of C will be.
+* We now start to investigate some of these useful consequences of AC.
+* Well Ordering Principle: For every set A, there a well-ordering R of A.
+* Proof. It is equivalent to show there exists a bijection between some ordinal and A. For this, let c be a choice function on P(A) minus empty set, and use recursion to define a function from ORD to A until it fails. Let f(0)=c(A), and generally let f(beta)=c(A minus everything so far). If alpha is the first failure, then f defines a bijection from alpha to A. (And there must be a failure since otherwise the proper class ORD injects into the set A.)
+* Cor. Every set has an ordinal cardinality.
+* Proof. By WOP there exists a bijection between some ordinal xi and A. Using well-foundedness of ORD we can find the least ordinal kappa in bijection with A. This is clearly a cardinal.
+* Cor. For any sets A,B, we have \|A\|$\leq$\|B\| or \|B\|$\leq$\|A\| (or both).
+* Proof. By WOP, both A and B are in bijection with ordinals alpha and beta. By trichotomy of ORD, we either have an injection from alpha to beta or from beta to alpha (or both).
+* Theorem. The union of countably many countable sets is countable. More generally, for any cardinal kappa, the union of at most kappa many sets of cardinality at most kappa has cardinality at most kappa.
+* Proof. Let kappa be a cardinal and let F be such a family. Using WOP we can find a well-ordering of F of ordertype at most kappa. Using WOP on each element A of F we can find a well-ordering of A of ordertype at most kappa. Using the Axiom of Choice we can select a sequence of well-orderings, one for each set A, of A. Using this sequence we can define a functon f from kappa x kappa onto UF by: f(alpha,beta)= the betath element of the alphath set of F, or if undefined, any element. Since kappa x kappa has cardinality kappa, this shows that there is a surjection from kappa onto UF. This completes the proof because of the following lemma.
+* Lemma. There is a surjection from A to B if and only if there is an injection from B to A.
+* Proof. Exercise.
+* The next result is one of several maximal principles used frequently in mathematics.
+* Zorn's Lemma. Suppose P is a set with a partial order &lt;, and assume that every chain of P has an upper bound in P. Then P has a maximal element.
+* Here a partial order is irreflexive and transitive (no trichotomy). A chain is a totally ordered subset. An upper bound is what it sounds like. A maximal element is an element with nothing greater (but possibly incomparable).
+* Cor. Every vector space has a basis.
+* Proof. Let V be a vector space and let P be the set of all linearly independent subsets of V, partially ordered by proper-subset. Then every chain of P has an upper bound (the union). Hence ZL implies there exists a maximal independent set. Such a set B must be a basis: if v were some vector not in span(B) then Bu{v} would be independent, contradicting maximality.
+* Proof of ZL. Begin with a choice function for the power set of P, as before. Use recursion to define an order-preserving function from ORD into P as far as one can go. That is let f(0)=any element, and f(beta+1) be any element greater than f(beta). At limits lambda we have a chain so there is an upper bound. If beta+1 is the first failure, then f(beta) is a maximal element.
+* Many of the theorems we proved using AC are in fact equivalent to AC.
+* Thoerem. WOP is equivalent to AC.
+* Proof. Assuming WOP we can construct choice functions by simply choosing the "least" item.
+* Theorem. ZL is equivalent to AC.
+* Assuming ZL we can construct choice functions by considering the partial set of partial choice functions partially ordered by extension. A maximal partial choice function will be a choice function.
+* These are the highlights.
 
 ## Part II: Model theory
 
