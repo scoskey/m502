@@ -9,7 +9,7 @@
 
 * (2pts) Based on Kunen, exercise I.11.6, first part. Give a careful drawing of the graph of a bijection between [0,1] and [0,1/2). Include any helpful explanations with your drawing so it is clear what you mean.
 * Kunen, exercise I.11.35. Prove there is an uncountable ordinal without using Replacement or Choice.
-* Kunen, exercise I.11.36. Every countable strict total ordering is isomorphic to a subset of $\QQ$.
+* Kunen, exercise I.11.36. Every countable strict total ordering is isomorphic to a subset of $\mathbb Q$.
 * Kunen, exercise I.12.17(i). (Without AC) there is an injection from $\omega$ to $A$ iff $A$ is not Dedekind finite.
 * Kunen, exercise I.12.17(ii). (With AC) Dedekind finite is equivalent to finite.
 
