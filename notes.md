@@ -265,7 +265,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Zorn's Lemma. Suppose P is a set with a partial order &lt;, and assume that every chain of P has an upper bound in P. Then P has a maximal element.
 * Here a partial order is irreflexive and transitive (no trichotomy). A chain is a totally ordered subset. An upper bound is what it sounds like. A maximal element is an element with nothing greater (but possibly incomparable).
 * Cor. Every vector space has a basis.
-* Proof. Let V be a vector space and let P be the set of all linearly independent subsets of V, partially ordered by proper-subset. Then every chain of P has an upper bound (the union). Hence ZL implies there exists a maximal independent set. Such a set B must be a basis: if v were some vector not in span(B) then Bu{v} would be independent, contradicting maximality.
+* Proof. Let V be a vector space and let P be the set of all linearly independent subsets of V, partially ordered by proper-subset. Then every chain of P has an upper bound (the union). Hence ZL implies there exists a maximal independent set. Such a set B must be a basis: if v were some vector not in span(B) then B U {v} would be independent, contradicting maximality.
 * Proof of ZL. Begin with a choice function for the power set of P, as before. Use recursion to define an order-preserving function from ORD into P as far as one can go. That is let f(0)=any element, and f(beta+1) be any element greater than f(beta). At limits lambda we have a chain so there is an upper bound. If beta+1 is the first failure, then f(beta) is a maximal element.
 * Many of the theorems we proved using AC are in fact equivalent to AC.
 * Thoerem. WOP is equivalent to AC.
@@ -273,6 +273,40 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Theorem. ZL is equivalent to AC.
 * Assuming ZL we can construct choice functions by considering the partial set of partial choice functions partially ordered by extension. A maximal partial choice function will be a choice function.
 * These are the highlights.
+
+### 11. Cardinal arithmetic
+
+* We have defined arithmetic for ordinals and explored some of its properties.
+* Assuming AC, we can define an arithmetic of cardinals as well. We use context and hinting to distinguish between ordinal and cardinal arithmetic!
+  * kappa + lambda = \|kappa + lambda\| as ordinals
+  * kappa x lambda = \|kappa x lambda\| as ordinals
+  * kappa^lambda^ = \| Fun(lambda, kappa) \|
+* Unlike ordinal + and x, the cardinal + and x are not very exciting. This is because we have seen that ordinal arithmetic does not increase cardinality.
+* Thoerem. kappa + lambda and kappa x lambda have their usual meaning for finite cardinals. If one of the two is infinite, then kappa + lambda and kappa x lambda are both equal to max(kappa,lambda).
+* Proof. For the statement about finite cardinals, we can simply use induction. Next suppose $\kappa\leq\lambda$ and $\lambda$ is infinite. Then $\lambda\leq\kappa+\lambda\leq\lambda\cdot\lambda$ which is in bijection with $\lambda$. Similarly $\lambda\leq\kappa\times\lambda\leq\lambda\times\lambda$ which is in bijection with $\lambda$. By CSB, in both cases we get $\lambda$.
+* However cardinal exponentiation is new. The notation comes from finite cardinals where k^l^ has the same cardinality as Fun(l,k). We simply extend this to cardinals.
+* What is the value of 2^kappa^? Cantor's diagonalization theorem tells us that it is at least kappa+. In principle it could be equal to kappa+.
+* Continuum hypothesis CH: 2^omega^ = aleph1.
+* Generalized continuum hypothesis GCH: 2^kappa^=kappa+ for all cardinals kappa.
+* CH is really a statement about analysis. CH says there is no set of real numbers that uncountable but also not in bijection with all real numbers.
+* Both CH and GCH have important consequences. However it is known that neither statement can be proved using the axioms of ZFC. Conversely it is known that both statements are consistent with the axioms of ZFC.
+* More generally, set theorists consider the cardinal function kappa $\mapsto$ 2^kappa^. It is called the "continuum function". It turns out the continuum functon can essentially be anything you want it to be, except for a few basic rules.
+* For example it is clear that the continuum function has to be properly progressive ($\kappa\leq2^\kappa$) and increasing ($\kappa\leq\lambda\implies2^\kappa\leq2^\lambda$).
+* To explain the additional rules, we need to look at cofinality.
+* To motivate cofinality, consider the comparison of aleph1 versus aleph\_omega. On the one hand, clearly aleph\_omega is much larger. But on the other hand, no countable sequence can ever converge to aleph1, while there is a countable sequence that can converge to aleph\_omega. Thus there is another notion of size at work.
+* Def. If kappa is a cardinal (or really any ordinal) then cofinality of kappa cf(kappa) is the least ordinal alpha such that there exists an injective unbounded function f from alpha to kappa.
+* Example: cf(aleph1) = aleph1
+* Example: cf(aleph\_omega) = aleph0
+* Def. kappa is called regular if cf(kappa)=kappa, and singular if cf(kappa)&lt;kappa.
+* Fact. cf(kappa) is always a cardinal, and fact it is a regular cardinal (or in other words cf(cf(kappa))=cf(kappa).)
+* Theorem. Successor cardinals are regular, that is, cf(kappa+)=kappa+.
+* Proof. This is just a restatement of the fact that the union of kappa many sets of size kappa has size kappa. Indeed, if cf(kappa+)$\leq$kappa, then there would be an unbounded function f:kappa to kappa+. Thus kappa+ would be the union over all alpha&lt;kappa of f(alpha). This implies kappa+ has cardinality at most kappa, a contradiction.
+* Limit cardinals are usually singular, but they do not have to be. We can say simply that if lambda is a limit then cf(aleph\_lambda)=cf(lambda).
+* Konig's Cofinality Lemma. cf(kappa^lambda^)&gt;lambda.
+* Before giving the proof, we remark that this is a non-obvious limitation on what the continuum function can be. For example while we could have 2^omega^ equalling aleph\_n for any n, we cannot have 2^omega^=aleph\_omega!
+* Proof. To simplify the proof, we will prove the simpler statement that cf(2^kappa^)&gt;kappa. So assume towards a contradiction that cf(2^kappa^)$\leq$kappa. Then there is an unbounded sequence beta\_alpha in 2^kappa^ of length kappa or less.
+* We will repeat the Cantor diagonalization idea. There are only 2^kappa^ many functions from kappa to 2^kappa^. Thus we can enumerate them f\_xi for xi&lt;2^kappa^. We will now diagonalizes against this list to find a function d not in the list. To do so let d(alpha) disagree with f\_xi(alpha) for all xi&lt;beta\_alpha (we have more items available than items to avoid).
+* Then d disagrees with every f\_xi somewhere, completing the contradiction and the proof.
 
 ## Part II: Model theory
 
