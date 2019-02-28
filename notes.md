@@ -2,6 +2,9 @@
 
 Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
+\[\def\set#1{{\left\{#1\right\}}}
+\]
+
 ## Part I: Set theory
 
 ### 1. Introduction and foundational logic
@@ -33,8 +36,8 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Proposition: there exists a set with more than one element
 * Proposition: there exists a set with more than two elements
 * In general, one can see how all sets involving {, } and $\emptyset$ may be created
-* Comprehension Axiom: Allows to form subsets. This justifies the use of the set-builder notation {z in x \| phi(z)}.
-* Naive comprehension {z \| P(z)} leads to two problems: the use of non-logical phrases such as "the least natural number that can be defined in fewer than 20 words", and Russell's paradox. The modern comprehension axiom is also called the separation axiom.
+* Comprehension Axiom: Allows to form subsets. This justifies the use of the set-builder notation $\set{z\in x\mid \phi(z)}$.
+* Naive comprehension $\set{z\mid P(z)}$ leads to two problems: the use of non-logical phrases such as "the least natural number that can be defined in fewer than 20 words", and Russell's paradox. The modern comprehension axiom is also called the separation axiom.
 * The comprehension axiom is really an axiom scheme. Thus set theory officially has infinitely many axioms.
 
 ### 3. Natural numbers, relations, functions, replacement
@@ -310,13 +313,45 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
 ### 12. Foundation
 
-* We still haven't ruled out $x\in x$.
+* We have long asserted that sets can be constructed from the empty set and the axioms we have introduced so far.
+* What we haven't done is ruled out the possibility that there are other sets in the universe. Thus in principle there may be sets which cannot be constructed using the axioms we have introduced so far, and in principle some of these sets may be undesirable.
+* For examples: we never want a set $x$ such that $x\in x$, or any two sets such that $a\in b\in a$. More generally we never want cycles of sets with the property that $a_0\in a_1\in a_2\in\cdots\in a_n\in a_1$.
+* We can also recognize this as a wellfoundedness requirement. Thus we also do not want decending chains $\cdots\in a_3\in a_2\in a_1\in a_0$. Such sets cannot be constructed from the empty set and the axioms so far because there is no base to start with.
+* Axiom of Foundation: Every nonempty set has an $\in$-minimal element. Formally it says that $(\forall y\neq\emptyset)(\exists x\in y)(x\cap y=\emptyset)$.
+* The axiom implies that the $\in$ relation on $V$ is wellfounded, at least as far as $V$ knows. (Unfortunately we cannot escape the possibility that $V$ has illfounded subcollections which are not sets.)
+* The Axiom of Foundation is very important for understanding and visualizing the structure of the universe of sets.
+* Thus it is a remarkable fact that we haven't used it yet! The explanation is that all the sets we have studied so far are wellfounded anyway: The empty set, hereditarily finite sets, ordinals, sets of ordinals, cardinals, and so forth.
+* We now return to the construction of sets beginning with the empty set. This time we are assuming all axioms of ZFC.
+* Def. The cumulative hierarchy of sets $V_\alpha$ is defined as follows. Let $V_0=\emptyset$. For any ordinal $\beta$ let $V_{\beta+1}=P(V_\beta)$. For any limit ordinal $\lambda$ let $V_\lambda=\bigcup_{\alpha<\lambda}V_\alpha$.
+* Prop. $V_\alpha$ is a transitive set.
+* Proof. Recall this means if $x\in y\in V_\alpha$ then $x\in V_\alpha$. We prove this by induction. Suppose $V_\alpha$ is transitive and let $x\in y\in V_{\alpha+1}$. Then $x\in y\subset V_\alpha$, so $x\in V_\alpha$, so $x\subset V_\alpha$, so $x\in V_{\alpha+1}$. For limit stages, the union of transitive sets is transitive.
+* Prop. $V_\alpha\subset V_{\alpha+1}$.
+* Proof. We have $V_\alpha\in P(V_\alpha)=V_{\alpha+1}$, so by transitivity $V_\alpha\subset V_{\alpha+1}$.
+* The $V_\alpha$ grow and we will prove they eventually subsume all sets. Thus we can use them to define a rank (notion of complexity).
+* Def. If $x$ appears in any $V_\alpha$ we define $\mathrm{rank}(x)$ to be the least ordinal $\beta$ such that $x$ appears in $V_{\beta+1}$.
+* Prop. If $x\in y$ then $\mathrm{rank}(x)<\mathrm{rank}(y)$.
+* Proof. Suppose $\mathrm{rank}(y)=\alpha$ and so $y$ first appears in $V_{\alpha+1}$. Then $x\in y\subset V_\alpha$ so $x$ appears in $V_\alpha$ or earlier which means $\mathrm{rank}(x)<\alpha$.
+* Prop. For any ordinal $\alpha$ we have $\mathrm{rank}(\alpha)=\alpha$.
+* Proof. We prove this by induction. Suppose it is true of $\alpha$. Then $\alpha$ appears in $V_{\alpha+1}$ so $\alpha+1=\alpha\cup\set{\alpha}$ appears in $V_{\alpha+2}$. Moreover if $\alpha+1$ appeared in any earlier $V_\beta$ then so would $\alpha$. At limits, standard argument.
+* Prop. For any set $y$, we have $\mathrm{rank}(y)=\mathrm{sup}\set{\mathrm{rank}(x)+1\mid x\in y}$.
+* Proof. Let $\alpha$ denote this value. Then for all $x\in y$ we have that the rank of $x$ is $<\alpha$ so $x$ appears in $V_\alpha$. It follows that $y$ appears in $V_{\alpha+1}$. If $y$ appeared any earlier than the supremum would be lower.
+* In the following we let WF be the union of all $V_\alpha$, a proper class. Then WF is somehow the collection of sets that can be constructed from the empty set using the axioms.
+* Theorem. (1) WF satisfies the Axiom of Foundation. (2) Conversely if the Axiom of Foundation is true then $V=WF$.
+* Proof (1). Suppose $y$ is in WF. Then $y$ has a rank and every member of $y$ has a rank. Let $x$ be an element of $y$ of minimal rank. Then $x\cap y=\emptyset$.
+* Proof (2). Let $y$ be any set. Assuming the Axiom of Foundation we must show $y$ appears in some $V_\alpha$. Let $y'$ be the transitive closure of $\set{y}$, that is the set of all finite-level elements of $y$ and $y$ itself. It is sufficient to show that $y'$ appears in some $V_\alpha$.
+* Assume to the contrary that $y'$ is not in WF. Then $y'$ must have elements which are not in WF. By Foundation we can find an $\epsilon$-minimal element $x\in y'$ which is not in WF. Minimality (plus $x\subset y'$) implies all elements of $x$ must be in WF. It follows that $x\in WF$, a contradiction.
+* More generally, the Axiom of Foundation is said to be relatively consistent with the other axioms of ZFC. The Axiom of Foundation does not follow from the other axioms, but it can be assumed without problem by passing from $V$ to $WF$.
 
 ## Part II: Model theory
 
 ## Part III: Computability theory
 
 <script type='text/x-mathjax-config'>
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}});
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML'></script>
