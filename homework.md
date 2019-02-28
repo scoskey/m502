@@ -14,9 +14,9 @@
 * Prove that there is a cardinal $\alpha$ such that $\alpha=\aleph_\alpha$.
 * Kunen, exercise I.13.18. Prove that there is a cardinal $\alpha$ such that $\alpha=\beth_\alpha$.
 * (2pts) The GCH is equivalent to the statement that $\kappa^{\mathrm{cf}(\kappa)}=\kappa^+$ for all cardinals $\kappa$.
-* Kunen, exercise I.14.15.
-* (2pts) Kunen, exercise I.14.17. 
-* Kunen, exercise I.14.23. 
+* Kunen, exercise I.14.15. If $K$ is a proper class satisfying $y\subset K\implies y\in K$ then $WF\subset K$.
+* (2pts) Kunen, exercise I.14.17. Prove a stronger version of the replacement axiom (see the text).
+* Kunen, exercise I.14.23. Prove the version of the induction theorem known as $\in$-induction (see the text).
 
 ## Homework 5, due Thursday, February 28
 
