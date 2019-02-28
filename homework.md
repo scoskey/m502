@@ -1,3 +1,23 @@
+## Homework 6, due Thursday, March 7
+
+* Show that $(\kappa^{\lambda})^\mu=\kappa^{\lambda\mu}$ and $\kappa^{\lambda+\mu}=\kappa^\lambda\kappa^\mu$.
+* Find the cardinality of the following sets:
+  * The set of finite subsets of $\omega_1$
+  * The set of countable subsets of $\omega_1$
+  * The set of functions whose domain is a countable subset of $\omega_1$ and whose range is contained in $\omega_2$
+  * The set of functions whose domain is a countable subset of $\omega_2$ and whose range is contained in $\omega_1$
+* For any $\alpha$ the Axiom of Union holds in $V_\alpha$.
+* For limit $\lambda$ the Axioms of Pairing and Power Set hold in $V_\lambda$.
+
+### Supplemental problems 6
+
+* Prove that there is a cardinal $\alpha$ such that $\alpha=\aleph_\alpha$.
+* Kunen, exercise I.13.18. Prove that there is a cardinal $\alpha$ such that $\alpha=\beth_\alpha$.
+* (2pts) The GCH is equivalent to the statement that $\kappa^{\mathrm{cf}(\kappa)}=\kappa^+$ for all cardinals $\kappa$.
+* Kunen, exercise I.14.15.
+* (2pts) Kunen, exercise I.14.17. 
+* Kunen, exercise I.14.23. 
+
 ## Homework 5, due Thursday, February 28
 
 * Kunen, exercise I.11.31. Prove that the $\aleph$ sequence is strictly increasing and that every infinite cardinal is in the $\aleph$ sequence.
@@ -5,7 +25,7 @@
 * Show that the Choice Set version of AC and the Choice Function version of AC are equivalent.
 * Kunen, exercise I.12.13. (Without AC) There is a surjective function from $\mathcal P(\omega)$ to $\omega_1$.
 
-### Supplemental problems
+### Supplemental problems 5
 
 * (2pts) Based on Kunen, exercise I.11.6, first part. Give a careful drawing of the graph of a bijection between [0,1] and [0,1/2). Include any helpful explanations with your drawing so it is clear what you mean.
 * Kunen, exercise I.11.35. Prove there is an uncountable ordinal without using Replacement or Choice.
@@ -22,7 +42,7 @@
   * $f(n)=n^{n^n}$
 * Kunen, exercise I.11.3.
 
-### Supplemental problems
+### Supplemental problems 4
 
 * Kunen, exercise I.9.6, parts (1)(2)
 * Kunen, exercise I.9.6, parts (3)(4)
@@ -43,7 +63,7 @@
 * Kunen, exercise I.7.20. If $R$ is a well-order on $X$ and $A\subset X$, then the restriction of $R$ to $A$ is a well-order on $A$.
 * Kunen, exercise I.8.11. If $\alpha$ is an ordinal then $S(\alpha)$ is an ordinal; and $\alpha&lt;S(\alpha)$; and $\gamma&lt;S(\alpha)$ iff $\gamma\leq\alpha$.
 
-### Supplemental problems
+### Supplemental problems 3
 
 * Kunen, exercise I.7.13. The lexicographic product of (strict) linear orders is a strict total order.
 * Kunen, exercise I.7.23. The lexicographic product of two well-orders is again a well-order.
@@ -63,7 +83,7 @@
   * $\langle x,y\rangle=$ { x, {x,y} }
   * $\langle x,y\rangle=${ {x}, { {y} } }
 
-### Supplemental problems
+### Supplemental problems 2
 
 * Kunen, exercise I.6.11 and I.6.13.
 * The axiom of comprehension begins $\exists y\ldots$. Show that in fact this $y$ is unique.
@@ -84,7 +104,7 @@
   * Is $\oplus$ associative? Prove your answer.
 * Kunen, exercise I.2.1
 
-### Supplemental problems
+### Supplemental problems 1
 
 * Write the statement more formally and prove it: "The empty set is unique."
 * Find the definition of the $\cap$ operation on page 10. Give a definition of the $\cup$ and $\smallsetminus$ (set difference) operations. Then prove the De Morgan law: $x\smallsetminus(y\cup z)=(x\smallsetminus y)\cap(x\smallsetminus z)$.
