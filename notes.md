@@ -45,21 +45,21 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * We have promised that set theory is somehow the theory of everything, meaning all other objects of mathematical study can be regarded as sets. Perhaps the most important objects in mathematics are natural numbers. How can these be regarded as objects in the universe of sets?
 * Von Neumann ordinals: an ordinal is a counting number (as opposed to a quantity measuring number). Define $0,1,2,3,\ldots$ as particular hereditarily finite sets.
 * We have also promised that set theory is somehow the theory of the infinite, meaning we can study different kinds of infinity using sets. The axiom of infinity will allow us to count into the infinite.
-* In general, an ordinal is equal to the collection of ordinals that came before it. Thus the Von Neumann ordinals will be extended into the infinite by setting $\omega=\{0,1,2,3,\ldots\}$, $\omega+1=\{0,1,2,3,\ldots,\omega\}$ and so on. Infinity plus one!
-* Thus we have a successor function $S(\alpha)$ or $\alpha+1$ is equal to $\alpha\cup\{\alpha\}$. 
+* In general, an ordinal is equal to the collection of ordinals that came before it. Thus the Von Neumann ordinals will be extended into the infinite by setting $\omega=\set{0,1,2,3,\ldots}$, $\omega+1=\set{0,1,2,3,\ldots,\omega}$ and so on. Infinity plus one!
+* Thus we have a successor function $S(\alpha)$ or $\alpha+1$ is equal to $\alpha\cup\set{\alpha}$. 
 * Another of the most important mathematical objects is a function. You may have seen the definition of a function as a set of ordered pairs (input,output).
-* Ordered pair: $(a,b)$ is defined to be $\{\{a\},\{a,b\}\}$. We have to check this "works". Observe that other more naive attempts don't work.
+* Ordered pair: $(a,b)$ is defined to be $\set{\set{a},\set{a,b}}$. We have to check this "works". Observe that other more naive attempts don't work.
 * Binary relation: any set whose elements are ordered pairs. If $R$ is a set of ordered pairs $(a,b)$ then we write $aRb$ to mean that $(a,b)$ is an element of $R$. Example: less than
 * Function: 
 * In elementary mathematics, we usually teach that a function is a formula or rule. But in formal mathematics, a function is really its graph.
 * Domain and range: these concepts are valid for binary relations (and in particular for functions). Note both the domain and range of $R$ are subsets of $\bigcup\bigcup R$.
 * Injective, surjective, and bijective: ...
-* Cartesian product: Most binary relations, and thus most functions, are constructed as a subset of a cartesian product $A\times B=\{(a,b)\mid a\in A, b\in B\}$.
+* Cartesian product: Most binary relations, and thus most functions, are constructed as a subset of a cartesian product $A\times B=\set{(a,b)\mid a\in A, b\in B}$.
 * In order to show that the cartisian product exists, we actually need a new axiom!
 * Replacement Axiom: For each logical formula $\phi(x,y)$ satisfying $\phi(x,y)$ and $\phi(x,y')$ implies $y=y'$, the following is an axiom: For all A, there exists B which is the image of phi restricted to the domain $A$.
 * Once again, the replacement axiom is an axiom scheme.
 * Theorem. For any sets $A,B$ we can construct the cartesian product $A\times B$.
-* Proof: First, for each $b\in B$ we can use replacement with $\phi(x,y)$ being "$(x,b)=y$" and domain $A$ to construct each $A\times\{b\}$. Then use replacement with phi(x,y) being "$A\times\{x\}=y$" to construct the set $\{A\times\{b\}\mid b\in B\}$. Finally apply union to this to get $AxB$.
+* Proof: First, for each $b\in B$ we can use replacement with $\phi(x,y)$ being "$(x,b)=y$" and domain $A$ to construct each $A\times\set{b}$. Then use replacement with phi(x,y) being "$A\times\set{x}=y$" to construct the set $\set{A\times\set{b}\mid b\in B}$. Finally apply union to this to get $AxB$.
 * For example, suppose we have constructed the set $\mathbb N$ of natural numbers. Then we can construct the cartesian product $\mathbb N\times\mathbb N$. We can further construct the less than binary relation on $\mathbb N$. If we have already constructed the $+$ and $x$ operations (which we'll do still later), we can further construct functions such as $f(n)=n^2+2n+5$.
 
 ### 4. More relations, well-orders
@@ -110,7 +110,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 ### 6. More ordinals
 
 * We have defined a set alpha to be an ordinal if it is well-ordered by $\in$ and a transitive set. We have shown the ordinals are a proper class that is itself well-ordered by $\in$ and transitive.
-* The ordinal successor operation: $S(\alpha)$ or $\alpha+1$ = $\alpha \cup \\{\alpha\\}$. In principal this may be carried out on any set, but it is most useful on ordinals because then it always produced another ordinal.
+* The ordinal successor operation: $S(\alpha)$ or $\alpha+1$ = $\alpha \cup \set{\alpha}$. In principal this may be carried out on any set, but it is most useful on ordinals because then it always produced another ordinal.
 * What about alpha-1? Our discussion suggests that there will be two kinds of ordinals.
 * Def: an ordinal $\alpha$ is a successor of $\alpha=S(\beta)$ for some $\beta$.
 * Def: an ordinal $\alpha$ is a limit if it is not 0 and not a successor.
@@ -342,7 +342,53 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Assume to the contrary that $y'$ is not in WF. Then $y'$ must have elements which are not in WF. By Foundation we can find an $\epsilon$-minimal element $x\in y'$ which is not in WF. Minimality (plus $x\subset y'$) implies all elements of $x$ must be in WF. It follows that $x\in WF$, a contradiction.
 * More generally, the Axiom of Foundation is said to be relatively consistent with the other axioms of ZFC. The Axiom of Foundation does not follow from the other axioms, but it can be assumed without problem by passing from $V$ to $WF$.
 
+### 13. Set theory as a foundation
+
+* We have said that set theory can be used as a foundation for essentially all of mathematics. So far we have explicitly constructed the natural numbers and alluded to the construction of the real numbers.
+* Now we do so more explicitly.
+* Def. $\mathbb N=\omega$.
+* Def. $\mathbb Q$ is the set of triples $(i,m,n)$ in $2\times\omega\times\omega$ satisfying $n\neq0$ and $\mathrm{gcd}(m,n)=1$.
+* Here we intrepret $i=0$ as positivet, $i=1 as negative, $m$ as the numerator, and $n$ as the denominator.
+* Def. $\mathbb Z$ is the subset of $\mathbb Q$ where $n=1$.
+* It is an exercise to define the operations $+,\times$ and the $<$ relation on $\mathbb Q$ with this definition. For instance $(0,m,n)\times(0,m',n')=$ the result of canceling common factors from $(0,mm',nn')$.
+* Observe that with this definiton we don't have $\mathbb N\subset\mathbb Z$. However we can identify $\mathbb N$ with the subset of $(0,m,1)$. This identification would be cumbersome to write explicitly, but once we agree it can be done in principle, we abuse notation and pretend it is being done behind the scenes.
+* So far everything constructed is contained in $V_\omega$.
+* Def. $\mathbb R$ is the set of dedekind cuts of $\mathbb Q$. Here $C\subset\mathbb Q$ is a cut if
+  * $C\neq\emptyset,\mathbb Q$
+  * $C$ is closed downwards
+  * $C$ has no last element
+* Again one must define the opertaions $+,\times$ and $<$ relation. For instance $C+C'=\set{q+q'\mid q\in C,q'\in C'}$.
+* Def. $\mathbb C=\mathbb R\times\mathbb R$.
+* Def. $\mathbb R[x]$ is the set $\mathbb R^{<\omega}=\bigcup_n\mathbb R^n$. Each sequence $a_0,\ldots,a_n$ is interpreted as the polynomial $a_0+a_1x+\cdots+a_nx^n$.
+* Def. $\mathbb R[[x]]$ is the set $\mathrm{Fun}(\omega,\mathbb R)$. Each sequence $a_0,a_1,\ldots$ is interpreted as the formal series $\sum a_nx^n$.
+* There are also algebraic descriptions of these constructions: $\mathbb N$ is a semigroup, $\mathbb Z$ is the group completion of that, $\mathbb Q$ is the field of fractions of that, $\mathbb R$ is the real closure of that, $\mathbb C$ is its algebraic closure of that.
+* We can also express logic in set theory! A logical expression is a sequence of logical symbols $\wedge,\vee,\forall,\exists,\ldots$ and variables and non-logical symbols. We can use even numbers $2k$ for variables $x_1,x_2,\ldots$, and use odd numbers for the other symbols. Thus a logical expression is a finite sequence of natural numbers, or element of $\omega^{<\omega}$.
+* A proof is sequence of logical expressions, where each one follows from the previous by simple deductive rules. Thus a proof is a finite sequence of elements of $\omega^{<\omega}$, or an element of $()\omega^{<\omega})^{<\omega}$. It is still an element of $V_\omega$!
+
+More on the continuum hypothesis.
+
+* Recall CH states that there is no set $A\subset\mathbb R$ such that $A$ which is uncountable and not in bijection with $\mathbb R$.
+* Since we have said CH cannot be disproved from the axioms of ZFC, it should be "hard" to find a counterexample set $A$.
+* Theorem. If $A\subset\mathbb R$ and $A$ is open or closed, then $A$ is not a counterexample to the continuum hypothesis.
+* For open sets this statement is clear, since every nonempty open set contains intervals and it is easy to see that intervals of $\mathbb R$ are in bijection with $\mathbb R$ itself.
+* For closed sets we can perform the following analysis.
+* Def: Recall a set is perfect if it contains all its limit points (it is closed) and every point is a limit point.
+* Lem 1. If P is a nonempty perfect set then P has the same cardinality as $\mathbb R$.
+* Proof 1. Construct a tree of points $a_s\in P$ for $s\in2^{<\omega}$ and neighborhoods $N_s$ by induction. Given $a_s,N_s$ find two points $a_{s\frown0},a_{s\frown1}\in N_s$ within $1/2^n$ of $a_s$ and contained in disjoint neighborhoods $N_{s\frown0},N_{s\frown1}\subset N_s$. This can be done because $a_s$ is a limit point.
+* Next given $b\in 2^\omega$ the sequence $(a_s\mid s\subset b)$ is Cauchy and hence convergent to a point $a_b$. Since $P$ is perfect, $a_b\in P$. It is clear from the disjoint neighborhood condition that distinct branches $b$ give rise to distinct points $a_b$, and thus we have shown $P$ contains uncountably many elements.
+* Lem 2. If $A$ is any closed set, then $A=C\cup P$ is the union of a countable set and a perfect set.
+* Proof 2. We use the method of Cantor derivatives. Given $A$ we let $A'=$ the set of limit points of $A$. Then $A\setminus A'$ is countable because otherwise we would be able to find uncountably many disjoint neighborhoods. Repeating the process, we define:
+  * $A^{\alpha+1}=(A^\alpha)'$
+  * $A^\lambda=\bigcap_{\beta<\lambda}A^\beta$
+* By the same argument as above, this process must terminate with a perfect set $P=A^\alpha$ and a countable set of thrown out points $C=A\setminus A^\alpha$.
+* In fact, we can prove much more than this. Recall that a set $A$ is called Borel if it can be constructed from the open and closed sets by applying countable unions and intersections.
+* The Borel sets are often said to be those which can be explicitly constructed. Such constructions can be of any countable ordinal length. Almost every set you come across is Borel.
+* Theorem. If $A\subset\mathbb R$ is a Borel set then $A$ is not a counterexample to the continuum hypothesis.
+* The proof is to show that the topology of $\mathbb R$ can be carefully modified in such a way as to make $A$ closed. Then apply the prevous theorem!
+
 ## Part II: Model theory
+
+### 14. Syntax
 
 ## Part III: Computability theory
 
