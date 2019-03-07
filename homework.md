@@ -1,3 +1,23 @@
+## Homework 7, due Thursday, March 14
+
+* Define $+$, $\times$, and $<$ on the rational numbers as they were constructed in class.
+* Find the rank of the objects: $\mathbb N,\mathbb Z,\mathbb Q,\mathbb R,-2/3,\pi$. (See Kunen, exercise I.15.2 for reference.)
+* Write each statement as a standard logical expression. Then develop a lexicon and convert it to prefix notation.
+  * The polynomial $x^4+3x+5$ has a root.
+  * Any natural $n$ can be written as the sum of four squares.
+* Convert the expressions from prefix notation to standard logical notation. The arity function should be inferred from the standard meaning of the symbols, except: $x$ has arity $1$ and $A$ has arity $1$ and means "absolute value".
+  * $\forall a\rightarrow\in aS\leq ab$
+  * $\forall\epsilon\exists N\forall n\rightarrow >nN<A-xnL\epsilon$
+
+### Supplemental problems
+
+* A linear order is said to be *dense* Prove the following classical theorem: Any two  countable, dense linear orders without endpoints are isomorphic to one another.
+* Define $+$, $\times$, and $<$ on the real numbers constructed in class.
+* (2pts) Kunen, exercise I.15.10 (forget the last sentence).
+* Kunen, exercise I.15.14.
+* Kunen, exercise I.15.15.
+* (2pts) Kunen, exercise II.4.7.
+
 ## Homework 6, due Thursday, March 7
 
 * Show that $(\kappa^{\lambda})^\mu=\kappa^{\lambda\mu}$ and $\kappa^{\lambda+\mu}=\kappa^\lambda\kappa^\mu$.
