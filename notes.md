@@ -2,8 +2,7 @@
 
 Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
-\[\def\set#1{{\left\{#1\right\}}}
-\]
+\def\set#1{{\left\{#1\right\}}}
 
 ## Part I: Set theory
 
@@ -12,7 +11,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * There is a circular relationship between logic and set theory
 * We will start with just enough logic to talk about set theory, and then return to logic again in the second part.
 * Logical symbols: and, or, not, implies, iff, for all, there exists, and variables
-* Non-logical symbols: the relations, functions, and constant symbols used in a given context. Examples include less than, plus, times, 0.
+* Non-logical symbols: the relations, functions, and constant symbols used in a given context. Examples include $+,\times,<,0$.
 * Sentences versus formulas 
 * The axiomatic method: for any area of study, we first choose a universe of discourse and an appropriate collection of non-logical symbols. We then write down a collection of axioms that govern how the symbols behave. Finally we try to prove theorems using only the axioms.
 * Example 1: geometry
@@ -65,20 +64,20 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 ### 4. More relations, well-orders
 
 * We have introduced functions as relations but there are several other special types of relations.
-* Order relations: Like the &lt; relation on R.
-* Def: A (strict) linear order is a binary relation R on a set X (meaning both the domain and range are contained in X) satisfying the axioms transitive, irreflexive, and trichotomy
+* Order relations: Like the $<$ relation on $\mathbb R$.
+* Def: A (strict) linear order is a binary relation $R$ on a set $X$ (meaning both the domain and range are contained in $X$) satisfying the axioms transitive, irreflexive, and trichotomy
 * Equivalence relations: Like equality, congruence, similarity, isomorphism.
 * Def: An equivalence relation is a binary relation R on a set X satisfying the axioms transitive, reflexive, and symmetric.
 * Isomorpism of linear orders: ...
-* For example, on R &lt; and &gt; are isomorphic. However on [0,1), &lt; and &gt; are not isomorphic.
-* Examples of linear orders: most number sets such as N, Z, Q, R, and the induced ordering on any subset of these.
+* For example, on $\mathbb R$ the $<$ and $>$ relations are isomorphic to one another. However on $[0,1)$ they are not.
+* Examples of linear orders: most number sets such as $\mathbb N,\mathbb Z,\mathbb Q,\mathbb R$, and the induced ordering on any subset of these.
 * The key example in set theory is the ordering of the ordinals as introduced above. The $\in$ relation is a linear order.
 * What is an ordinal really? In addition to being a linear order, one key property is that it only has ...'s that go to the right.
-* Def: A relation R on a set X is called well-founded if for all nonempty subsets Y of X, Y has an R-minimal element (an element y in Y such that for all z in Y it's not true that zRy).
+* Def: A relation $R$ on a set $X$ is called well-founded if for all nonempty subsets $Y\subset X$, $Y$ has an $R$-minimal element (an element $y\in Y$ such that for all $z\in Y$ it is not true that $zRy$).
 * Def: A well-founded relation that is also a linear order is called a well-order.
-* Examples: None of Z,Q,R are well-orders, but N and ordinals are.
+* Examples: None of $\mathbb Z,\mathbb Q,\mathbb R$ are well-orders, but N and ordinals are.
 * Theorem: A relation R is a well-order iff there is no infinite R-descending sequence.
-* Proof: $\rightarrow$ Note that an infinite R-descending sequence has no R-minimal element. $\leftarrow$ If R is not well-founded and X has no R-minimal element, pick any x(0) in X and recursively choose x(n+1) in X such that x(n+1) R x(n).
+* Proof: ($\rightarrow$) Note that an infinite $R$-descending sequence has no $R$-minimal element. ($\leftarrow$) If $R$ is not well-founded and $X$ has no $R$-minimal element, pick any $x(0)\in X$ and recursively choose $x(n+1)\in X$ such that $x(n+1)Rx(n)$.
 * (Later we will make the concepts "infinite", "recursively", and "choose" formal.)
 
 ### 5. Ordinals
@@ -389,6 +388,33 @@ More on the continuum hypothesis.
 ## Part II: Model theory
 
 ### 14. Syntax
+
+* We have talked about how set theory is a foundation for the construction of mathematical objects. But the actual development of set theory used the same ordinary mathematical reasoning as one would use in any other area of mathematics: definitions, theorems, proofs.
+* Mathematical logic is a foundation for mathematical reasoning itself. It will help us answer questions like: What is a set or another mathematical object? What makes a theorem statement meaningful? What is a proof?
+* General logic is an area of philosophy that studies more general reasoning and concepts, but this is really a nother subject.
+* Mathematical logic begins with mathematical language. While one can imagine making a wide variety of choices for the language, it is natural to restrict to the "first order" logic we have been using in this course and in ordinary mathematics. We have seen that this language is powerful enough to express almost all mathematical concepts, and we will see that it is simple enough that we can reason and prove thoerems about it.
+* "First order" means we have quantifiers and they range over elements of a univers. "Second order" means the quantifiers may range over sets and functions, but we will not study this.
+* Logic has two parts: proof theory and model theory. In proof theory we study what it means to give a correct proof of a statement from a set of given axioms. In model theory we study a given set of axioms and the possible universes where the axioms are true.
+* For example, group theory consists of the axioms
+  * $(\forall x,y,z)(xy)z=x(yz)$
+  * $(\exists u)(\forall x)xu=x\wedge ux=x\wedge(exists y)xy=u$
+* If we let $\phi$ be the sentence $(\forall x,y,z)xy=xz\rightarrow y=z$ then $\phi$ is a theorem of group theory. Proof theory says we can find a proof of $\phi$ from the axioms. Model theory says that $\phi$ is true in every universe of the axioms (group).
+* Until now we have been fairly informal with logic, mixing the official symbols with english and additional ad-hoc symbols. Now it is time to be perfectly formal.
+* In math we often mix prefix ($\neg P$, $f(x)$, $-3$), infix ($x+y$, $x>y$, $P\rightarrow Q$), and postfix ($n!$, $f'$, $\kappa^+$) notations.
+* For this class we officially adopt prefix notation for everything. This helps us reduce ambiguity such as $P\rightarrow Q\rightarrow R$. It also eliminates the need for parentheses.
+* For example the expression $f(n!,x)>5$ will be written $>f!nx5$. Take a minute to think about that!
+* In order to read such an expression, the reader will have to know the arity of each symbol, that is, how many inputs the symbol is supposed to eat.
+* Def. An alphabet is a set $\Sigma$ of symbols.
+* Def. An expression in a given alphabet is a finite sequence of symbols of the alphabet.
+* Def. A lexicon consists of an alphabet together with an arity function $a\colon\Sigma\to\omega$.
+* Def. An expression is well-formed if it is of the form $s\tau_1\cdots\tau_n$ where $\tau_i$ are well-formed expressions.
+* Example. The lexicon for expressing polynomials with coefficients $1--4$ consists of alphabet $\set{1,2,3,4,x,+,\times}$ with arity function $a(1),\ldots,a(4),a(x)=0$ and $a(+)=a(\times)=2$. Then the expression $+\times3\times xx+\times2x1$ is one way to represent the polynomial $3x^2+2x+1$. This begins with $s=+$ and is followed by $\tau_1=\times3\times xx$ and $\tau_2=+\times2x1$. Each of these may then be further broken down. (There are several other representations due to associativity and commutativity.)
+* Example. The expression $+\times+\times$ is not well-formed.
+* We now wish to argue that well-formed expressions can only be parsed or read in one way. That is, there are not different $\tau_i$'s that do the job. This is in contrast to $P\rightarrow Q\rightarrow R$, which needs parentheses, which makes the following harder to state and prove.
+* Theorem. Let $\sigma$ be a well-formed expression. (1) No proper initial segment of $\sigma$ is well-formed. (2) If $\sigma$ starts with the symbol $s$ of arity $n$ then there exist unique well-formed expressions $\tau_1,\ldots,\tau_n$ such that $\sigma=s\tau_1\cdots\tau_n$.
+* Proof. Assume the theorem is true for all expressions which are shorter than $\sigma$. By definition of well-formed, there exist $\tau_i$ such that $\sigma=s\tau_1\cdots\tau_n$. Let $\sigma'$ be a well-formed initial segment of $\sigma$ (not necessarily proper). Then again there exist $\tau'_i$ such that $\sigma'=s\tau'_1\cdots\tau'_n$. Then $\tau_1=\tau'_1$ since otherwise one would be an initial segment of the other, and contradicting the inductive hypothesis. Similarly $\tau_i=\tau'_i$ for all $i$. Thus $\sigma'=\sigma$ and the $\tau_i$ are unique, establishing both (1) and (2).
+* Cor. If $\sigma$ is well-formed, then every symbol of $\sigma$ is the beginning of a unique well-formed subexpression called the scope of the occurrence of the symbol.
+* Proof. Assume the theorem is true for expressions shorter than $\sigma$. The first symbol of $\sigma$ has scope $\sigma$. Any other symbol appears in some $\tau_i$ and we can apply the inductive hypothesis.
 
 ## Part III: Computability theory
 
