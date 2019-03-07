@@ -1,8 +1,9 @@
+---
+header-includes: \def\set#1{{\left\{#1\right\}}}
+---
 # Math 502 course notes
 
 Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
-
-\def\set#1{{\left\{#1\right\}}}
 
 ## Part I: Set theory
 
@@ -415,6 +416,7 @@ More on the continuum hypothesis.
 * Proof. Assume the theorem is true for all expressions which are shorter than $\sigma$. By definition of well-formed, there exist $\tau_i$ such that $\sigma=s\tau_1\cdots\tau_n$. Let $\sigma'$ be a well-formed initial segment of $\sigma$ (not necessarily proper). Then again there exist $\tau'_i$ such that $\sigma'=s\tau'_1\cdots\tau'_n$. Then $\tau_1=\tau'_1$ since otherwise one would be an initial segment of the other, and contradicting the inductive hypothesis. Similarly $\tau_i=\tau'_i$ for all $i$. Thus $\sigma'=\sigma$ and the $\tau_i$ are unique, establishing both (1) and (2).
 * Cor. If $\sigma$ is well-formed, then every symbol of $\sigma$ is the beginning of a unique well-formed subexpression called the scope of the occurrence of the symbol.
 * Proof. Assume the theorem is true for expressions shorter than $\sigma$. The first symbol of $\sigma$ has scope $\sigma$. Any other symbol appears in some $\tau_i$ and we can apply the inductive hypothesis.
+* Activity: Play around with the statement "there are infinitely many primes". Write it in traditional syntax, prefix, and parse tree.
 
 ## Part III: Computability theory
 
@@ -423,6 +425,11 @@ More on the continuum hypothesis.
     tex2jax: {
       inlineMath: [['$','$'], ['\\(','\\)']],
       processEscapes: true
+    }
+    TeX: {
+      Macros: {
+        set: ["{\\left\\{ #1 \\right\\}}", 1]
+      }
     }
   });
 </script>
