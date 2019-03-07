@@ -5,9 +5,9 @@
 * Write each statement as a standard logical expression. Then develop a lexicon and convert it to prefix notation.
   * The polynomial $x^4+3x+5$ has a root.
   * Any natural $n$ can be written as the sum of four squares.
-* Convert the expressions from prefix notation to standard logical notation. The arity function should be inferred from the standard meaning of the symbols, except: $x$ has arity $1$ and $A$ has arity $1$ and means "absolute value".
-  * $\forall a\rightarrow\in aS\leq ab$
-  * $\forall\epsilon\exists N\forall n\rightarrow >nN<A-xnL\epsilon$
+* Convert the expressions from prefix notation to standard logical notation. The arity function may be inferred from the standard meaning of the symbols, except: $x$ has arity $1$; $A$ has arity $1$ and means "absolute value".
+  * $\forall a\mathord{\rightarrow}\mathord{\in}aS\mathord{\leq}ab$
+  * $\forall\epsilon\exists N\forall n\mathord{\rightarrow}\mathord{>}nN\mathord{<}A\mathord{-}xnL\epsilon$
 
 ### Supplemental problems
 
