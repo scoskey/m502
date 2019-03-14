@@ -409,14 +409,50 @@ More on the continuum hypothesis.
 * Def. An expression in a given alphabet is a finite sequence of symbols of the alphabet.
 * Def. A lexicon consists of an alphabet together with an arity function $a\colon\Sigma\to\omega$.
 * Def. An expression is well-formed if it is of the form $s\tau_1\cdots\tau_n$ where $\tau_i$ are well-formed expressions.
-* Example. The lexicon for expressing polynomials with coefficients $1--4$ consists of alphabet $\set{1,2,3,4,x,+,\times}$ with arity function $a(1),\ldots,a(4),a(x)=0$ and $a(+)=a(\times)=2$. Then the expression $+\times3\times xx+\times2x1$ is one way to represent the polynomial $3x^2+2x+1$. This begins with $s=+$ and is followed by $\tau_1=\times3\times xx$ and $\tau_2=+\times2x1$. Each of these may then be further broken down. (There are several other representations due to associativity and commutativity.)
-* Example. The expression $+\times+\times$ is not well-formed.
+* Example. The lexicon for expressing polynomials with coefficients $1--4$ consists of alphabet $\set{1,2,3,4,x,+,\cdot}$ with arity function $a(1),\ldots,a(4),a(x)=0$ and $a(+)=a(\cdot)=2$. Then the expression $+\cdot\cdot xx+\cdot2x1$ is one way to represent the polynomial $3x^2+2x+1$. This begins with $s=+$ and is followed by $\tau_1=\cdot3\times xx$ and $\tau_2=+\cdot2x1$. Each of these may then be further broken down. (There are several other representations due to associativity and commutativity.)
+* Example. The expression $+\cdot+\cdot$ is not well-formed.
 * We now wish to argue that well-formed expressions can only be parsed or read in one way. That is, there are not different $\tau_i$'s that do the job. This is in contrast to $P\rightarrow Q\rightarrow R$, which needs parentheses, which makes the following harder to state and prove.
 * Theorem. Let $\sigma$ be a well-formed expression. (1) No proper initial segment of $\sigma$ is well-formed. (2) If $\sigma$ starts with the symbol $s$ of arity $n$ then there exist unique well-formed expressions $\tau_1,\ldots,\tau_n$ such that $\sigma=s\tau_1\cdots\tau_n$.
 * Proof. Assume the theorem is true for all expressions which are shorter than $\sigma$. By definition of well-formed, there exist $\tau_i$ such that $\sigma=s\tau_1\cdots\tau_n$. Let $\sigma'$ be a well-formed initial segment of $\sigma$ (not necessarily proper). Then again there exist $\tau'_i$ such that $\sigma'=s\tau'_1\cdots\tau'_n$. Then $\tau_1=\tau'_1$ since otherwise one would be an initial segment of the other, and contradicting the inductive hypothesis. Similarly $\tau_i=\tau'_i$ for all $i$. Thus $\sigma'=\sigma$ and the $\tau_i$ are unique, establishing both (1) and (2).
 * Cor. If $\sigma$ is well-formed, then every symbol of $\sigma$ is the beginning of a unique well-formed subexpression called the scope of the occurrence of the symbol.
 * Proof. Assume the theorem is true for expressions shorter than $\sigma$. The first symbol of $\sigma$ has scope $\sigma$. Any other symbol appears in some $\tau_i$ and we can apply the inductive hypothesis.
 * Activity: Play around with the statement "there are infinitely many primes". Write it in traditional syntax, prefix, and parse tree.
+
+### 15. First order syntax
+
+* In the first part of the course, we have used first-order logic and logical notation in a somewhat informal way. That is, we introduced the symbols and said what they mean, but we left it to intuition to express and interpret formulas properly.
+* In the previous class, we defined lexicon, prefix notation, and the concept of well-formed expression. We proved that well-formed expressions are not at risk for having multiple interpretations, as well as some other useful facts.
+* Now it is time to apply the concept of well-formed expressions to first-order logic, thus finally making the logic a formal system.
+* The lexicon of first-order logic consists of the alphabet $\Sigma=\set{\forall,\exists,\wedge,\vee,\rightarrow,\leftrightarrow,=,\neg}\cup\set{x_n\mid n\in\omega}$. The arity function is defined as $a(x_i)=0$, $a(\neg)=1$, and all others are $2$.
+* In a given context, we will extend the lexicon to include additional function and relation symbols with given arity. Examples include $+,\cdot,<$.
+* Def. A signature $\mathcal L$ of first-order logic consists of function symbols $f_i$ and relation symbols $R_j$ as well as arity values $a(f_i)$ and $a(R_j)$. This is the context described above.
+* Def. Given a signature $\mathcal L$, the corresponding first-order lexicon consists of $\mathcal L$ together with the first-order lexicon described above.
+* We next wish to define the well-formed formulas of first-order logic. Note that this is not as simple as saying that a well-formed formula is a well-formed expression in the lexicon of first-order logic. While it is true that we want our formulas to be well-formed expressions, there are actually some well-formed expressions that should not be formulas. For example consider the expressions $\forall xy$, or $\forall>xyz$.
+* Def. Let $\mathcal L=\{f_i,R_j}$ be a signature of first-order logic.
+  * The *terms* of $\mathcal L$ are the well-formed expressions in the lexicon consisting of just the $f_i$ and $x_n$.
+  * The *atomic formulas* of $\mathcal L$ are the expressions of the form (1) $R\tau_1\cdots\tau_n$, where $R$ is an $n$-ary relation symbol and $tau_i$ are terms, or; (2) $=\tau_1\tau_2$ where $\tau_i$ are terms.
+  * The *well-formed formulas* of $\mathcal L$ are the expressions of the form (1) an atomic formula; (2) $\forall x\phi$ or $\exists x\phi$ where $x$ is a variable and $\phi$ is a wff; (3) $\neg\phi$ where $\phi$ is a wff, or; (4) $\wedge\phi\psi$, $\vee\phi\psi$, $\rightarrow\phi\psi$, $\leftrightarrow\phi\psi$, where $\phi,\psi$ are wffs.
+* Like the definition of well-formed expression, this definition is recursive. But unlike the definition of well-formed expression, we have placed further limitations on precisely which well-formed expressions are legal.
+* For example, $\forall x\forall y\wedge=++xy\cdot\cdot zzw\cdot3x>\cdot xy\cdot xz$. Put another way $\forall x\forall y(x+y)+z^2w=3x\wedge xy>xz$. Evaluate which are terms, atomics, and general formulas.
+* We are claiming that the well-formed formulas are the expressions that can be given meaning. However there are still a few barriers before we can think of assigning a truth value to a wff.
+* First, some wffs have free variables, that is, variables that are never quantified. Consider the statement of real numbers $\forall x x\cdot x\geq y$. This would be true if $y=0$, but it would be false if $y=1$. We can repair this by quantifying the $y$, for example, $\exists y\forall x x\cdot x\geq y$ is true of real numbers.
+* Def. If $\phi$ is a wff, an occurrence of $x$ in $\phi$ is said to be *bound* if it lies inside the scope of a $\forall x$, and free otherwise.
+* Def. If $\phi$ is a wff, $\phi$ is called a *sentence* if it has no free variables occurring.
+* The sentences are the well-formed formulas for which we can conceivable assign a truth value. But we may not be able to yet. For example consider the sentence $\exists y\forall x x\leq y$. This sentence is false of real numbers but true of the unit interval $[0,1]$.
+* For another example consider $\forall x x\geq 0\rightarrow \exists y y\cdot y=x$. This is true of real numbers but false of rational numbers.
+* In order to decide the truth value of a sentence, we need to be told the context of the variables. The first example above says "the universe has an upper bound," but what is the universe?
+* The question of what is the universe leads us to model theory. We have seen that set theory is a foundational theory, which means that essentially all mathematical structures can be built using sets. Given a language $\mathcal L$, we can use set theory to study the special sets that can serve as universes for well-formed formulas of $\mathcal L$.
+* If $\mathcal L$ is a language of first-order logic, an $\mathcal L$-structure $\mathcal A$ consists of:
+  * A set $A$, the universe of the structure
+  * For each $n$-ary function symbol $f$ a function $f^{\mathcal A}\colon A^n\to A$
+  * For each $n$-ary relation symbol $R$ a relation $R^{\mathcal A}\subset A^n$
+  * For each $0$-ary function symbol $c$ a constant $c^{\mathcal A}\in A$
+  * For each $0$-ary relation symbol $P$ a truth value $P^{\mathcal A}\in\set{T,F}$
+* For example, all the models in the first week's set theory homework are structures for $\mathcal L=\set{\in}$.
+* For example, $(\mathbb Q;<)$ is a structure in the language of linear orders.
+* For example, $(\mathbb R;0,1,+,\cdot,<)$ is a structure in the language of ordered fields.
+* Thus we will not define whether a given sentence $\phi$ is true or false in general, but whether it is true or false in a given structure $\mathcal A$. We will say that $\mathcal A$ satisfies $\phi$, and write $\mathcal A\models\phi$, when $\phi$ is true in $\mathcal A$.
+* The formal definiton of satisfaction is somewhat involved, but will work the way you want it to! For example, returning to the sentence $\forall x x\geq 0\rightarrow \exists y y\cdot y=x$, we will have that $(\mathbb R;+,\cdot,0,1)\models\phi$ and $(\mathcal Q;+,\cdot,0,1)\not\models\phi$.
 
 ## Part III: Computability theory
 
