@@ -5,28 +5,53 @@ header-includes: \def\set#1{{\left\{#1\right\}}}
 
 Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 
-## Part I: Set theory
+## Introduction
 
-### 1. Introduction and foundational logic
+### 1. Introduction to foundations
 
-* There is a circular relationship between logic and set theory
-* We will start with just enough logic to talk about set theory, and then return to logic again in the second part.
-* Logical symbols: and, or, not, implies, iff, for all, there exists, and variables
-* Non-logical symbols: the relations, functions, and constant symbols used in a given context. Examples include $+,\times,<,0$.
-* Sentences versus formulas 
-* The axiomatic method: for any area of study, we first choose a universe of discourse and an appropriate collection of non-logical symbols. We then write down a collection of axioms that govern how the symbols behave. Finally we try to prove theorems using only the axioms.
+While mathematics has been studied for millenia, the foundations of modern mathematics dates back to the 1800s. While there are several proposals for the foundations of mathematics, the standard and most popular consists of two main components: logic and set theory. Loosely, logic allows us to study statements and proofs, and set theory allows us to build mathematical objects.
+
+Logic and set theory are used in tandem to form the foundations of mathematics. Thus it will not be too surprising to know there is a somewhat circular relationship between the two. In this course we will follow Kunen and make the choice to cover set theory first and logic second. However we will need a minimum understanding of logic to begin talking about set theory. Thus we will begin 
+
+If there is time, we will study the more recent topic of computability theory in Part III.
+
+However before we begin Part I we will need to preview just enough logic from Part II that we can talk about set theory.
+
+Logical symbols: and, or, not, implies, iff, for all, there exists, and variables
+
+Non-logical symbols: the relations, functions, and constant symbols used in a given context. Examples include $+,\times,<,0$.
+
+Sentences versus formulas 
+
+The axiomatic method: for any area of study, we first choose a universe of discourse and an appropriate collection of non-logical symbols. We then write down a collection of axioms that govern how the symbols behave. Finally we try to prove theorems using only the axioms.
+
 * Example 1: geometry
 * Example 2: group theory
 * Example 3: arithmetic
-* Our main example will be set theory. Set theory is important for two key reasons. First it is a foundational theory, meaning all of the above theories can be studied inside of set theory. Second it allows us to study the idea of infinity, since after all we know there are infinite sets.
-* In set theory the universe of discourse consists of all possible sets. The only non-logical symbol will be the binary set membership relation $\in$. The remaining set relations and operations will be definable from this one alone.
-* BIG IDEA: In particular everything is a set, even the elements of a set! Thus the universe really consists of hereditary sets.
 
-### 2. Extensionality, pairing, union; also separation
+Our main example will be set theory. Set theory is important for two key reasons. First it is a foundational theory, meaning all of the above theories can be studied inside of set theory. Second it allows us to study the idea of infinity, since after all we know there are infinite sets.
+
+In set theory the universe of discourse consists of all possible sets. The only non-logical symbol will be the binary set membership relation $\in$. The remaining set relations and operations will be definable from this one alone.
+
+BIG IDEA: In particular everything is a set, even the elements of a set! We say that the universe consists of *hereditary sets*.
+
+BIG IDEA: Essentially all mathematical objects can be built using hereditary sets.
+
+BIG IDEA: Something about infinity.
+
+Axioms and models. Perhaps using quasi orders, partial orders, linear orders, and finite directed graph models.
+
+## Part I: Set theory
+
+### 2. Naive set theory
+
+Operations on sets. look at Joy of Sets.
+
+### 3. The Axioms of extensionality, pairing, and union
 
 * Set theory is officially the axioms for the set membership relation $\in$.
 * There are many additional set relations and operations, but these can all be defined in terms of $\in$. For example consider subset, union, intersection, and empty set.
-* Draw some sample models
+* Draw some sample models and play around
 * The axioms of set theory must at least get the hereditarily finite sets right.
 * Empty Set Existence Axiom: not officially necessary, but let's just start with this.
 * Extensionality Axiom: This axiom distinguishes set theory from other types of collections (lists, multisets). 
@@ -36,11 +61,14 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Proposition: there exists a set with more than one element
 * Proposition: there exists a set with more than two elements
 * In general, one can see how all sets involving {, } and $\emptyset$ may be created
+
+### 3.5 The Axiom of Separation and Russel's paradox
+
 * Comprehension Axiom: Allows to form subsets. This justifies the use of the set-builder notation $\set{z\in x\mid \phi(z)}$.
 * Naive comprehension $\set{z\mid P(z)}$ leads to two problems: the use of non-logical phrases such as "the least natural number that can be defined in fewer than 20 words", and Russell's paradox. The modern comprehension axiom is also called the separation axiom.
 * The comprehension axiom is really an axiom scheme. Thus set theory officially has infinitely many axioms.
 
-### 3. Natural numbers, relations, functions, replacement
+### 4. Numbers, Functions, and the Axiom of Replacement
 
 * We have promised that set theory is somehow the theory of everything, meaning all other objects of mathematical study can be regarded as sets. Perhaps the most important objects in mathematics are natural numbers. How can these be regarded as objects in the universe of sets?
 * Von Neumann ordinals: an ordinal is a counting number (as opposed to a quantity measuring number). Define $0,1,2,3,\ldots$ as particular hereditarily finite sets.
@@ -62,7 +90,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Proof: First, for each $b\in B$ we can use replacement with $\phi(x,y)$ being "$(x,b)=y$" and domain $A$ to construct each $A\times\set{b}$. Then use replacement with phi(x,y) being "$A\times\set{x}=y$" to construct the set $\set{A\times\set{b}\mid b\in B}$. Finally apply union to this to get $AxB$.
 * For example, suppose we have constructed the set $\mathbb N$ of natural numbers. Then we can construct the cartesian product $\mathbb N\times\mathbb N$. We can further construct the less than binary relation on $\mathbb N$. If we have already constructed the $+$ and $x$ operations (which we'll do still later), we can further construct functions such as $f(n)=n^2+2n+5$.
 
-### 4. More relations, well-orders
+### 5. Well-orders
 
 * We have introduced functions as relations but there are several other special types of relations.
 * Order relations: Like the $<$ relation on $\mathbb R$.
@@ -81,7 +109,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Proof: ($\rightarrow$) Note that an infinite $R$-descending sequence has no $R$-minimal element. ($\leftarrow$) If $R$ is not well-founded and $X$ has no $R$-minimal element, pick any $x(0)\in X$ and recursively choose $x(n+1)\in X$ such that $x(n+1)Rx(n)$.
 * (Later we will make the concepts "infinite", "recursively", and "choose" formal.)
 
-### 5. Ordinals
+### 6. Ordinals
 
 * We have already seen two special properties that the Von Neumann ordinals have: They are linear orders with $\in$ as the order relation, and they are well-founded. These two properties can be combined by saying that ordinals are well-ordered by $\in$.
 * But ordinals aren't the only sets with these properties, because for example any set of ordinals would have it: {1,3,5,7}. We need one more property.
@@ -107,7 +135,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
       * Now wlog alpha is a subset of beta, and not equal to beta. Then by the second cliam, alpha is in beta, as desired.
 * Whew!
 
-### 6. More ordinals
+### 7. More ordinals
 
 * We have defined a set alpha to be an ordinal if it is well-ordered by $\in$ and a transitive set. We have shown the ordinals are a proper class that is itself well-ordered by $\in$ and transitive.
 * The ordinal successor operation: $S(\alpha)$ or $\alpha+1$ = $\alpha \cup \set{\alpha}$. In principal this may be carried out on any set, but it is most useful on ordinals because then it always produced another ordinal.
@@ -134,7 +162,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
   * It follows that the range of f IS an ordinal, call it $\xi$. To complete the proof, it is enough to show that G=A. If this is not the case, then let a be the minimum element of $A\setminus G$. Then pred(a) is exactly G, and it follows that f is an isomorphism of pred(a) with $\xi$. The definition of G now means that $a\in G$ after all, a contradiction!
 * Whew!
 
-### 7. Ordinals and induction
+### 8. Ordinals and induction
 
 * We have seen that if R is a well-order on a set A, then (A,R) is isomorphic to a unique ordinal alpha. This ordinal is called the ordertype or just type of (A,R).
 * Lexicographic ordering. If (A,R) and (B,S) are linear orders, we can form their lexicographic product which is an order on the cartesian product AxB defined by (a,b)&lt;(a',b') iff a&lt;a', or a=a' and b&lt;b'.
@@ -162,7 +190,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Example: epsilon\_0.
 * Example: transitive closure: Define U^nz inductively, and then tc(z)=UU^nz.
 
-### 8. Power set and cardinality
+### 9. Cardinality and the Axiom of Power Set
 
 * We used the axiom of infinity to show that the natural numbers is a set. It is not difficult to build the integers and then rational numbers from the natural numbers. However we have not shown that the set of real numbers exists.
 * The usual definition uses cuts: R = { C : C is a subset of Q satisfying blah blah }. However observe that this is not a valid set builder. We again need another axiom.
@@ -200,7 +228,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
   * Now define a function g which applies f to class 1, and the identity to classes 2 and 3. This is a bijection from A to B.
 * Corollary. The digit spaces 2^N^, N^N^, and R are all the same cardinality as P(omega). Proof. We just have to show that there are injections from N^N^ and R back into P(omega). For N^N^, the graph of any element is a subset of NxN. Since NxN is in bijection with N, we can regard it as an element of P(N). For R, exercise.
 
-### 9. Cardinals
+### 10. Cardinals
 
 * Previously we defined the behavior of \|A\| in terms of injections and bijections. But what exactly is \|A\|?
 * One of the earliest definitions of \|A\| was the set of all sets that are in bijection with A. Thus 3 is the set of all 3-element sets. But this object is a class not a set.
@@ -237,7 +265,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Continuing this logic one can determine that even iterated ordinal exponentiation etc does not increase cardinality. In particular the countable ordinals extend inconceivably far before finally being dominated by aleph1.
 * Ordinal exponentiation vs cardinal exponentiation
 
-### 10. Axiom of choice
+### 11. Axiom of Choice
 
 * We have said that the axiom of choice allows us to regard all cardinals as special ordinals that are not in bijection with any smaller ordinal. But what does the axiom say exactly?
 * Axiom of Choice: If F is a set of nonempty sets which are pairwise disjoint, then there exists a set C such that \|C cap A\|=1 for all A in F.
@@ -277,13 +305,13 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Assuming ZL we can construct choice functions by considering the partial set of partial choice functions partially ordered by extension. A maximal partial choice function will be a choice function.
 * These are the highlights.
 
-### 11. Cardinal arithmetic
+### 12. Cardinal Arithmetic
 
 * We have defined arithmetic for ordinals and explored some of its properties.
 * Assuming AC, we can define an arithmetic of cardinals as well. We use context and hinting to distinguish between ordinal and cardinal arithmetic!
-  * kappa + lambda = \|kappa + lambda\| as ordinals
-  * kappa x lambda = \|kappa x lambda\| as ordinals
-  * kappa^lambda^ = \| Fun(lambda, kappa) \|
+  * $\kappa+\lambda=|\kappa+\lambda|$ as ordinals
+  * $\kappa\times\lambda=|\kappa\times\lambda|$ as ordinals
+  * $\kappa^\lambda=|\mathop{\mathrm{Fun}}(\lambda,\kappa)|$
 * Unlike ordinal + and x, the cardinal + and x are not very exciting. This is because we have seen that ordinal arithmetic does not increase cardinality.
 * Thoerem. kappa + lambda and kappa x lambda have their usual meaning for finite cardinals. If one of the two is infinite, then kappa + lambda and kappa x lambda are both equal to max(kappa,lambda).
 * Proof. For the statement about finite cardinals, we can simply use induction. Next suppose $\kappa\leq\lambda$ and $\lambda$ is infinite. Then $\lambda\leq\kappa+\lambda\leq\lambda\cdot\lambda$ which is in bijection with $\lambda$. Similarly $\lambda\leq\kappa\times\lambda\leq\lambda\times\lambda$ which is in bijection with $\lambda$. By CSB, in both cases we get $\lambda$.
@@ -309,9 +337,9 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Before giving the proof, we remark that this is a non-obvious limitation on what the continuum function can be. For example while we could have 2^omega^ equalling aleph\_n for any n, we cannot have 2^omega^=aleph\_omega!
 * Proof. To simplify the proof, we will prove the simpler statement that cf(2^kappa^)&gt;kappa. So assume towards a contradiction that cf(2^kappa^)$\leq$kappa. Then there is an unbounded sequence beta\_alpha in 2^kappa^ of length kappa or less.
 * We will repeat the Cantor diagonalization idea. There are only 2^kappa^ many functions from kappa to 2^kappa^. Thus we can enumerate them f\_xi for xi&lt;2^kappa^. We will now diagonalizes against this list to find a function d not in the list. To do so let d(alpha) disagree with f\_xi(alpha) for all xi&lt;beta\_alpha (we have more items available than items to avoid).
-* Then d disagrees with every f\_xi somewhere, completing the contradiction and the proof.
+* Then $d$ disagrees with every $f_\xi$ somewhere, completing the contradiction and the proof.
 
-### 12. Foundation
+### 13. Axiom of Foundation
 
 * We have long asserted that sets can be constructed from the empty set and the axioms we have introduced so far.
 * What we haven't done is ruled out the possibility that there are other sets in the universe. Thus in principle there may be sets which cannot be constructed using the axioms we have introduced so far, and in principle some of these sets may be undesirable.
@@ -342,7 +370,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * Assume to the contrary that $y'$ is not in WF. Then $y'$ must have elements which are not in WF. By Foundation we can find an $\epsilon$-minimal element $x\in y'$ which is not in WF. Minimality (plus $x\subset y'$) implies all elements of $x$ must be in WF. It follows that $x\in WF$, a contradiction.
 * More generally, the Axiom of Foundation is said to be relatively consistent with the other axioms of ZFC. The Axiom of Foundation does not follow from the other axioms, but it can be assumed without problem by passing from $V$ to $WF$.
 
-### 13. Set theory as a foundation
+### 14. Set Theory As Foundation
 
 * We have said that set theory can be used as a foundation for essentially all of mathematics. So far we have explicitly constructed the natural numbers and alluded to the construction of the real numbers.
 * Now we do so more explicitly.
@@ -365,7 +393,7 @@ Based largely on our textbook Ken Kunen, *The Foundations of Mathematics*.
 * We can also express logic in set theory! A logical expression is a sequence of logical symbols $\wedge,\vee,\forall,\exists,\ldots$ and variables and non-logical symbols. We can use even numbers $2k$ for variables $x_1,x_2,\ldots$, and use odd numbers for the other symbols. Thus a logical expression is a finite sequence of natural numbers, or element of $\omega^{<\omega}$.
 * A proof is sequence of logical expressions, where each one follows from the previous by simple deductive rules. Thus a proof is a finite sequence of elements of $\omega^{<\omega}$, or an element of $()\omega^{<\omega})^{<\omega}$. It is still an element of $V_\omega$!
 
-More on the continuum hypothesis.
+### 14.5 More on CH
 
 * Recall CH states that there is no set $A\subset\mathbb R$ such that $A$ which is uncountable and not in bijection with $\mathbb R$.
 * Since we have said CH cannot be disproved from the axioms of ZFC, it should be "hard" to find a counterexample set $A$.
@@ -388,7 +416,7 @@ More on the continuum hypothesis.
 
 ## Part II: Model theory
 
-### 14. Syntax
+### 15. Syntax
 
 * We have talked about how set theory is a foundation for the construction of mathematical objects. But the actual development of set theory used the same ordinary mathematical reasoning as one would use in any other area of mathematics: definitions, theorems, proofs.
 * Mathematical logic is a foundation for mathematical reasoning itself. It will help us answer questions like: What is a set or another mathematical object? What makes a theorem statement meaningful? What is a proof?
@@ -418,7 +446,7 @@ More on the continuum hypothesis.
 * Proof. Assume the theorem is true for expressions shorter than $\sigma$. The first symbol of $\sigma$ has scope $\sigma$. Any other symbol appears in some $\tau_i$ and we can apply the inductive hypothesis.
 * Activity: Play around with the statement "there are infinitely many primes". Write it in traditional syntax, prefix, and parse tree.
 
-### 15. First order syntax
+### 16. First order syntax
 
 * In the first part of the course, we have used first-order logic and logical notation in a somewhat informal way. That is, we introduced the symbols and said what they mean, but we left it to intuition to express and interpret formulas properly.
 * In the previous class, we defined lexicon, prefix notation, and the concept of well-formed expression. We proved that well-formed expressions are not at risk for having multiple interpretations, as well as some other useful facts.
