@@ -1,3 +1,13 @@
+## Homework 8, due Thursday, March 28
+
+* Prove that the connectives $\vee$, $\wedge$, and $\leftrightarrow$ can all be defined using only $\neg$ and $\rightarrow$.
+* Prove Kunen, Lemma II.5.4.
+* 
+
+### Supplemental problesm
+
+* (2pts) Write a computer program that takes a Polish lexicon and string of symbols as input, and determines whether the given string is a well-formed expression.
+
 ## Homework 7, due Thursday, March 14
 
 * Define $+$, $\times$, and $<$ on the rational numbers as they were constructed in class.

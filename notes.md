@@ -1,5 +1,7 @@
 ---
-header-includes: \def\set#1{{\left\{#1\right\}}}
+header-includes: |
+  \def\set#1{{\left\{#1\right\}}}
+  \def\abs#1{{\left\|#1\right\|}}
 ---
 # Math 502 course notes
 
@@ -180,8 +182,8 @@ Operations on sets. look at Joy of Sets.
 * Ex: For the factorial function one uses G(empty)=0 and G(s\_0,...,s\_n-1) = ns\_n-1.
 * Ex: For the fibonacci numbers one uses G(empty)=0, G(1)=1, and G(s\_0,...,s\_n-1)=s\_n-2+s\_n-1.
 * Ex: For ordinal exponentiation with base alpha, one uses G(empty)=1, G(s\_0,...,s\_beta)=s\_beta . alpha, and G(s\_0,...&lt;lambda) = union s\_beta.
-* The transfinite recursion principle: Let G(x) be a proper class function (defined by a function-like formula phi(x,y)). Then there is a proper class function F(x) such that for every alpha we have F(alpha)=G(F\|alpha).
-* The proof is similar to the proof of the classical recursion principle, and it relies on the principle of induction plus replacement. We will content ourselves with a summary in the case of G(s)=n s\|n.
+* The transfinite recursion principle: Let G(x) be a proper class function (defined by a function-like formula phi(x,y)). Then there is a proper class function F(x) such that for every alpha we have $F(\alpha)=G(F\restriction\alpha)$.
+* The proof is similar to the proof of the classical recursion principle, and it relies on the principle of induction plus replacement. We will content ourselves with a summary in the case of $G(s)=n\cdot s\restriction n$.
   * We want to build the function F(n)=n!. We do this by building a sequence of approximations F\_n. Each function F\_n has domain n={0,...,n-1} and behaves like the usual factorial.
   * We prove by induction that for each n, there exists a unique function F\_n with the property described above. The base case is trivial. The inductive step is true because we can define f\_n+1 (n) = nf\_n(n-1), and check this is unique.
   * We finally let F(n)=F\_n+1 (n). This is the desired item.
@@ -203,19 +205,19 @@ Operations on sets. look at Joy of Sets.
 * Cardinality. Recall that a set A is countable if there exists a sequence (an) enumerating A. In set theory terms, we are just saying that there exists a function from omega to A that is surjective.
 * We have shown that there exist large ordinals like epsilon0. But is this ordinal really large? In fact it is still countable! The reason is that in the construction we are just taking lexicographic products and countable unions. Each of these operations preserves countability. This is the difference between ordinality (length) and cardinality (amount).
 * The power set axiom is what lets things get truly large. Before explaining we recall the notation and terminology of cardinality.
-* We say that \|A\|$\leq$\|B\| if there is an injection, \|A\|=\|B\| if there is a bijection, and \|A\|&lt;\|B\| if there is an injection but no bijection.
+* We say that $\abs{A}\leq\abs{B}$ if there is an injection, $\abs{A}=\abs{B}$ if there is a bijection, and $\abs{A}<\abs{B}$ if there is an injection but no bijection.
 * Note that so far we have told you how cardinality works, but not what cardinality is. We will remedy this later.
-* Cantor's theorem. If A is any set, then \|A\|&lt;\|P(A)\|.
+* Cantor's theorem. If $A$ is any set, then $\abs{A}<\abs{\mathcal P(A)}$.
 * Proof.
-  * The function i(a)={a} is an injection from A to P(A).
-  * Now suppose that f is any function from A to P(A). We will show that some subset D of A is not in the range of f. Thus f is not a bijection. Since f was arbitrary this proves the theorem.
+  * The function $i(a)=\set{a}$ is an injection $A\to\mathcal P(A)$.
+  * Now suppose that $f$ is any function $A\to\mathcal P(A)$. We will show that some subset D of A is not in the range of f. Thus f is not a bijection. Since f was arbitrary this proves the theorem.
   * The definition of D is { a in A : a notin f(a) }. This is called a diagonalizer.
-  * Example: suppose f(a)={b,c,z}, f(b)={a,b,c,d}, f(c)={a,d,e,g,h}, f(d)={d,w,z}, .... Then we would let D = {a, c, ...}. This is guaranteed not to be in the range because it differs from every f(x) on the subject of x.
+  * Example: suppose $f(a)=\set{b,c,z}$, $f(b)=\set{a,b,c,d}$, $f(c)=\set{a,d,e,g,h}$, $f(d)=\set{d,w,z}$, .... Then we would let $D=\set{a,c,...}$. This is guaranteed not to be in the range because it differs from every $f(x)$ on the subject of $x$.
   * Formally, suppose towards a contradictoin that D is in the range and let f(a)=D. Then ask whether a in D (it implies a notin D) and whether a notin D (it implies a in D).
 * Corollary. There are infinitely many distinct cardinalities, and infinitely many distinct uncountable cardinalities. For example, omega, P(omega), P(P(omega)), etc.
 * Corollary. The digit spaces 2^N^, N^N^, and R are uncountable. The first space is exactly P(omega), and the first space embeds into the latter two.
 * But what is the exact cardinality of N^N^ and R?
-* Cantor-Schroder-Bernstein theorem. If \|A\|$\leq$\|B\| and \|B\|$\leq$\|A\| then \|A\|=\|B\|.
+* Cantor-Schroder-Bernstein theorem. If $\abs{A}\leq\abs{B}$ and $\abs{B}\leq\abs{A}$ then $\abs{A}=\abs{B}$.
 * Proof.
   * Since there is an injection from B to A, we may replace every element of B by its corresponding element in A and assume without loss of generality that B is a subset of A.
   * We can now draw a picture of the sets A, B, f(A), f(B), f(f(A)), etc
@@ -230,16 +232,16 @@ Operations on sets. look at Joy of Sets.
 
 ### 10. Cardinals
 
-* Previously we defined the behavior of \|A\| in terms of injections and bijections. But what exactly is \|A\|?
-* One of the earliest definitions of \|A\| was the set of all sets that are in bijection with A. Thus 3 is the set of all 3-element sets. But this object is a class not a set.
-* Once we again use the idea of representatives, so \|A\| will be a particular set of size A (if possible). And once again we turn to the ordinals.
+* Previously we defined the behavior of $\abs{A}$ in terms of injections and bijections. But what exactly is $\abs{A}$?
+* One of the earliest definitions of $\abs{A}$ was the set of all sets that are in bijection with A. Thus 3 is the set of all 3-element sets. But this object is a class not a set.
+* Once we again use the idea of representatives, so $\abs{A}$ will be a particular set of size A (if possible). And once again we turn to the ordinals.
 * Def: An ordinal alpha is called a cardinal if it isn't in bijection with any lower ordinal.
 * Ex: 0,1,2,... are all ordinals that are cardinals. omega is also a cardinal. But as we have seen, omega^2^ and so on are not cardinals.
-* Def: If A is any set then \|A\| = a cardinal kappa such that there is a bijection between A and kappa. Note that if this exists it must be unique.
-* Ex: This supports standard calculations like \|{divisors of 10}\|=4.
-* Ex: If A is a countable set, then \|A\|=omega.
-* Question: What is \|R\|?
-* In principle, there may be sets A which are not in bijection with any ordinals/cardinals. In such a case \|A\| cannot be defined to be an ordinal or any particular object. Thus to approach cardinals in this way we need an axiom.
+* Def: If A is any set then $\abs{A}$ = a cardinal kappa such that there is a bijection between A and kappa. Note that if this exists it must be unique.
+* Ex: This supports standard calculations like $\abs{\text{divisors of 10}}=4$.
+* Ex: If A is a countable set, then $\abs{A}=\omega$.
+* Question: What is $\abs{\mathbb R}$?
+* In principle, there may be sets A which are not in bijection with any ordinals/cardinals. In such a case $\abs{A}$ cannot be defined to be an ordinal or any particular object. Thus to approach cardinals in this way we need an axiom.
 * Axiom of Choice: For any set A, there is a bijection of A with some ordinal. In particular there is a bijection of A with some cardinal kappa.
 * Prop: Every natural number ordinal is a cardinal.
 * Proof: Show by induction that no natural number is in bijection with an earlier one.
@@ -260,7 +262,7 @@ Operations on sets. look at Joy of Sets.
   * Let aleph(alpha+1) = aleph(alpha)+
   * Let aleph(lambda) = sup(aleph(beta)), beta&lt;lambda
 * Ordinal arithmetic doesn't increase cardinality. For example:
-* Prop. If kappa is an infinite cardinal then |kappa x kappa|=|kappa|
+* Prop. If kappa is an infinite cardinal then $\abs{\kappa\times\kappa}=\abs{kappa}$.
 * Proof. We must show kappa x kappa is injectible into kappa. Assume it is true for every alpha&lt;kappa. Let R be the usual increasing boxes ordering of kappa x kappa. Then every initial segment of R is contained in some alpha x alpha, and hence injectible into alpha. It follows that R is injectible into kappa. (If it weren't then kappa would be injectible into some initial segment of R and hence into some alpha&lt;kappa contradicting it is a cardinal.)
 * Continuing this logic one can determine that even iterated ordinal exponentiation etc does not increase cardinality. In particular the countable ordinals extend inconceivably far before finally being dominated by aleph1.
 * Ordinal exponentiation vs cardinal exponentiation
@@ -268,7 +270,7 @@ Operations on sets. look at Joy of Sets.
 ### 11. Axiom of Choice
 
 * We have said that the axiom of choice allows us to regard all cardinals as special ordinals that are not in bijection with any smaller ordinal. But what does the axiom say exactly?
-* Axiom of Choice: If F is a set of nonempty sets which are pairwise disjoint, then there exists a set C such that \|C cap A\|=1 for all A in F.
+* Axiom of Choice: If F is a set of nonempty sets which are pairwise disjoint, then there exists a set C such that $\abs{C cap A}=1$ for all A in F.
 * In other words, C is a choice or selection of one element from each member of the family.
 * Observe the disjointness assumption is necessary, since for instance F={ {2}, {2,3}, {3} } does not have a choice set.
 * There is a non-disjoint version: If F is a family of nonempty sets, then there exists a function c:F to UF such that c(a) in A for all A in F.
@@ -286,7 +288,7 @@ Operations on sets. look at Joy of Sets.
 * Proof. It is equivalent to show there exists a bijection between some ordinal and A. For this, let c be a choice function on P(A) minus empty set, and use recursion to define a function from ORD to A until it fails. Let f(0)=c(A), and generally let f(beta)=c(A minus everything so far). If alpha is the first failure, then f defines a bijection from alpha to A. (And there must be a failure since otherwise the proper class ORD injects into the set A.)
 * Cor. Every set has an ordinal cardinality.
 * Proof. By WOP there exists a bijection between some ordinal xi and A. Using well-foundedness of ORD we can find the least ordinal kappa in bijection with A. This is clearly a cardinal.
-* Cor. For any sets A,B, we have \|A\|$\leq$\|B\| or \|B\|$\leq$\|A\| (or both).
+* Cor. For any sets A,B, we have $\abs{A}\leq\abs{B}$ or $\abs{B}\leq\abs{A}$ (or both).
 * Proof. By WOP, both A and B are in bijection with ordinals alpha and beta. By trichotomy of ORD, we either have an injection from alpha to beta or from beta to alpha (or both).
 * Theorem. The union of countably many countable sets is countable. More generally, for any cardinal kappa, the union of at most kappa many sets of cardinality at most kappa has cardinality at most kappa.
 * Proof. Let kappa be a cardinal and let F be such a family. Using WOP we can find a well-ordering of F of ordertype at most kappa. Using WOP on each element A of F we can find a well-ordering of A of ordertype at most kappa. Using the Axiom of Choice we can select a sequence of well-orderings, one for each set A, of A. Using this sequence we can define a functon f from kappa x kappa onto UF by: f(alpha,beta)= the betath element of the alphath set of F, or if undefined, any element. Since kappa x kappa has cardinality kappa, this shows that there is a surjection from kappa onto UF. This completes the proof because of the following lemma.
@@ -309,9 +311,9 @@ Operations on sets. look at Joy of Sets.
 
 * We have defined arithmetic for ordinals and explored some of its properties.
 * Assuming AC, we can define an arithmetic of cardinals as well. We use context and hinting to distinguish between ordinal and cardinal arithmetic!
-  * $\kappa+\lambda=|\kappa+\lambda|$ as ordinals
-  * $\kappa\times\lambda=|\kappa\times\lambda|$ as ordinals
-  * $\kappa^\lambda=|\mathop{\mathrm{Fun}}(\lambda,\kappa)|$
+  * $\kappa+\lambda=\abs{\kappa+\lambda}$ as ordinals
+  * $\kappa\times\lambda=\abs{\kappa\times\lambda}$ as ordinals
+  * $\kappa^\lambda=\abs{\mathop{\mathrm{Fun}}(\lambda,\kappa)}$
 * Unlike ordinal + and x, the cardinal + and x are not very exciting. This is because we have seen that ordinal arithmetic does not increase cardinality.
 * Thoerem. kappa + lambda and kappa x lambda have their usual meaning for finite cardinals. If one of the two is infinite, then kappa + lambda and kappa x lambda are both equal to max(kappa,lambda).
 * Proof. For the statement about finite cardinals, we can simply use induction. Next suppose $\kappa\leq\lambda$ and $\lambda$ is infinite. Then $\lambda\leq\kappa+\lambda\leq\lambda\cdot\lambda$ which is in bijection with $\lambda$. Similarly $\lambda\leq\kappa\times\lambda\leq\lambda\times\lambda$ which is in bijection with $\lambda$. By CSB, in both cases we get $\lambda$.
@@ -492,7 +494,8 @@ Operations on sets. look at Joy of Sets.
     }
     TeX: {
       Macros: {
-        set: ["{\\left\\{ #1 \\right\\}}", 1]
+        set: ["{\\left\\{ #1 \\right\\}}", 1],
+        abs: ["{\\left\\| #1 \\right\\|}", 1]
       }
     }
   });
