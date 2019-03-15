@@ -1,8 +1,11 @@
 ## Homework 8, due Thursday, March 28
 
 * Prove that the connectives $\vee$, $\wedge$, and $\leftrightarrow$ can all be defined using only $\neg$ and $\rightarrow$.
+* Using the signature of ordered field theory, write well-formed sentences stating each of the following theorems.
+  * Every bounded set has a supremum.
+  * Every cubic polynomial has a root.
+  * The triangle inequality.
 * Prove Kunen, Lemma II.5.4.
-* 
 
 ### Supplemental problesm
 

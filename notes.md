@@ -62,7 +62,7 @@ Operations on sets. look at Joy of Sets.
 * Proposition: there exists a nonempty set
 * Proposition: there exists a set with more than one element
 * Proposition: there exists a set with more than two elements
-* In general, one can see how all sets involving {, } and $\emptyset$ may be created
+* In general, one can see how all sets involving $\set{\ }$ and $\emptyset$ may be created
 
 ### 3.5 The Axiom of Separation and Russel's paradox
 
