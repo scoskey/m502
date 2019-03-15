@@ -1,7 +1,7 @@
 ---
 header-includes: |
   \def\set#1{{\left\{#1\right\}}}
-  \def\abs#1{{\left\|#1\right\|}}
+  \def\abs#1{{\left|#1\right|}}
 ---
 # Math 502 course notes
 
@@ -23,7 +23,7 @@ Logical symbols: and, or, not, implies, iff, for all, there exists, and variable
 
 Non-logical symbols: the relations, functions, and constant symbols used in a given context. Examples include $+,\times,<,0$.
 
-Sentences versus formulas 
+Sentences versus formulas...
 
 The axiomatic method: for any area of study, we first choose a universe of discourse and an appropriate collection of non-logical symbols. We then write down a collection of axioms that govern how the symbols behave. Finally we try to prove theorems using only the axioms.
 
@@ -262,7 +262,7 @@ Operations on sets. look at Joy of Sets.
   * Let aleph(alpha+1) = aleph(alpha)+
   * Let aleph(lambda) = sup(aleph(beta)), beta&lt;lambda
 * Ordinal arithmetic doesn't increase cardinality. For example:
-* Prop. If kappa is an infinite cardinal then $\abs{\kappa\times\kappa}=\abs{kappa}$.
+* Prop. If kappa is an infinite cardinal then $\abs{\kappa\times\kappa}=\abs{\kappa}$.
 * Proof. We must show kappa x kappa is injectible into kappa. Assume it is true for every alpha&lt;kappa. Let R be the usual increasing boxes ordering of kappa x kappa. Then every initial segment of R is contained in some alpha x alpha, and hence injectible into alpha. It follows that R is injectible into kappa. (If it weren't then kappa would be injectible into some initial segment of R and hence into some alpha&lt;kappa contradicting it is a cardinal.)
 * Continuing this logic one can determine that even iterated ordinal exponentiation etc does not increase cardinality. In particular the countable ordinals extend inconceivably far before finally being dominated by aleph1.
 * Ordinal exponentiation vs cardinal exponentiation
@@ -495,7 +495,7 @@ Operations on sets. look at Joy of Sets.
     TeX: {
       Macros: {
         set: ["{\\left\\{ #1 \\right\\}}", 1],
-        abs: ["{\\left\\| #1 \\right\\|}", 1]
+        abs: ["{\\left| #1 \\right|}", 1]
       }
     }
   });
