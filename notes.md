@@ -482,7 +482,7 @@ Operations on sets. look at Joy of Sets.
 * For example, $(\mathbb Q;<)$ is a structure in the language of linear orders.
 * For example, $(\mathbb R;0,1,+,\cdot,<)$ is a structure in the language of ordered fields.
 * Thus we will not define whether a given sentence $\phi$ is true or false in general, but whether it is true or false in a given structure $\mathcal A$. We will say that $\mathcal A$ satisfies $\phi$, and write $\mathcal A\models\phi$, when $\phi$ is true in $\mathcal A$.
-* The formal definiton of satisfaction is somewhat involved, but will work the way you want it to! For example, returning to the sentence $\forall x x\geq 0\rightarrow \exists y y\cdot y=x$, we will have that $(\mathbb R;+,\cdot,0,1)\models\phi$ and $(\mathcal Q;+,\cdot,0,1)\not\models\phi$.
+* The formal definiton of satisfaction is somewhat involved, but will work the way you want it to! For example, returning to the sentence $\forall x x\geq 0\rightarrow \exists y y\cdot y=x$, we will have that $(\mathbb R;+,\cdot,0,1)\models\phi$ and $(\mathbb Q;+,\cdot,0,1)\not\models\phi$.
 
 ## Part III: Computability theory
 
@@ -491,7 +491,7 @@ Operations on sets. look at Joy of Sets.
     tex2jax: {
       inlineMath: [['$','$'], ['\\(','\\)']],
       processEscapes: true
-    }
+    },
     TeX: {
       Macros: {
         set: ["{\\left\\{ #1 \\right\\}}", 1],
