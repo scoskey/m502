@@ -7,7 +7,7 @@
   * The triangle inequality.
 * Prove Kunen, Lemma II.5.4.
 
-### Supplemental problesm
+### Supplemental problems
 
 * (2pts) Write a computer program that takes a Polish lexicon and string of symbols as input, and determines whether the given string is a well-formed expression.
 
