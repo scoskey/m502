@@ -49,28 +49,28 @@ Axioms and models. Perhaps using quasi orders, partial orders, linear orders, an
 
 Operations on sets. look at Joy of Sets.
 
-### 3. The Axioms of extensionality, pairing, and union
+### 3. Axiomatic set theory: Axioms to get going
 
 * Set theory is officially the axioms for the set membership relation $\in$.
 * There are many additional set relations and operations, but these can all be defined in terms of $\in$. For example consider subset, union, intersection, and empty set.
 * Draw some sample models and play around
 * The axioms of set theory must at least get the hereditarily finite sets right.
-* Empty Set Existence Axiom: not officially necessary, but let's just start with this.
-* Extensionality Axiom: This axiom distinguishes set theory from other types of collections (lists, multisets). 
-* Pairing Axiom:
-* Union Axiom:
+* Axiom of (Empty) Set Existence: not officially necessary, but let's just start with this.
+* Axiom of Extensionality: This axiom distinguishes set theory from other types of collections (lists, multisets). 
+* Axiom of Pairing:
+* Axiom of Union:
 * Proposition: there exists a nonempty set
 * Proposition: there exists a set with more than one element
 * Proposition: there exists a set with more than two elements
 * In general, one can see how all sets involving $\set{\ }$ and $\emptyset$ may be created
 
-### 3.5 The Axiom of Separation and Russel's paradox
+### 3.5 The Axiom of Separation and Russell's paradox
 
-* Comprehension Axiom: Allows to form subsets. This justifies the use of the set-builder notation $\set{z\in x\mid \phi(z)}$.
-* Naive comprehension $\set{z\mid P(z)}$ leads to two problems: the use of non-logical phrases such as "the least natural number that can be defined in fewer than 20 words", and Russell's paradox. The modern comprehension axiom is also called the separation axiom.
-* The comprehension axiom is really an axiom scheme. Thus set theory officially has infinitely many axioms.
+* Axiom of Separation: Allows to form subsets. This justifies the use of the set-builder notation $\set{z\in x\mid \phi(z)}$.
+* Naive Axiom of Comprehension: $\set{z\mid P(z)}$. This leads to two problems: the use of non-logical phrases such as "the least natural number that can be defined in fewer than 20 words", and Russell's paradox. The modern comprehension axiom is also called the separation axiom.
+* The Axiom of Separation is really an axiom scheme. Thus set theory officially has infinitely many axioms.
 
-### 4. Numbers, Functions, and the Axiom of Replacement
+### 4. Numbers, functions, and the Axiom of Replacement
 
 * We have promised that set theory is somehow the theory of everything, meaning all other objects of mathematical study can be regarded as sets. Perhaps the most important objects in mathematics are natural numbers. How can these be regarded as objects in the universe of sets?
 * Von Neumann ordinals: an ordinal is a counting number (as opposed to a quantity measuring number). Define $0,1,2,3,\ldots$ as particular hereditarily finite sets.
@@ -481,8 +481,82 @@ Operations on sets. look at Joy of Sets.
 * For example, all the models in the first week's set theory homework are structures for $\mathcal L=\set{\in}$.
 * For example, $(\mathbb Q;<)$ is a structure in the language of linear orders.
 * For example, $(\mathbb R;0,1,+,\cdot,<)$ is a structure in the language of ordered fields.
-* Thus we will not define whether a given sentence $\phi$ is true or false in general, but whether it is true or false in a given structure $\mathcal A$. We will say that $\mathcal A$ satisfies $\phi$, and write $\mathcal A\models\phi$, when $\phi$ is true in $\mathcal A$.
-* The formal definiton of satisfaction is somewhat involved, but will work the way you want it to! For example, returning to the sentence $\forall x x\geq 0\rightarrow \exists y y\cdot y=x$, we will have that $(\mathbb R;+,\cdot,0,1)\models\phi$ and $(\mathbb Q;+,\cdot,0,1)\not\models\phi$.
+* Thus we will not define whether a given sentence $\sigma$ is true or false in general, but whether it is true or false in a given structure $\mathcal A$. We will say that $\mathcal A$ satisfies $\sigma$, and write $\mathcal A\models\sigma$, when $\sigma$ is true in $\mathcal A$.
+* The formal definiton of satisfaction is somewhat involved, but will work the way you want it to! For example, returning to the sentence $\forall x x\geq 0\rightarrow \exists y y\cdot y=x$, we will have that $(\mathbb R;+,\cdot,0,1)\models\sigma$ and $(\mathbb Q;+,\cdot,0,1)\not\models\sigma$.
+
+### 17. I can't get no...
+
+In this section we give a formal definition of the satisfaction relation $\mathcal A\models\sigma$. Unsurprisindly, the definition will once again be by induction on the construction of the sentence $\sigma$. Of course all the subformulas of $\phi$ are terms and formulas, not sentences, so we will need to handle the case when formulas $\phi$ have free variables.
+
+However, if $\phi(x)$ has free variable $x$, then the statement $\mathcal A\models\phi(x)$ doesn't make sense because we don't know what $x$ is. We instead define the more complicated statement $\mathcal A\models\phi(x)[x\to a]$.
+
+**Example**. Let $\mathcal A$ be the model $(\mathbb N,+,\cdot,0,1)$ and let $\phi(x)$ be the formula $x^2<10$. Then $\mathcal A\models\phi(x)[x\to3]$ and $\mathcal A\not\models\phi(x)[x\to4]$.
+
+We begin our recursive definiton of satisfaction by showing how to evaluate the terms.
+
+**Definition**. Let $\mathcal L$ be a language of first-order logic and $\mathcal A$ be an $\mathcal L$-structure. Let $s$ be a set of substitutions $x\to a$ of variables being used by elements of $A$ (in other words, a function from the set of variables being used to $A$). Then:
+
+* If $x$ is a variable of $\tau$, define $\mathop{\mathrm{val}}_{\mathcal A}(x)[s]$ to be $s(x)$
+* If $c$ is a constant symbol of $\tau$, define $\mathop{\mathrm{val}}_{\mathcal A}(c)[s]$ to be $c^{\mathcal A}$
+* If $f$ is an $n$-ary function symbol and $\tau_1,\ldots,\tau_n$ are terms, define $\mathop{\mathrm{val}}_{\mathcal A}(f\tau_1\cdots\tau_n)[s]=f^{\mathcal A}(\mathop{\mathrm{val}}_{\mathcal A}(\tau_1)[s],\ldots,\mathop{\mathrm{val}}_{\mathcal A}(\tau_n)[s])$.
+
+**Example**. Let $\mathcal A$ be the model $(\mathbb N,+,\cdot,0,1)$ and let $\tau$ be the term $x\cdot y$. Let $s$ be the substitution $x\to 3,y\to 4$. Then $\mathop{\mathrm{val}}_{\mathcal A}(\tau)[s]=\mathop{\mathrm{val}}_{\mathcal A}(x)[s]\cdot \mathop{\mathrm{val}}_{\mathcal A}(y)[s]=3\cdot 4=12$.
+
+We next define satisfaction for atomic formulas.
+
+**Definition**. Let $\mathcal L$ be a language of first-order logic and $\mathcal A$ be an $\mathcal L$-structure. Let $s$ be a set of substitutions. Then:
+
+* If $\phi$ is the formula $R\tau_1\cdots\tau_n$ then $\mathcal A\models\phi[s]$ is true if and only if $(\mathop{\mathrm{val}}_{\mathcal A}(\tau_1)[s],\ldots,\mathop{\mathrm{val}}_{\mathcal A}(\tau_n)[s])\in R^{\mathcal A}$.
+* If $\phi$ is the formula $=\tau_1\tau_2$ then $\mathcal A\models\phi[s]$ is true if and only if $\mathop{\mathrm{val}}_{\mathcal A}(\tau_1)[s]=\mathop{\mathrm{val}}_{\mathcal A}(\tau_2)[s]$
+* If $\phi$ is the formula $P$, a propositional relation, then $\mathcal A\models\phi$ is true if and only if $P^{\mathcal A}=T$.
+
+Note that in this definition the equality relation is treated specially. This guarantees that the equality relation always represents true equality, and not some funny model-specific notion of equality.
+
+We finally define satisfaction for general formulas.
+
+**Definition**. Let $\mathcal L$ be a language of first-order logic and $\mathcal A$ be an $\mathcal L$-structure. Let $s$ be a set of substitutions. Then:
+
+* If $\phi$ is $\alpha\wedge\beta$ then $\mathcal A\models\phi[s]$ is true if and only if $\mathcal A\models\alpha[s]$ and $\mathcal A\models\beta[s]$
+* Similarly use the truth tables for $\wedge,\to,\leftrightarrow$
+* If $\phi$ is $\neg\alpha$ then $\mathcal A\models\phi[s]$ is true if and only if $\mathcal A\not\models\alpha[s]$.
+* If $\phi$ is $\exists x\alpha$ then $\mathcal A\models\phi[s]$ is true if and only if there is some $a\in A$ such that $\mathcal A\models\alpha[t]$, where $t$ is the modification of $s$ where we let $t(x)=a$.
+* If $\phi$ is $\forall x\alpha$ then $\mathcal A\models\phi[s]$ is true if and only if for all $a\in A$ we have $\mathcal A\models\alpha[t]$, where $t$ is the modification of $s$ where we let $t(x)=a$.
+
+Note that if $\sigma$ is a sentence, then no substitution function $s$ is needed (because anything it specifies will eventually be overwritten by the quantifiers). Thus we can write $\mathcal A\models\sigma$ without the $s$.
+
+**Example**. Let $\mathcal A$ be the model $(\mathbb Q,<)$ and let $\sigma$ be the sentence $\forall x\forall y\exists z x>y\rightarrow x>z>y$. Then $\mathcal A\models\sigma$ if and only if for all $a\in\mathbb Q$ and for all $b\in\mathbb Q$ we have that there exists $c\in\mathbb Q$ such that $\mathcal A\models x>y\rightarrow x>z>y[x\to a,y\to b,z\to c]$. The latter is true if and only if for all $a,b$ there exists $c$ such that $a>b\implies a>c>b$. This is true since we can always let $c=(a+b)/2$.
+
+We often apply the satisfaction relation to a set of sentences.
+
+**Definition**. If $\mathcal L$ is a language of first-order logic, then an $\mathcal L$-theory is a set of $\mathcal L$-sentences.
+
+**Definition**. Let $T$ be an $\mathcal L$-theory and let $\mathcal A$ be an $\mathcal L$-structure. We say $\mathcal A\models T$ if for every $\sigma\in T$ we have $\mathcal A\models\sigma$. In this case we also say that $\mathcal A$ is a *model* of $T$.
+
+This fulfills the notion that model theory provides the universes where a given collection of axioms is true. For example if $T$ is group theory, the models of $T$ are groups. If $T$ is set theory, the models of $T$ are universes of set theory.
+
+With the concept of satisfaction in hand, we may further define many semantic notions.
+
+* Semantic truth: A sentence $\sigma$ is *semantically valid* if for every structure $\mathcal A$ we have $\mathcal A\models\sigma$.
+* Semantic implication: A sentence $\sigma$ *semantically implies* a sentence $\tau$ if for every model $\mathcal A$ we have $\mathcal A\models \sigma$ implies $\mathcal A\models\tau$.
+* Semantic consistence: A theory $T$ is *semantically consistent* if it admits a model $\mathcal A\models T$.
+
+Each of these has syntactic versions involving proofs.
+
+* Semantic truth: A sentence $\sigma$ is *semantically valid* if there is a proof of $\sigma$.
+* Semantic implication: A sentence $\sigma$ *syntactically implies* a sentence $\tau$ if there is a proof using $\sigma$ of $\tau$.
+* Semantic consistence: A theory $T$ is *semantically consistent* if it cannot be used to derive a falsehood.
+
+We will see that in each case the semantic and syntactic notions are equivalent. Of course this means we have to be very careful to define proof itself properly, something we will do in the next section.
+
+Returning to the semantically valid sentences, we proceed with several examples.
+
+**Example**. Every propositional tautology is a semantically valid sentence in the appropriate language. Recall that a propositional tautology is a sentence involving just $0$-ary relations which can be verified by truth tables. For examples, the following are propositional tautologies: $P\wedge Q\to P$; $(P\to Q)\leftrightarrow (\neg P\vee Q)$; $(P\wedge(\mathcal P\to Q))\to Q$.
+
+Similarly, if one begins with a propositional tautology and replaces each propositional variable with a first-order sentence, one obtains a semantically valid sentence.
+
+There are many more examples of semantically valid statements that are genuinely first-order, and don't derive from propositional tautologies.
+
+**Example**. The following are semantically valid: $\forall x x=x$; $\forall x R(x)\to\neg\exists x\neg R(x)$; $\forall x\phi(x)\to\phi(\tau)$; $\phi(\tau)\to\exists x\phi(x)$.
 
 ## Part III: Computability theory
 
