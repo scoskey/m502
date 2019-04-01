@@ -484,7 +484,7 @@ Operations on sets. look at Joy of Sets.
 * Thus we will not define whether a given sentence $\sigma$ is true or false in general, but whether it is true or false in a given structure $\mathcal A$. We will say that $\mathcal A$ satisfies $\sigma$, and write $\mathcal A\models\sigma$, when $\sigma$ is true in $\mathcal A$.
 * The formal definiton of satisfaction is somewhat involved, but will work the way you want it to! For example, returning to the sentence $\forall x x\geq 0\rightarrow \exists y y\cdot y=x$, we will have that $(\mathbb R;+,\cdot,0,1)\models\sigma$ and $(\mathbb Q;+,\cdot,0,1)\not\models\sigma$.
 
-### 17. I can't get no...
+### 17. Satisfaction
 
 In this section we give a formal definition of the satisfaction relation $\mathcal A\models\sigma$. Unsurprisindly, the definition will once again be by induction on the construction of the sentence $\sigma$. Of course all the subformulas of $\phi$ are terms and formulas, not sentences, so we will need to handle the case when formulas $\phi$ have free variables.
 
@@ -557,6 +557,16 @@ Similarly, if one begins with a propositional tautology and replaces each propos
 There are many more examples of semantically valid statements that are genuinely first-order, and don't derive from propositional tautologies.
 
 **Example**. The following are semantically valid: $\forall x x=x$; $\forall x R(x)\to\neg\exists x\neg R(x)$; $\forall x\phi(x)\to\phi(\tau)$; $\phi(\tau)\to\exists x\phi(x)$.
+
+### 18. Formal proofs
+
+
+### 19. Completeness I
+
+
+### 20. Completeness II, compactness and L-S
+
+
 
 ## Part III: Computability theory
 
