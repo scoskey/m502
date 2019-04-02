@@ -543,9 +543,9 @@ With the concept of satisfaction in hand, we may further define many semantic no
 
 Each of these has syntactic versions involving proofs.
 
-* Semantic truth: A sentence $\sigma$ is *semantically valid* if there is a proof of $\sigma$.
-* Semantic implication: A sentence $\sigma$ *syntactically implies* a sentence $\tau$ if there is a proof using $\sigma$ of $\tau$.
-* Semantic consistence: A theory $T$ is *semantically consistent* if it cannot be used to derive a falsehood.
+* Syntactic truth: A sentence $\sigma$ is *semantically valid* if there is a proof of $\sigma$.
+* Syntactic implication: A sentence $\sigma$ *syntactically implies* a sentence $\tau$ if there is a proof using $\sigma$ of $\tau$.
+* Syntactic consistence: A theory $T$ is *semantically consistent* if it cannot be used to derive a falsehood.
 
 We will see that in each case the semantic and syntactic notions are equivalent. Of course this means we have to be very careful to define proof itself properly, something we will do in the next section.
 
@@ -588,7 +588,7 @@ It is easy to see that each of these logical axioms is a valid sentence. There a
 **Example**. We will prove that $T=\emptyset$ proves the sentence $\forall x\exists y x=y$.
 
 1. $\forall x x=x$ (Equality)
-2. $\forall x x=x\to \exists y x=y$ (Existential instantiation)
+2. $\forall x x=x\to \exists y x=y$ (EG)
 3. $[\forall x x=x\to \exists y x=y]\to [\forall x x=x\to \forall x\exists y x=y]$ (Quantifier distribution)
 4. $\forall x x=x\to \forall x\exists y x=y$ (Modus ponens 2,3)
 5. $\forall x\exists y x=y$ (Modus ponens 1,4)
@@ -619,15 +619,16 @@ As before, the base case is trivial. Next assume that $T\vdash\sigma_j$ for all 
 
 *Proof*. Bleh.
 
-The last two rules formalize common proof notions. The UG rule is for proofs that end "...but c was arbitrary". The EI rule is for proofs that begin "Fix a constant c such that...".
+The last two rules formalize common proof notions. The UG rule is for proofs that end "...but c was arbitrary". The EI rule is for proofs that begin "Fix a constant c such that...". In the future we will also use the abbreviations UI and EG as deductive rules corresponding to the logical axioms of the corresponding name.
 
 **Example**. We will prove that $T=\emptyset$ proves the sentence $\forall x P(x)\wedge Q(x)\to \forall y P(y)$.
 
 1. We will prove the lemma $\forall x P(x)\wedge Q(x)$ proves $\forall y P(y)$. 
     a. $\forall x P(x)\wedge Q(x)$ (Given)
-    b. $P(c)\wedge Q(c)$ (UI)
-    c. $P(c)$ (Tautology)
-    d. $\forall y P(y)$ (UG)
+    c. $P(c)\wedge Q(c)$ (UI)
+    d. $P(c)\wedge Q(c)\to P(c)$ (Tautology)
+    e. $P(c)$ (MP c,d)
+    g. $\forall y P(y)$ (UG)
 2. $\forall x P(x)\wedge Q(x)\to \forall y P(y)$ (Deduction, 1)
 
 ### 19. Completeness I
