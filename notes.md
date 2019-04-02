@@ -2,6 +2,7 @@
 header-includes: |
   \def\set#1{{\left\{#1\right\}}}
   \def\abs#1{{\left|#1\right|}}
+  \def\lt{<}
 ---
 # Math 502 course notes
 
@@ -560,6 +561,74 @@ There are many more examples of semantically valid statements that are genuinely
 
 ### 18. Formal proofs
 
+An informal proof is an explanation. A formal proof is a sequence of sentences ending with a desired statement. In order to be a correct proof, it must be possible to justify each of the statements in the sequence in one of several ways.
+
+The most obvious way to justify a statement is when it is something we are assuming (an axiom). The next most obvious way is if it is logically apparent, such as a tautology. A somewhat more meaningful step of justification is *modus ponens*, which says that if $\alpha$ is true and $\alpha\to\beta$ is true then $\beta$ is true. 
+
+**Definition**. Let $T$ be a theory and $\sigma$ be a sentence of some fixed language $\mathcal L$. We say that $T$ *proves* $\sigma$, written $T\vdash\sigma$, if there exists a sequence of sentences $\sigma_1,\ldots,\sigma_n$ such that $\sigma_n$ is $\sigma$, and for all $i$ we have one of the following:
+
+* $\sigma_i$ is an element of $T$;
+* $\sigma_i$ is an instance of a logical axiom (described below);
+* there exist $j,k\lt i$ such that $\sigma_k$ is $\sigma_j\to\phi_i$.
+
+We must say what it means for a sentence to be a logical axiom. Given our discussion of valid sentences, it may seem natural to define the logical axioms to be the valid sentences. However this has some disadvantages, since it can be difficult to tell whether a given sentence is valid. Instead we define the logical axioms to be a sufficiently powerful but still easy-to-describe subset of the valid sentences.
+
+**Definition**. A sentence $\sigma$ is a *logical axiom* if it is of one of the following types:
+
+* Propositional tautologies
+* Universal instantiation: $\forall x\phi(x)\to\phi(\tau)$, for $\tau$ a term without $x$
+* Existential generalization: $\phi(\tau)\to\exists x\phi(x)$, for $\tau$ a term without $x$
+* Equality: $\forall x\forall y\forall z (x=x)\wedge(x=y\leftrightarrow y=x)\wedge(x=y\wedge y=z\to x=z)$, and $\forall x\forall y x=y\to f(x)=f(y)$, and $\forall x\forall y x=y\to R(x)\leftrightarrow R(y)$, and ditto for all arities.
+* Quantifier duality: $\neg\forall x\phi\leftrightarrow \exists x\neg\phi$
+* Quantifier distribution: $\forall x(\phi\to\psi)\to(\forall x\phi\to\forall x\psi)$
+* Extra quantifier: $\phi\to\forall x\phi$ (where $x$ is not a free variable of $\phi$)
+
+It is easy to see that each of these logical axioms is a valid sentence. There are vastly more valid sentences not in the list. But we will eventually see that the list has enough power to prove the rest of the valid sentences. This was the main criteria used in choosing the axioms!
+
+**Example**. We will prove that $T=\emptyset$ proves the sentence $\forall x\exists y x=y$.
+
+1. $\forall x x=x$ (Equality)
+2. $\forall x x=x\to \exists y x=y$ (Existential instantiation)
+3. $[\forall x x=x\to \exists y x=y]\to [\forall x x=x\to \forall x\exists y x=y]$ (Quantifier distribution)
+4. $\forall x x=x\to \forall x\exists y x=y$ (Modus ponens 2,3)
+5. $\forall x\exists y x=y$ (Modus ponens 1,4)
+
+Recall our distinction between semantic truth (satisfaction) and syntactic truth (proofs). The next theorem states that anything we can prove is true. That is, it states that our concept of proof is *sound*.
+
+**Soundness Theorem**. If $T\vdash\sigma$ then $T\models\sigma$.
+
+*Proof*. Assume that $\sigma_1,\ldots,\sigma_n$ is a proof from $T$ of $\sigma$. Assume that $\mathcal A\models T$. We will show that for all $i$, we have $\mathcal A\models\sigma_i$. For the base case $i=1$, we know that $\phi_1$ is either in $T$ or a logical axiom. In either case $\mathcal A\models\sigma_1$. Next assume inductively that $\mathcal A\models\sigma_j$ for all $j\lt i$. If $\sigma_i$ is in $T$ or a logical axiom we are done. Otherwise there is $j$ such that $\mathcal A\models\sigma_j$ and $\mathcal A\models \sigma_j\to\sigma_i$. By definition of $\models$ for $\to$, we must have $\mathcal A\models\sigma_i$. This completes the proof because now we know $\mathcal A\models\sigma_n$ which is $\sigma$.
+
+The completeness theorem is the converse of the soundness theorem. Thus it says that everything that is true can be proved. We will prove the completeness theorem in the next section.
+
+The definition of proof that we have given is of theoretical value, but not of great practical value. It can be very difficult to take substantial mathematical results and formalize them in this system. In the rest of the section we mention a few tactics for making the work of finding proofs at least somewhat more accessible.
+
+One common tactic in mathematics is to prove a lemma and use it as a step in a theorem. The next result makes this easy to do.
+
+**Deduction theorem**. $T\vdash\alpha\to\beta$ if and only if $T\cup\set{\alpha}\vdash\beta$.
+
+*Proof*. The forward implication is just modus ponens. For the reverse implication, assume that $T\cup\set{\alpha}\vdash\beta$ and let $\sigma_1,\ldots\sigma_n$ be a proof. We will show by induction that for all $i$ we have $T\vdash\alpha\to\sigma_i$.
+
+As before, the base case is trivial. Next assume that $T\vdash\sigma_j$ for all $j\lt i$. If $\sigma_i$ lies in $T$, is $\phi$, or is a logical axiom, then it is clear that $T\vdash\phi\to\sigma_i$. Otherwise $\sigma_i$ followed by modus ponens. By inductive hypothesis, we then have $T\vdash\sigma\to\sigma_j$ and $T\vdash\sigma\to(\sigma_j\to\sigma_i)$. It follows using easy tautologies and modus ponens that $T\vdash\sigma\to\sigma_i$. This completes the induction.
+
+**Proof by contradiction**. If $T\cup\set{\neg\sigma}\vdash\alpha\wedge\neg\alpha$, then $T\vdash\sigma$.
+
+*Proof*. If $T\cup\set{\neg\sigma}\vdash\alpha\wedge\neg\alpha$, then using tautologies we have $T\cup\set{\neg\sigma}\vdash\sigma$. By the deduction theorem, $T\vdash \neg\sigma\to\sigma$. By a tautology, $T\vdash\sigma\vee\sigma$ and therefore $T\vdash\sigma$.
+
+**Universal generalization and existential instantiation**. Let $c$ be a constant symbol not in $\mathcal L$. If $T\vdash\phi(c)$ then $T\vdash\forall x\phi(x)$. If $T\cup\set{\phi(c)}\vdash\alpha$ then $T\cup\set{\exists x\phi(x)}\vdash\alpha$.
+
+*Proof*. Bleh.
+
+The last two rules formalize common proof notions. The UG rule is for proofs that end "...but c was arbitrary". The EI rule is for proofs that begin "Fix a constant c such that...".
+
+**Example**. We will prove that $T=\emptyset$ proves the sentence $\forall x P(x)\wedge Q(x)\to \forall y P(y)$.
+
+1. We will prove the lemma $\forall x P(x)\wedge Q(x)$ proves $\forall y P(y)$. 
+    a. $\forall x P(x)\wedge Q(x)$ (Given)
+    b. $P(c)\wedge Q(c)$ (UI)
+    c. $P(c)$ (Tautology)
+    d. $\forall y P(y)$ (UG)
+2. $\forall x P(x)\wedge Q(x)\to \forall y P(y)$ (Deduction, 1)
 
 ### 19. Completeness I
 
@@ -579,7 +648,8 @@ There are many more examples of semantically valid statements that are genuinely
     TeX: {
       Macros: {
         set: ["{\\left\\{ #1 \\right\\}}", 1],
-        abs: ["{\\left| #1 \\right|}", 1]
+        abs: ["{\\left| #1 \\right|}", 1],
+        lt: ["<"]
       }
     }
   });
