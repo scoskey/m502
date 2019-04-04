@@ -633,10 +633,91 @@ The last two rules formalize common proof notions. The UG rule is for proofs tha
 
 ### 19. Completeness I
 
+Recall that we have proved the Soundness Theorem, which states that any syntactic consequence of $T$ is also a semantic consequence of $T$, that is, if $T\vdash\sigma$ then $T\models\sigma$. In this section we will prove the converse.
 
-### 20. Completeness II, compactness and L-S
+**Completeness Theorem, version I** If $T\models\sigma$ then $T\vdash\sigma$.
 
+We will actually prove the completeness theorem in another form. Recall that a theory $T$ is semantically consistent if there is a model of $T$. Recall also that a theory $T$ is syntactically consistent if $T\not\vdash\sigma\wedge\neg\sigma$.
 
+**Completeness Theorem, version II** If $T$ is syntactically consistent, then $T$ has a model.
+
+To see the two statements are equivalent, first suppose that version I is true and let $T$ be a syntactically consistent theory. If $T$ has no models, then $T\models\sigma\wedge\neg\sigma$ is vacuously true, hence $T\vdash\sigma\wedge\neg\sigma$, a contradiction.
+
+Conversely suppose that version II is true and let $T\models\sigma$. Then there is no model of $T\cup\set{\neg\sigma}$, so $T\cup\set{\neg\sigma}$ is syntactically inconsistent. From our proposition on proofs by contradiction, we conclude that $T\vdash\sigma$.
+
+Thus proving the completeness theorem is really about building models. If $T$ is reasonable in the sense that it doesn't lead us to a contradiction, then it should be possible to build a universe in which $T$ is true. This sounds like a somewhat tall order!
+
+The BIG IDEA is to build the model using the terms of the language. In order to illustrate
+
+**Example**. Let $\mathcal L=\set{+,\times,0,1,\lt}$ and let $T$ be the standard axioms of arithmetic of the natural numbers (associativity, commutativity, and so on). Our model will include the terms $0$, $1$, $1+1$, $1+1+1$, and so on, pretty good substitutes for the actual natural numbers! Of course there are many other terms such as $1+0+0+1$, but our theory knows that this one is really equivalent to $1+1$. In other words, there is an equivalence relation on terms given by $\tau_1\sim\tau_2$ if and only if $T\vdash\tau_1=\tau_2$.
+
+This example worked smoothly, but we should wonder what we would do if the constant symbol $1$ was not present in the language. We can make a theory in this language that is equivalent to $T$ by defining $1$ as the least natural number greater than $0$. But this language doesn't have any interesting terms. In general when building a model of $T$ we will use the terms of an expanded language where constant symbols have been added for each possible definition.
+
+This idea is called a Henkin construction. In order to begin, we first make a structure from terms.
+
+**Definition**. Let $T$ be a theory. The structure $\mathcal H_0=\mathcal H_0(T)$ is defined as follows.
+
+* The domain of $\mathcal H_0$ consists of the terms of $\mathcal L$ with no  variables.
+* If $f$ is a function symbol, then $f^{\mathcal H_0}\tau_1\cdots\tau_n$ is defined to be the term $f\tau_1\cdots\tau_n$.
+* If $R$ is a relation symbol, then $R^{\mathcal H_0}\tau_1\cdots\tau_n$ is defined to be true if and only if $T\vdash R\tau_1\cdots\tau_n$.
+
+This is a good start, but we have seen this model may have several problems. First, it doesn't identify terms that the theory knows are equivalent. Second, if there aren't any constant symbols in the language, this model will be empty. And third, it still might not be a model of $T$.
+
+**Definition**. Let $T$ be a theory. The structure $\mathcal H=\mathcal H(T)$ is defined as follows.
+
+* The domain of $\mathcal H$ consists of the equivalence classes $[\tau]$ of elements of $\mathcal H_0$ with respect to the equivalence relation defined by $\tau_1\sim\tau_2$ if and only if $T\vdash\tau_1=\tau_2$.
+* If $f$ is a function symbol, then $f^{\mathcal H}[\tau_1]\cdots[\tau_n]$ is defined to be the equivalence class $[f\tau_1\cdots\tau_n]$.
+* If $R$ is a relation symbol, then $R^{\mathcal H}[\tau_1]\cdots[\tau_n]$ is defined to be true if and only if $T\vdash R\tau_1\cdots\tau_n$.
+
+One must check that this definition is well-defined, that is, the function values and relation values are independent of the equivalence class representatives. This can be done using the logical proof axioms pertaining to equality.
+
+**Lemma**. If $\sigma$ is an atomic sentence, then $\mathcal H\models\sigma$ if and only if $T\vdash\sigma$.
+
+*Proof sketch*. The key is to show by induction that $\mathrm{val}_{\mathcal H}(\tau)=[\tau]$ for all terms $\tau$. Then If $\sigma$ is the sentence $R\tau_1\cdots\tau_n$, our definition of $R^{\mathcal H}$ guarantees the desired result. $\blacksquare$
+
+We are clearly on our way to obtaining a model of $T$. But quantifiers are still a big problem.
+
+**Example**. Let $\mathcal L=\set{\lt,a,b}$, where $a,b$ are constant symbols, and let $T$ be the theory of $\omega$. Then $\mathcal H$ has domain $\set{a,b}$ but the model does not decide whether $a\lt b$ or $b\lt a$. Thus the theory $T$ includes trichotomy but the model $\mathcal H$ does not satisfy trichotomy.
+
+To fix this problem, we will work only with complete theories $T$.
+
+**Definition**. A theory $T$ is *complete* if for every sentence $\sigma$ we have either $\sigma\in T$ or $\neg\sigma\in T$.
+
+**Lemma**. If $T$ is a syntactically consistent theory, there exists a complete syntactically consistent theory $\bar T$ such that $T\subset\bar T$.
+
+*Proof*. Let $P$ be the partial order consisting of all syntactically consistent theories $U$ extending $T$. Then $P$ is partially ordered by set inclusion. Then chains of $P$ are bounded because the union of a chain of syntactically consistent theories is still syntactically consistent.
+
+By Zorn's lemma, there exists a maximal consistent theory $\bar T$. such that $T\subset\bar T$. We claim that $\bar T$ is complete. Indeed, if $\sigma\notin\bar T$, then $\bar T\cup\set{\sigma}$ is inconsistent, so by our theorem about proofs by contradiction, $\bar T\vdash\neg\sigma$. Since $\bar T$ is maximal, it follows that $\neg\sigma\in T$. $\blacksquare$
+
+We remark that if $T$ is a complete theory $\alpha\vee\beta\in T$, then we must have either $\alpha\in T$ or $\beta\in T$. Thus if we revisit the above example and complete $T$ before building $\mathcal H$, we will either have $a\lt b$ or $b\leq a$, whichever Zorn's lemma picks for us.
+
+But there is still one big issue left to address. Continuing the above example, let $T$ be the theory of $\omega$ together with the sentences $a$ has three predecessors and $b$ has four. Then our model $\mathcal H$ will satisfy $a\lt b$, but it still will not satisfy the sentence $\exists x x\lt a$.
+
+Generally speaking, a given language may not have enough terms to make $\mathcal H$ a real model of $T$. In order to fix this, we need to add new terms, constant symbols, that witness existential formulas.
+
+**Definition**. A theory $T$ is said to have *witnessing terms* if whenever $\phi(x)$ is a formula with one free variable $x$ there exists a term $\tau$ such that $T\vdash\exists x\phi(x)\to\phi(\tau)$.
+
+For example consider $\mathbb R$ as a field. If $\phi(x)$ is $\forall y xy=y+y$ then a witnessing term would be $1+1$. If $\phi(x)$ is $xx=1+1$ then there is no witnessing term and we will need to add one. The following is the crux of the Henkin construction.
+
+**Lemma**. If $T$ is a syntactically consistent theory, then there exists a syntactially consistent theory $T'$ in an expanded language such that $T\subset T'$ and $T'$ has witnessing terms.
+
+Assuming this lemma is true, let us outline the proof of the Completeness Theorem.
+
+Given a syntactically constistent theory, we first extend it to a theory with witnessing terms, and then to a complete theory $T^\ast$ in the expanded language. We let $\mathcal H$ be the Henkin model corresponding to $T^\ast$.
+
+We must prove that $\mathcal H$ is a model of $T^\ast$ and hence of $T$. This is done by induction on the complexity of the sentence (not the length). We have already addressed atomic sentences. The difficult part is the $\exists$ quantifier step, but noe can use the witnessing property in this part!
+
+### 20. Completeness and its consequences
+
+We still owe the proof of the lemma.
+
+**Lemma**. If $T$ is a syntactically consistent theory, then there exists a syntactially consistent theory $T'$ in an expanded language such that $T\subset T'$ and $T'$ has witnessing terms.
+
+*Proof*. We first show how to add a witnessing term for a single formula $\exists x\phi(x)$. For this we add...
+
+Now to add witnessing terms for all formulas, let us assume for convenience that the language is countable. This saves us from writing a formal ordinal induction. ... $\blacksquare$
+
+*Proof of the Completeness Theorem*. 
 
 ## Part III: Computability theory
 
