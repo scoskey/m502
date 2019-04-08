@@ -1,3 +1,19 @@
+## Homework 9, due Thursday, April 11
+
+* Suppose that $P$ is a unary predicate and $Q$ is a propositional variable. Give a formal proof of the following: $(\forall x(P(x)\to Q))\to((\forall xP(x))\to Q)$.
+* Suppose that $R$ and $S$ are unary predicates. Show that there exists a formal proof of the following: $\forall x(R(x)\to S(x))\to(\exists x R(x)\to \exists x S(x))$.
+* Kunen, exercise II.11.16. Suppose $R$ is a binary predicate and use the soundness theorem to show that there does not exist a formal proof of $\forall y\exists x R(x,y)\to\exists x\forall y R(x,y)$.
+* Give an example of a structure $A$ and a formula $\phi(x)$ such that $A\models\exists x\phi(x)$ but there is no term $\tau$ such that $A\models\phi(\tau)$.
+
+### Supplemental problems
+
+* Show that logical axiom 3 is valid.
+* Show that relation defined by $\sigma\sim\tau$ if and only if $\Sigma\vdash\sigma=\tau$ is an equivalence relation.
+* Kunen, exercise II.10.6.
+* (2pts) Kunen, exercise II.11.11.
+* Kunen, exercise II.11.14
+* Kunen, exercise II.11.15
+
 ## Homework 8, due Thursday, March 28
 
 * Prove that the connectives $\vee$, $\wedge$, and $\leftrightarrow$ can all be defined using only $\neg$ and $\rightarrow$.
