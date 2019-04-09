@@ -537,15 +537,15 @@ This fulfills the notion that model theory provides the universes where a given 
 
 With the concept of satisfaction in hand, we may further define many semantic notions.
 
-* Semantic truth: A sentence $\sigma$ is *semantically valid* if for every structure $\mathcal A$ we have $\mathcal A\models\sigma$.
+* Semantic validity: A sentence $\sigma$ is *semantically valid* if for every structure $\mathcal A$ we have $\mathcal A\models\sigma$.
 * Semantic implication: A sentence $\sigma$ *semantically implies* a sentence $\tau$ if for every model $\mathcal A$ we have $\mathcal A\models \sigma$ implies $\mathcal A\models\tau$.
-* Semantic consistence: A theory $T$ is *semantically consistent* if it admits a model $\mathcal A\models T$.
+* Semantic consistency: A theory $T$ is *semantically consistent* if it admits a model $\mathcal A\models T$.
 
 Each of these has syntactic versions involving proofs.
 
-* Syntactic truth: A sentence $\sigma$ is *semantically valid* if there is a proof of $\sigma$.
+* Syntactic validity: A sentence $\sigma$ is *semantically valid* if there is a proof of $\sigma$.
 * Syntactic implication: A sentence $\sigma$ *syntactically implies* a sentence $\tau$ if there is a proof using $\sigma$ of $\tau$.
-* Syntactic consistence: A theory $T$ is *semantically consistent* if it cannot be used to derive a falsehood.
+* Syntactic consistency: A theory $T$ is *semantically consistent* if it cannot be used to derive a falsehood.
 
 We will see that in each case the semantic and syntactic notions are equivalent. Of course this means we have to be very careful to define proof itself properly, something we will do in the next section.
 
@@ -713,11 +713,88 @@ We still owe the proof of the lemma.
 
 **Lemma**. If $T$ is a syntactically consistent theory, then there exists a syntactially consistent theory $T'$ in an expanded language such that $T\subset T'$ and $T'$ has witnessing terms.
 
-*Proof*. We first show how to add a witnessing term for a single formula $\exists x\phi(x)$. For this we add...
+*Proof*. We first show how to add a witnessing term for a single formula $\exists x\phi(x)$. To do this, we let $\mathcal L'=\mathcal L\cup\set{c}$, and let $T'=T\cup\set{\exists x\phi(x)\to\phi(c)}$.
 
-Now to add witnessing terms for all formulas, let us assume for convenience that the language is countable. This saves us from writing a formal ordinal induction. ... $\blacksquare$
+We claim that $T'$ is syntactically consitent. If it isn't, then there is a proof from $T'$ of a contradictory sentence $\alpha\wedge\neg\alpha$. By the proof-by-contradiction theorem, there is a proof from $T$ of $\neg(\exists x\phi(x)\to\phi(c))$. Using a tautology, there is a proof from $T$ of $\exists x\phi(x)$ and a proof from $T$ of $\neg\phi(c)$. By UG, there is a proof from $T$ of $\forall x\neg\phi(x)$. This is clearly a contradiction, establishing the claim.
 
-*Proof of the Completeness Theorem*. 
+Now to add witnessing terms for all formulas, we inductively define $\mathcal L^{(n)},T^{(n)}$ as follows. Firstlet $\mathcal L^{(0)}=\mathcal L$ and $T^{(0)}=T$. If $\mathcal L^{(n)},T^{(n)}$ have been defined, we let $\mathcal L^{(n+1)}$ include new constant symbols for each existential formula of $\mathcal L^{(n)}$, and let $T^{(n+1)}$ include corresponding sentences for each. Then by an argument similar to the above, each $\mathcal T^{(n)}$ is syntactically consistent, and it follows that $T'=\bigcup\mathcal T^{(n)}$ is syntactically consistent. Moreover with $T'$ we have "caught our tail" meaning that $T'$ has witnessing terms. $\blacksquare$
+
+**Completeness Theorem, version II**. If $T$ is syntactically consistent, then $T$ has a model.
+
+*Proof*. We apply the lemmas we have proved in sequence. Given $T$, we first extend it to a theory with witnessing terms and then further extend it to a complete theory $T^\ast$ in the expanded language. We then let $\mathcal H$ be the Henkin/Herbrand model of $T^\ast$. 
+
+We claim that for all sentences $\sigma$ we have $\sigma\in T^\ast$ if and only if $\mathcal H\models\sigma$, so that $\mathcal H$ really is a model of $T^\ast$. For this we proceed by induction on the *complexity* of $\sigma$. For this we can assume that the only connectives in $\sigma$ are $\wedge,\neg,\exists$ and proceed by indnuction on the number of occurrences of these symbols.
+
+We have already proved the result for atomic sentences $\sigma$ directly from the definition of $\mathcal H$.
+
+If $\sigma$ is of the form $\neg\alpha$, then the result follows from the inductive hypothesis for $\alpha$ and the completeness of $T^\ast$. Indeed, we have $\sigma\in T^\ast$ iff $\alpha\notin T^\ast$ iff $\mathcal H\not\models\alpha$ iff $\mathcal H\models\sigma$. Similarly if $\sigma$ is of the form $\alpha\wedge\beta$ then the result is immediate from the inductive hypothesis for $\alpha$ and $\beta$ and the completness of $T^\ast$.
+
+Finally if $\sigma$ is of the form $\exists x\phi(x)$ then since $T^\ast$ has witnessing terms there is a term $\tau$ in the expanded language such that the sentence $\exists x\phi(x)\to\phi(\tau)$ is in $T^\ast$. Now:
+
+\begin{align*}
+  \sigma\in T^\ast &\implies \phi(\tau)\in T^\ast & \text{completeness of $T^\ast$}\\
+  &\implies \mathcal H\models\phi(\tau) & \text{inductive hypothesis}\\
+  &\implies \mathcal H\models\sigma
+\end{align*}
+
+And conversely:
+
+\begin{align*}
+  \mathcal H\models\sigma &\implies \mathcal H\models\phi(\tau) &\text{for some term $\tau$ :)}\\
+  &\implies \phi(\tau)\in T^\ast &\text{inductive hypothesis}\\
+  &\implies T^\ast\vdash\sigma &\text{EG}\\
+  &\implies \sigma\in T^\ast &\text{completeness of $T^\ast$}
+\end{align*}
+
+This completes the proof. $\blacksquare$.
+
+We remark that the :) follows from the definition of the Henkin/Herbrand model. Since we don't have control over the length of the term $\tau$, we had to do our induction over the complexity of $\sigma$ instead of the length of $\sigma$.
+
+The completeness theorem has many consequences, one of which is to greatly simplify our terminology.
+
+* Semantic validity is equivalent to syntactic validity.
+* Semantic implication is equivalent to syntactic implication.
+* Semantic consistency is equivalent to syntactic consistency.
+
+As a result we rarely need to discern between the semantic and syntactic notions. Another simple but powerful consequence is the following.
+
+**Compactness Theorem**. If every finite subset of $T$ has a model, then $T$ has a model.
+
+*Proof*. It suffices to show that if every finite subset of $T$ is syntactically consistent, then $T$ is syntactically consistent. Taking the contrapositive, we must show that if $T$ is syntactically inconsistent then some finite subset of $T$ is syntactically inconsistent. This is clear from the fact that proofs are finite: if $T$ proves a contradictory sentence $\alpha\wedge\neg\alpha$, then the proof used just finitely many sentences of $T$, so there exists a finite subset $T_0\subset T$ that proves a $\alpha\wedge\neg\alpha$ too. $\blacksquare$
+
+The compactness theorem is a powerful tool for generalizing proofs about finite objects into proofs about infinite objects.
+
+**Corollary**. Suppose $T$ has arbitrarily large finite models. Then $T$ has infinite models.
+
+*Proof*. Let $\sigma_n$ be the sentence which says that there exist $n$ distinct elements of the universe. That is, $\sigma_n$ says that $\exists x_1\cdots\exists x_n\bigwedge x_i\neq x_j$. Let $T'$ be the theory $T\cup\set{\sigma_n:n\in\mathbb N}$. Then every finite subset of $T'$ is consistent by our hypothesis. As a consequence $T'$ is consistent. Any model of $T'$ is a model of $T$ and is infinite. $\blacksquare$
+
+This simple idea can also be used to derive the following consequences of compactness. The first is key in the theory of *nonstandard arithmetic*, where one studies models of number theory with infinite elements, and the second fact is key in *nonstandard analysis* where one studies models of analysis with infinitesimal elements.
+
+**Corollary**. Let $T$ be the theory of the natural numbers, that is, the set of sentences true in the structure $(\mathbb N;+,\times,0,1,\lt)$. There is a model of $T$ with an element $N$ such that $n\lt N$ for all $n\in\mathbb N$.
+
+**Corollary**. Let $T$ be the theory of the real numbers, that is, the set of sentences true in the structure $(\mathbb R;+,\times,0,1,\lt)$. There is a model of $T$ with an element $\epsilon$ such that for all $0\lt r\in\mathbb R$ we have $0\lt\epsilon\lt r$.
+
+For the next result, recall that the theory of simple graphs is the theory of a single binary relation $\sim$ which is irreflexive and transitive. Further recall that a graph $G$ is *bipartite* if it can be partitioned into subsets $P,Q$ such that no two vertices of $P$ are adjacent and no two vertices of $Q$ are adjacent.
+
+**Corollary**. Let $G$ be a graph such that every finite subset of $G$ is bipartite. Then $G$ is bipartite.
+
+*Proof*. Let the language $\mathcal L$ consist of $\sim$ together with constant symbols $c_x$ for every $x\in G$ together with unary relation symbols $P$ and $Q$. Let the theory $T$ consist of the following axioms:
+
+* $c_x\neq c_{x'}$ whenever $x\neq x'$
+* $c_x\sim c_{x'}$ whenever $x\sim x'$
+* $c_x\not\sim c_{x'}$ whenever $x\not\sim x'$
+* $P,Q$ is a partition
+* $P,Q$ have no edges within them
+
+Then every finite subset of $T$ is consistent. Indeed, if $T_0$ is a finite subset of $T$, then $T_0$ mentions a certain subset $G_0\subset G$. The induced subgraph corresponding to $G_0$ is bipartite and thus gives rise to a model of $T_0$.
+
+By the compactness theorem, $T$ has a model, $G'$. Observe that $G$ is a subgraph of $G'$ via the function which sends any $x\in G$ to the interpretation of $c_x$ in $G'$. Since $G'$ is bipartite, it follows that $G$ is bipartite. $\blacksquare$.
+
+We have shown above that theories with arbitrarily large finite models have infinite models. It is natural to ask what cardinalities will occur. Our final corollary addresses this question with the most generous possible answer.
+
+**Lowenheim-Skolem Theorem**. Suppose $T$ is a theory in a countable language and $T$ has an infinite model. Then for any cardinal $\kappa$, $T$ has a model of cardinality $\kappa$.
+
+*Proof*. Next time.
 
 ## Part III: Computability theory
 
