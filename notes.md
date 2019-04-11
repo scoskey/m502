@@ -774,7 +774,11 @@ This simple idea can also be used to derive the following consequences of compac
 
 **Corollary**. Let $T$ be the theory of the real numbers, that is, the set of sentences true in the structure $(\mathbb R;+,\times,0,1,\lt)$. There is a model of $T$ with an element $\epsilon$ such that for all $0\lt r\in\mathbb R$ we have $0\lt\epsilon\lt r$.
 
-For the next result, recall that the theory of simple graphs is the theory of a single binary relation $\sim$ which is irreflexive and transitive. Further recall that a graph $G$ is *bipartite* if it can be partitioned into subsets $P,Q$ such that no two vertices of $P$ are adjacent and no two vertices of $Q$ are adjacent.
+We will leave the proofs as exercises.
+
+### 21. More applications of compactness
+
+For the next result, recall that the theory of simple graphs is the theory of a single binary relation $\sim$ which is irreflexive and transitive. Further recall that a graph $G$ is *bipartite* if it can be partitioned into subsets $P,Q$ such that no two vertices of $P$ are adjacent and no two vertices of $Q$ are adjacent. For example, a hexagon is bipartite but a heptagon is not.
 
 **Corollary**. Let $G$ be a graph such that every finite subset of $G$ is bipartite. Then $G$ is bipartite.
 
@@ -790,11 +794,62 @@ Then every finite subset of $T$ is consistent. Indeed, if $T_0$ is a finite subs
 
 By the compactness theorem, $T$ has a model, $G'$. Observe that $G$ is a subgraph of $G'$ via the function which sends any $x\in G$ to the interpretation of $c_x$ in $G'$. Since $G'$ is bipartite, it follows that $G$ is bipartite. $\blacksquare$.
 
-We have shown above that theories with arbitrarily large finite models have infinite models. It is natural to ask what cardinalities will occur. Our final corollary addresses this question with the most generous possible answer.
+For each theory $T$ there is a corresponding class of models of $T$. We will say that a class $\mathcal C$ of structures is *axiomatizable* if there exists a theory $T$ such that the models of $T$ are precisely the elements of $\mathcal C$. It is natural to ask whether every (reasonable) class of srtuctures is axiomatizable. Our next result says that the answer is no.
 
-**Lowenheim-Skolem Theorem**. Suppose $T$ is a theory in a countable language and $T$ has an infinite model. Then for any cardinal $\kappa$, $T$ has a model of cardinality $\kappa$.
+Recall that a graph is *connected* if for any two vertices $x,y$, there exists a path from $x$ to $y$. That is, for any $x,y$ there is a sequence of vertics $x_1,\ldots,x_n$ such that $x\sim x_1\sim x_2\sim\cdots\sim x_n=y$.
 
-*Proof*. Next time.
+**Corollary**. The class of connected graphs is not axiomatizable.
+
+*Proof*. Suppose there exists a theory $T$ such that the models of $T$ are exactly the connected graphs. Expand the language with two new constant symbols $a,b$. Let $\sigma_n$ be the sentence which says there is no path from $a$ to $b$ of length $n$. Let $T'$ be the theory $T\cup\set{\sigma_n:n\in\omega}$. Then any finite subset $T_0\subset T'$ is consistent. Indeed, if $N$ is the largest number such that $\sigma_N$ occurs in $T_0$, then a graph consisting of a single path of length $N+1$ from $a$ to $b$ gives a model of $T_0$. It follows from the compactness theorem that $T'$ is consistent and hence has a model. But any model of $T'$ is disconnected, because there cannot be a path from $a$ to $b$. Hence we have shown that there is a disconnected model of $T$, a contradiction. $\blacksquare$
+
+**Corollary**. The class of well-orders is not axiomatizable.
+
+*Proof*. Suppose there exists a theory $T$ such that the models of $T$ are exactly the well-orders. Expand the language with new constant symbols $c_n$ for $n\in\omega$. Let $\sigma_n$ be the sentence which says that $c_n\lt\ldots\lt c_0$. Let $T'$ be the theory $T\cup\set{\sigma_n:n\in\omega}$. Then any finite subset $T_0\subset T'$ is consistent. Indeed, if $N$ is the largest number such that $\sigma_N$ occurs in $T_0$, then the structure $(\omega,\lt)$ together with a decreasing sequence of interpretations of $c_0,\ldots,c_n$ is a model of $T_0$. It follows from the compactness theorem that $T'$ is consistent and hence has a model. But any model of $T'$ is ill-founded, because the interpretations of the $c_n$ form an infinite decreasing sequence. Hence we have shown that there is an ill-founded model of $T$, a contradiction. $\blacksquare$
+
+Recall we have shown that theories with arbitrarily large finite models have infinite models. It is natural to ask what cardinalities will occur. Our final corollary addresses this question with the most generous possible answer.
+
+**Lowenheim-Skolem Theorem**. Suppose $T$ is a theory in a language $\mathcal L$ and $T$ has an infinite model. Then for any cardinal $\kappa\geq\abs{\mathcal L}\cdot\alpha_0$, $T$ has a model of cardinality $\kappa$.
+
+*Proof*. We prove the theorem in two parts: a downwards direction and an upwards direction. To begin with downwards direction, we will prove that if $T$ has an infinite model then $T$ has a model of size $\kappa\geq\abs{\mathcal L}\cdot\alpha_0$. Reading the proof of the completeness theorem, we see that the Henkin/Herbrand model $\mathcal H$ happens to have precisely this size. Indeed, it is constructed from terms, which are finite strings of elements of the given countable language.
+
+For the upwards direction, assume $T$ has a countable model and suppose we are given an uncountable cardinal $\kappa$. Expand the language to include $\kappa$ many constant symbols $c_\alpha$ for $\alpha\lt\kappa$. Let $T'$ be the theory consisting of $T$ together with the sentences $c_\alpha\neq c_\beta$ for all $\alpha,\beta\lt\kappa$. Then any finite subset $T_0\subset T'$ is consistent. Indeed, $T_0$ can only mention finitely many of the constant symbols $c_\alpha$, and we can intrepret them as arbitrary elements of the given countable model. It follows from the compactness theorem that $T'$ is consistent, and so has a model. The resulting model must have cardinality at least $\kappa$. If the cardinality is too large, we can use the downwards direction of the theorem to produce a model of cardinality exactly $\kappa$. $\blacksquare$
+
+The Lowenheim-Skolem theorem has the mind-bending consequence that if ZFC is consistent, then ZFC has a countable model. Since we know that ZFC implies there exist uncountable sets, we appear to have reached a paradox: an uncountable object is contained in a countable object. The resolution to this apparent contradiction is that the countable model only believes its sets are uncountable because it lacks the bijections to prove they are countable. These bijections do exist but externally to the model.
+
+### 22. Complete theories
+
+Previously we said that a theory $T$ is complete if it is consistent, and for every sentence $\sigma$ either $\sigma\in T$ or $\neg\sigma\in T$.
+
+For example, if $\mathcal A$ is any structure then the theory $T=Th(\mathcal A)$ consistening of all sentences $\sigma$ such that $\mathcal A\models\sigma$ is a complete theory. This follows simply from the definition of $\models$. Thus the theory of arithmetic $Th(\mathbb N,+,\times)$ and the theory of analysis $Th(\mathbb R,+,\times)$ are complete theories.
+
+In accordance with common practice, we also say that $T$ is complete if the set of logical consequences of $T$ is complete. That is, $T$ is *complete* if it is consistent and for every sentence $\sigma$ either $T\models\sigma$ or $T\not\models\sigma$.
+
+For example, if $T$ is the theory which says that $G$ is a group with exactly $7$ elements, then $T$ is complete. (One shows in a standard algebra class that there is only one such group.)
+
+On the other hand, most theories are not complete. For example the theory of infinite linear orders (is there a last element? consider $(0,1)$ versus $(0,1]$), the theory of infinite abelian groups (are all elements divisible by 2? consider $\mathbb Z$ versus $\mathbb Q$), and set theory (does CH hold?).
+
+In these examples, we can find sentences $\sigma$ such that $T\cup\set{\sigma}$ has a model, so $\neg\sigma$ is not a consequence of $T$, and $T\cup\set{\neg\sigma}$ has a model, so $\sigma$ is not a consequence of $T$.
+
+But how can one show that a given theory $T$ is complete? In general this can be a challenging problem, but in the rest of this section, we will give one relatively easy tool to prove that at theory is complete. We first need several new definitions.
+
+**Definition**. Structures $\mathcal A,\mathcal B$ are *isomorphic* if...
+
+**Definition**. Structures $\mathcal A,\mathcal B$ are *elementarily equivalent* if...
+
+Clearly isomorphic implies elementarily equivalent but not conversely.
+
+**Definition**. Let $T$ be a theory and let $\kappa$ be a cardinal. $T$ is $\kappa$-categorical if...
+
+**Proposition**. The theory $T$ of dense linear orders without endpoints is $\aleph_0$-categorical.
+
+**Proposition.** The theory $T$ of torsion-free divisible abelian groups is $2^{\aleph_0}$-categorical.
+
+**Vaught Test Thoerem**. Let $T$ be a consistent theory in a finite language with no finite models. If $T$ is $\kappa$-categorical for some $\kappa$, then $T$ is complete.
+
+**Corollary**. The theory of dense linear orders without endpoints is complete. In particular, $(\mathbb Q,\lt)\equiv(\mathbb R,\lt)$.
+
+**Corollary**. The theory of torsion-free divisible abelian groups is complete. In particular, $(\mathbb Q,+)\equiv(\mathbb R,+)$.
+
 
 ## Part III: Computability theory
 
