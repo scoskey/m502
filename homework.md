@@ -1,3 +1,16 @@
+## Homework 10, due Thursday, April 18
+
+* Let $T$ be the theory of arithmetic, that is, the sentences true in the structure $(\mathbb N;+,\cdot,0,1,\lt)$. Show there is a model of $T$ with an initial segment isomorphic to $\mathbb N$, and additional "infinite" number greater than $\mathbb N$.
+* Show that the class of all finite graphs is not first-order axiomatizable (that is, there is no theory $\Sigma$ such that the models of $\Sigma$ are exactly the finite graphs).
+* Let $T$ be a complete theory with an infinite model. Can $T$ have any finite models?
+
+### Supplemental problems
+
+* Let $\mathcal A$ be a nonstandard model of the theory of arithmetic. By the above exercise we know that $\mathcal A$ has an initial segment isomorphic to $\mathbb N$. Show that this initial segment has no supremum.
+* Let $\mathcal A$ be a nonstandard model of the theory of arithmetic. Show that $\mathcal A$ contains an element which is disivible by every (standard) prime number $p$.
+* Let $\mathcal$ be a nonstandard model of the theory of arithmetic. Show that $\mathcal A$ contains an "infinite" prime number.
+* Show that the class of all infinite graphs is not finitely axiomatizable (that is, there is no finite theory $T$ such that the models of $T$ are exactly the infinite graphs).
+
 ## Homework 9, due Thursday, April 11
 
 * Suppose that $P$ is a unary predicate and $Q$ is a propositional variable. Give a formal proof of the following: $(\forall x(P(x)\to Q))\to((\forall xP(x))\to Q)$.
