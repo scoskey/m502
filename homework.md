@@ -1,6 +1,6 @@
 ## Homework 10, due Thursday, April 18
 
-* Let $T$ be the theory of arithmetic, that is, the sentences true in the structure $(\mathbb N;+,\cdot,0,1,\lt)$. Show there is a model of $T$ with an initial segment isomorphic to $\mathbb N$, and additional "infinite" number greater than $\mathbb N$.
+* Let $T$ be the theory of arithmetic, that is, the sentences true in the structure $(\mathbb N;+,\cdot,0,1,\lt)$. Show there is a model of $T$ with an initial segment isomorphic to $\mathbb N$, and additional "infinite" numbers greater than $\mathbb N$.
 * Show that the class of all finite graphs is not first-order axiomatizable (that is, there is no theory $\Sigma$ such that the models of $\Sigma$ are exactly the finite graphs).
 * Let $T$ be a complete theory with an infinite model. Can $T$ have any finite models?
 
