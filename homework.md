@@ -8,7 +8,7 @@
 
 * Let $\mathcal A$ be a nonstandard model of the theory of arithmetic. By the above exercise we know that $\mathcal A$ has an initial segment isomorphic to $\mathbb N$. Show that this initial segment has no supremum.
 * Let $\mathcal A$ be a nonstandard model of the theory of arithmetic. Show that $\mathcal A$ contains an element which is disivible by every (standard) prime number $p$.
-* Let $\mathcal$ be a nonstandard model of the theory of arithmetic. Show that $\mathcal A$ contains an "infinite" prime number.
+* Let $\mathcal A$ be a nonstandard model of the theory of arithmetic. Show that $\mathcal A$ contains an "infinite" prime number.
 * Show that the class of all infinite graphs is not finitely axiomatizable (that is, there is no finite theory $T$ such that the models of $T$ are exactly the infinite graphs).
 
 ## Homework 9, due Thursday, April 11
