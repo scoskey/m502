@@ -832,24 +832,43 @@ In these examples, we can find sentences $\sigma$ such that $T\cup\set{\sigma}$ 
 
 But how can one show that a given theory $T$ is complete? In general this can be a challenging problem, but in the rest of this section, we will give one relatively easy tool to prove that at theory is complete. We first need several new definitions.
 
-**Definition**. Structures $\mathcal A,\mathcal B$ are *isomorphic* if...
+**Definition**. Structures $\mathcal A,\mathcal B$ are *isomorphic* if there is a bijection $\phi\colon A\to B$ such that for every function symbol $f$ we have $f^{\mathcal A}(a)=b\iff f^{\mathcal B}(\phi(a))=\phi(b)$ and for every relation symbol $R$ we have $R^{\mathcal A}(a)\iff R^{\mathcal B}(\phi(a))$.
 
-**Definition**. Structures $\mathcal A,\mathcal B$ are *elementarily equivalent* if...
+**Definition**. Structures $\mathcal A,\mathcal B$ are *elementarily equivalent* if they satisfy the same sentences: $\mathcal A\models\sigma\iff\mathcal B\models\sigma$. In other words, the two structures are models of the same complete theory.
 
-Clearly isomorphic implies elementarily equivalent but not conversely.
+It is clear that if structures $\mathcal A,\mathcal B$ are isomorphic then they are elementarily equivalent. However the converse is false, since for example if $T$ is any complete theory with infinite models then $T$ has models of distinct cardinalities. This means that structures can have properties that are not described by first-order logic!
 
-**Definition**. Let $T$ be a theory and let $\kappa$ be a cardinal. $T$ is $\kappa$-categorical if...
+In light of the example in the previous paragraph, it is natural to ask whether a complete theory can have distinct models of the same cardinality. In general this is not the case, but when it is true we give it a name. 
+
+**Definition**. Let $T$ be a theory and let $\kappa$ be a cardinal. Then $T$ is called *$\kappa$-categorical* if all models of $T$ of cardinality $\kappa$ are isomorphic to one another.
+
+The following is the most famous example of a categorical theory. The theory of dense linear orders without endpoints consists of the theory of linear orders (irreflexivity, transitivity, trichotomy) plus the axioms $\forall x\forall y\exists z x\lt y\rightarrow x\lt z\lt y$ and $\forall x\exists y\exists z y\lt x\lt z$. Thus the rational order is an example of a dense linear order without endpoints.
 
 **Proposition**. The theory $T$ of dense linear orders without endpoints is $\aleph_0$-categorical.
 
-**Proposition.** The theory $T$ of torsion-free divisible abelian groups is $2^{\aleph_0}$-categorical.
+*Proof sketch*. Let $\mathcal A,\mathcal B$ be two countable models $T$. Let $a_n$ enumerate $A$ and let $b_n$ enumerate $B$. We can recursively construct an isomorphism using the "back-and-forth" method. Initially let $\phi(a_0)=b_0$. Next assume $\phi$ has been defined on $a_0,\ldots,a_n$ and $\phi^{-1}$ has been defined on $b_0,\ldots,b_n$. We then define $\phi$ on $a_{n+1}$ and $\phi^{-1}$ on $b_{n+1}$ by mapping them to the interval required to preserve the order relations. $\blacksquare$
+
+Note that the theory of dense linear orders without endpoints is not $\kappa$-categorical for $\kappa=2^{\aleph_0}$. For example $\mathbb R$ and $\mathbb R\setminus\set{0}$ are dense linear orders without endpoints that are not isomorphic to one another.
+
+Next we describe an example of a theory that is $\kappa$-categorical for some uncountable $\kappa$. A group is called torsion-free if it satisfies $\forall x x\neq0\rightarrow nx\neq 0$. A group is called divisible if it satisfies $\forall x\exists y nx=y$. The torsion-free divisible abelian groups are simply direct sums of copies of $\mathbb Q$. 
+
+**Proposition.** The theory $T$ of torsion-free divisible abelian groups is $\aleph_1$-categorical.
+
+*Proof*. Any torsion-free divisible abelian group $G$ can be made into a rational vector space by defining $\frac mng=h$ iff $mg=nh$. Note that divisibility is used to show there is such an $h$, and torsion-free is used to show that $h$ is unique. Now any two uncountable vector spaces over a countable field must have the same dimension, and therefore are isomorphic to one another. $\blacksquare$
+
+The following result shows the connection between categorical and complete theories.
 
 **Vaught Test Thoerem**. Let $T$ be a consistent theory in a finite language with no finite models. If $T$ is $\kappa$-categorical for some $\kappa$, then $T$ is complete.
 
-**Corollary**. The theory of dense linear orders without endpoints is complete. In particular, $(\mathbb Q,\lt)\equiv(\mathbb R,\lt)$.
+*Proof*. Suppose that $T$ is $\kappa$-categorical but not complete. Then there is a sentence $\sigma$ such that both $T\cup\set{\sigma}$ and $T\cup\set{\neg\sigma}$ are consistent. By the Lowenheim--Skolem theorem, there are models $\mathcal A,\mathcal B$ of $T\cup\set{\sigma},T\cup\set{\neg\sigma}$ respectively, of cardinality $\kappa$. This contradicts that $T$ is $\kappa$-categorical. $\blacksquare$
 
-**Corollary**. The theory of torsion-free divisible abelian groups is complete. In particular, $(\mathbb Q,+)\equiv(\mathbb R,+)$.
+**Corollary**. The theory of dense linear orders without endpoints is complete. In particular, $(\mathbb Q,\lt)$ and $(\mathbb R,\lt)$ are elementarily equivalent.
 
+**Corollary**. The theory of torsion-free divisible abelian groups is complete. In particular, $(\mathbb Q,+)$ and $(\mathbb R,+)$ are elementarily equivalent.
+
+A famous theorem of Morley states that a theory $T$ is $\kappa$-categorical for some $\kappa\geq\aleph_1$ if and only if $T$ is $\aleph_1$-categorical. This means that there are just two types of categoricity, countable and uncountable.
+
+### 23. Definability
 
 ## Part III: Computability theory
 
