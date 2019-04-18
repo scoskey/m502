@@ -868,7 +868,40 @@ The following result shows the connection between categorical and complete theor
 
 A famous theorem of Morley states that a theory $T$ is $\kappa$-categorical for some $\kappa\geq\aleph_1$ if and only if $T$ is $\aleph_1$-categorical. This means that there are just two types of categoricity, countable and uncountable.
 
-### 23. Definability
+### 23. Definability and absoluteness
+
+Consider the structure $(\mathbb N,+)$, and compare it with the structure $(\mathbb N,+)$. The second structure has a reduced language, but is it really weaker in the senes that fewer concepts are expressible?
+
+**Definition**. Let $\mathcal A$ be a structure. An $n$-ary relation $R\subset A^n$ is *definable* in $\mathcal A$ if there is a formula $\phi(x_1,\ldots,x_n)$ such that $(a_1,\ldots,a_n)\in R\iff\mathcal A\models\phi[x_i=a_i]$. A function $f\colon A^n\to A$ is definable if its graph is a definable $n+1$-ary relation. Finally an element $c\in A$ is definable if $\set{c}$ is a definable unary relation.
+
+For example, if $\mathcal A=(\mathbb N,+)$. Then the constant $0$ is definable using $x+x=x$, and $\lt$ is definable using $\exists z x+z=y$.
+
+**Definition**. Let $T$ be an $\mathcal L$-theory, and $\phi$ a formula. Then the corresponding *expansion by definitions* of $T$ is the theory $T\cup\set{\phi(x_1,\ldots,x_n)\iff R(x_1,\ldots,x_n}$, where $R$ is a new $n$-ary relation symbol.
+
+If $T'$ is an expansion by definitions of $T$, then $T,T$ prove exactly the same sentences of the original language. Moreover if $\phi$ is any formula of the expanded language then $T$ proves it is equivalent to a formula of the original language. Finally, if $\mathcal A$ is any model of $T$ then $\mathcal A$ can be expanded to a model of $T'$.
+
+In the rest of this section we study definability in models of set theory. That is, we will return to our favorite theory ZFC and its fragments. Something potentially confusing happens when we study models of set theory that didn't happen in other theories: we can try use a set with its native $\epsilon$ relation as a model of set theory.
+
+**Definition**. Let $A$ be any set. Then $A$ gives rise to a *set model* $(A;\epsilon)$ with domain $A$ and binary relation $\epsilon$.
+
+When we work with set models, we elide the structure notation $\mathcal A=(A;\epsilon)$ and simply write $A$. Of course most set models will not satisfy all ZFC, but some subtheory of ZFC. For instance, every set model satisfies the Axiom of Extensionality.
+
+One of the most useful set models is the set HF of hereditarily finite sets, also denoted $V_\omega$. Observe that HF satisfies all of ZFC except the Axiom of Infinity. Similarly the model $HC$ consisting of the hereditarily countable sets satisfies all of ZFC 
+
+When $A,B$ are set models and $A\subset B$, both models believe they are talking about some of the same objects (they share the elements of $A$ in common), but they may disagree about properties of these objects. For example $\omega\subset HF$, the two models agree on which object is the empty set, and disagree on whether $\epsilon$ is a linear order. An even worse example is $\set{3,4,5,\ldots}$, which disagrees with HF about which object is the empty set!
+
+**Definition**. Let $A\subset B$ be sets. A formula $\phi(x_1,\ldots,x_n)$ is *absolute* between $A$ and $B$ if for all substitution functions $s\colon V\to A$ we have $\mathcal A\models\phi[s]\iff\mathcal B\models\phi[s]$.
+
+Which formulas are absolute between which set models? This is a complicated question in general, but there is a large class of formulas that is absolute between any two set models which are transitive. Recall that a set $A$ is *transitive* if $b\in a\in A$ implies $b\in A$.
+
+**Definition**. A formula $\phi$ is said to be a *$\Delta_0$-formula* if its quantifiers are bound, that is, every occurrence of $\exists$ is of the form $\exists y\in z$ and every occurrence of $\forall$ is of the form $\forall y\in z$.
+
+For example, the proposition that $x$ is an ordered pair may be expressed as a $\Delta_0$-formula.
+
+On the other hand, the proposition that $x$ is a power set of another set cannot (apparently) be expressed as a $\Delta_0$ formula.
+
+**Theorem**. If $A,B$ are transitive sets and $A\subset B$, then for any $\Delta_0$-formula $\phi$ we have that $\phi$ is absolute between $A$ and $B$.
+
 
 ## Part III: Computability theory
 
