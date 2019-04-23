@@ -1,3 +1,15 @@
+## Homework 11
+
+* No Homework this week
+
+### Supplemental problems
+
+* Kunen, exercise II.15.5. Suppose that $T$ is a theory in which every sentence consists of universal quantifiers followed by a quantifier-free formula. Show that if $\mathcal A\models T$ and $\mathcal B\subset\mathcal A$, then $\mathcal B\models T$.
+* Show that $\mathbb R$ and $\mathbb R\setminus\set{0\}$ are not isomorphic as linear orders.
+* Kunen, exercise II.17.16. Show that HF is a model of the sentence which states that every element is in bijection with a natural number.
+* ... Choose your own!
+
+
 ## Homework 10, due Thursday, April 18
 
 * Let $T$ be the theory of arithmetic, that is, the sentences true in the structure $(\mathbb N;+,\cdot,0,1,\lt)$. Show there is a model of $T$ with an initial segment isomorphic to $\mathbb N$, and additional "infinite" numbers greater than $\mathbb N$.
