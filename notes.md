@@ -896,14 +896,72 @@ Which formulas are absolute between which set models? This is a complicated ques
 
 **Definition**. A formula $\phi$ is said to be a *$\Delta_0$-formula* if its quantifiers are bound, that is, every occurrence of $\exists$ is of the form $\exists y\in z$ and every occurrence of $\forall$ is of the form $\forall y\in z$.
 
-For example, the proposition that $x$ is an ordered pair may be expressed as a $\Delta_0$-formula.
+For example, the proposition that $x$ is an ordered pair may be expressed as a $\Delta_0$-formula. One needs to say $\exists y,z\in\bigcup x x=\langle y,z\rangle$.
 
 On the other hand, the proposition that $x$ is a power set of another set cannot (apparently) be expressed as a $\Delta_0$ formula.
 
 **Theorem**. If $A,B$ are transitive sets and $A\subset B$, then for any $\Delta_0$-formula $\phi$ we have that $\phi$ is absolute between $A$ and $B$.
 
+*Proof*. We use induction on the complexity of $\phi$. If $\phi$ is atomic then it is of the form $x=y$ or $x\in y$. In each case the statement holds because both sets are using the true equality and element relations.
+
+If $\phi$ is $\neg\alpha$ then the inductive hypothesis for $\alpha$ clearly gives the corresponding statement for $\phi$. A similar argument holds for the binary connectives.
+
+If $\phi$ is $\exists y\in z\alpha$ and the statement is true of $\alpha$ then we have:
+
+\begin{align*}
+A\models \exists y\in z\alpha(x,y,z)
+  &\iff \exists a\in A A\models \alpha(x,a,z)\wedge a\in z\\
+  &\iff \exists a\in B B\models \alpha(x,a,z)\wedge a\in z\\
+  &\iff B\models \exists y\in z\alpha(x,y,z)
+\end{align*}
+
+Here in the backwards direction we are using transitivity to say that if $a\in B$ and $a$ is required to be in $z\in A$, then $a\in A$. $\blacksquare$
 
 ## Part III: Computability theory
+
+### 24. Computability
+
+Suppose we are working over the set model HF. Informally, we say that $A$ is *decidable* if there is a procedure that decides given $x$ whether or not $x\in A$. In other words, there should be an algorithm or computer program which takes input $x$ and halts and outputs Yes if $x\in A$ and halts and outputs No if $x\notin A$.
+
+For example, if $\phi$ is a $\Delta_0$-formula. Let $A=\set{x\in HF\mid \phi(x)}$ be the  corresponding $\Delta_0$-definable subset. Then $A$ is very simple in the sense that there is a natural decision procedure to decide whether or not $x\in A$. One simply steps through the formula testing its conditions, and each time one encounters a bounded quantifier, one must undertake just a finite search.
+
+On the other hand, there are sets that are intuitively computable but not $\Delta_0$-definable. For example, let $A$ be the set of even natural numbers. Then there is cleary a decision procedure for $A$: given $x$ first check whether it is totally ordered and transitive, then mark off elements in pairs until you have $0$ or $1$ left over. But $A$ is not $\Delta_0$-definable. To see this, note that if it were then since $\omega$ is transitive it would be definable in $\omega$. But using compactness, $\omega$ has an elementary extension with an automorphism that moves $A$. Thus $A$ is not definable in $\omega$, and hence it is not $\Delta_0$-definable in HF.
+
+**Definition**. A formula $\phi$ is $\Sigma_1$ if it is of the form $\exists y\alpha$, where $\alpha$ is $\Delta_0$. A formula $\phi$ is $\Pi_1$ if it is of the form $\forall y\alpha$, where $\alpha$ is $\Delta_0$. (We may also allow iterated existentials or iterated universals.)
+
+**Definition**. A subset $A$ of HF is $\Delta_1$ definable if it is both $\Sigma_1$-definable and $\Pi_1$-definable.
+
+(In fact there is a whole hierarchy of Sigma, Pi, and Delta definability, but this is all we will need for now.)
+
+For example, the set $A$ of even natural numbers is a $\Delta_1$-definable subset of HF. We have already said that the property of being a natural number is $\Delta_0$-definable in HF. Thus the formula $\alpha(n,e)$ which says "$n$ is a natural number and $e$ is the set of even numbers $\lt n$" is $\Delta_0$. Then $x\in A$ if and only if $\exists n,e\alpha(n,e)\wedge x\in e$, and $x\in A$ if and only if $\forall n,e\alpha(n,e)\wedge x\in n\rightarrow x\in e$.
+
+Like the $\Delta_0$-formulas, the $\Delta_1$-decidable sets enjoy a degree of absoluteness.
+
+**Proposition**. Let $A,B$ be transitive sets and $A\subset B$. If $\phi$ is a $\Sigma_1$ sentence and $A\models\phi$ then $B\models\phi$. If $\phi$ is a $\Pi_1$ sentence and $B\models\phi$ then $A\models\phi$. If $\phi$ is $\Sigma_1$, $\psi$ is $\Pi_1$, and both $A,B$ model $\phi\leftrightarrow\psi$, then $\phi,\psi$ are absolute between $A$ and $B$.
+
+Like the $\Delta_0$-definable sets, the $\Delta_1$-definable sets are decidable, but by a more complex procedure. Suppose that $A$ is defined both by $\exists y\alpha(x,y)$ and by $\forall y\beta(x,y)$, where $\alpha,\beta$ are $\Delta_0$-formulas. Then $A^c$ is defined by $\exists y\neg\beta(x,y)$. Given an input $x$, we run through all possible values of $y$ and each time check whether $\alpha(x,y)$ holds and whether $\neg\beta(x,y)$ holds. Since $A$ and $A^c$ are complementary, one of these must eventually occur, at which point we can say whether $x\in A$ or $x\in A^c$. Note that this procedure will have to terminate, but our description provides no insight as to when.
+
+Conversely, if a set $A$ is decidable by some procedure, then $A$ should be $\Delta_1$-definable. To see this note that each run of the procedure should leave some record of its behavior. Thus we can say that $x\in A$ iff there exists a code for a run of the procedure on input $x$ that halted and output Yes. And we can say that $x\in A$ iff for all codes for a run of the procedure on input $x$, if the code halted, then the output was Yes.
+
+**Church-Turing Thesis**. A set is decidable by a procedure (in a finite amount of time, with finitary operations, without resource limitations) if and only if it is $\Delta_1$-definable.
+
+In other words, all "reasonable" notions of being decidable by a procedure end up being equivalent to one another. The list of equivalent notions is long and includes decidable by a Turing machine, decidable by a python program, definable by recursion, and so forth. The point is that all of these possible choices lead to the same robust notion. For our class we will stick with $\Delta_1$-definable as the official definition.
+
+**Definition**. A subset $A$ of HF is *decidable* if it is $\Delta_1$-definable.
+
+The class of decidable sets has many nice properties.
+
+**Proposition**. The decidable sets of HF are closed under boolean operations and bounded quantification.
+
+*Proof*. It suffices to show that $\Delta_1$-definitons are closed under negation, conjunction, disjunction, and bounded quantification.
+
+Complementation is clear because $\Sigma_1$ and $\Pi_1$ are dual to one another. For disjuctions observe that $\exists x\alpha(x)\wedge\exists x\beta(x)$ is equivalent to $\exists x\exists y\alpha(x)\wedge\beta(y)$, and similarly for $\forall$. Yet another similar argument holds for conjuctions.
+
+For bounded quantification, we will show that $\Sigma_1$ is closed under bounded quantification. The argument for $\Pi_1$ is similar, and the fact for $\Delta_1$ follows. For this, first observe that $\exists x\in y\exists z\alpha$ is equivalent to $\exists z\exists x\in y\alpha$ which is clearly $\Sigma_1$. Next we claim that $\forall x\in y\exists z\alpha$ is equivalent to $\exists u\forall x\in y\exists z\in u\alpha$. The backward implication is trivial. For the forward implication we create a set $u$ which contains a witness $z_x$ for all possible $x\in y$. $\blacksquare$
+
+### 25. Computable functions and recursion
+
+### 26. Undecidable sets and incompleteness
 
 <script type='text/x-mathjax-config'>
   MathJax.Hub.Config({
