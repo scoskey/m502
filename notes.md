@@ -961,7 +961,30 @@ For bounded quantification, we will show that $\Sigma_1$ is closed under bounded
 
 ### 25. Computable functions and recursion
 
+**Definition**. Let $f$ be a function from HF to HF. Then $f$ is *computable* if its graph is decidable.
+
+The Church--Turing thesis implies that we can informally say that $f$ is computable if and only if there is a procedure which, given any input $x$, halts and outputs $f(x)$. To see this equivalence, first if the graph of $f$ is decidable then given $x$ we can search through all possible values $y$ until we find one with $(x,y)\in f$ and then we can halt and output $y$. Coversely if there is such a procedure for evaluating $f$ then given $(x,y)$ we can decide whether $(x,y)\in f$ by calculating $f(x)$ and asking whether $f(x)=y$.
+
+The simplest example of a computable function is the characteristic function $\chi_A$ of any decidable set $A$.
+
+Another example of a computable function is the cardinality function $f(x)=\abs{x}$.
+
+Some more interesting examples of computable functions are $+,\cdot$. However to prove this we will need the recursion theorem. You may recall that we have proved the classical recursion theorm and the transfinite recursion theorem. What we need is the computable version of the recursion theorem.
+
+**Theorem**.
+
+*Proof idea*. $\blacksquare$
+
+For example, the function $f(n)=$ the $n$th Fibonacci number is a computable function.
+
+
 ### 26. Undecidable sets and incompleteness
+
+We have given numerous examples of decidable sets and computable functions. What kinds of things are not decidable?
+
+**Theorem**. There exists a set which is $\Sigma_1$-definable but not $\Delta_1$-definable.
+
+
 
 <script type='text/x-mathjax-config'>
   MathJax.Hub.Config({
