@@ -989,7 +989,7 @@ We have given numerous examples of decidable sets and computable functions. What
 
 **Theorem**. There exists a set which is $\Sigma_1$-definable but not $\Delta_1$-definable.
 
-This theorem is hardly surprising, since otherwise we would probably not have given different names to the concepts $\Delta_1$ and $\Sigma_1$. To prove this we will first shor that there is a $\Sigma_1$ set which is universal in the sense that it is of maximum complexity among the $\Sigma_1$ sets. We will then prove that a universal $\Sigma_1$ set cannot be $\Delta_1$.
+This theorem is hardly surprising, since otherwise we would probably not have given different names to the concepts $\Delta_1$ and $\Sigma_1$. To prove this we will first show that there is a $\Sigma_1$ set which is universal in the sense that it is of maximum complexity among the $\Sigma_1$ sets. We will then prove that a universal $\Sigma_1$ set cannot be $\Delta_1$.
 
 **Lemma**. There exists a $\Sigma_1$-definable set $U\subset HF^2$ such that for every $\Sigma_1$-definable set $A\subset HF$ there exists $r\in HF$ such that $A=\set{x\mid (r,x)\in U}$.
 
@@ -1009,10 +1009,57 @@ In the following result, fix any model computation you like, and fix some way of
 
 *Proof*. Let $A$ be a $\Sigma_1$ set which is not $\Delta_1$. Let $\phi$ be a $\Delta_0$-formula such that $x\in A$ if and only if $\exists y\phi(x,y)$. For each $x$ let $h_x$ be a code for the program which searches through all possible $y\in HF$ until it finds one such that $\phi(x,y)$. Then $x\in A$ if and only if $h_x\in H$. Thus if $H$ were $\Delta_1$ then so would $A$ be $\Delta_1$, a contradicton. $\blacksquare$
 
+In this proof we defined a function $r\colon HF\to HF$ with the property that $x\in A\iff r(x)\in H$. Such a funcion is called a *reduction* from $A$ to $H$, and it implies that the complexity of $H$ is no simpler than that of $A$. If one wishes to prove that a given set is undecidable, the most common proof technique is to find a reduction from some known undecidable set to the given set.
 
+### 27. Decidability in logic, incompleteness
 
-### 27. Incompleteness
+In this section we apply our understanding of diagonalization and undecidability in the setting of logical proof. The result will be Godel's incompleteness theorems.
 
+Recall that if $T$ is a theory then its deductive closure is the set $\bar T=\set{\sigma\mid T\vdash\sigma}$. Most theories that we have described are decidable, but the deductive closure may or may not be.
+
+For example it is not difficult to decide whether or not a given sentence $\sigma$ is in ZFC, but it is much more decide whether $\sigma$ is a theorem of ZFC. OF course ZFC is very powerful, so this may not be too surprising. But we can study the same questions about deductive closure in the context of much simpler theories.
+
+**Definition**. Core set theory, or CST, is the theory consisting of the Axiom of Extensionality, Axiom of Pairing, Axiom of Union, Axiom of Comprehension, and the Axiom of Foundation.
+
+This theory may seem weak compared to ZFC, but it is strong enough to do finite set theory plus induction. It is also possible to work Peano Arithmetic, the usual axioms of the natural numbers with $+,\cdot$ including the induction scheme.
+
+**First incompleteness theorem**. If $T$ is any consistent extension of CST then $\bar T$ is undecidable.
+
+In our proof of the first incompleteness theorem, we once again return to a diagonalization argument. This time we will need to "represent" subsets of HF inside $T$ itself.
+
+**Proposition**. Every element $a\in HF$ is $\Delta_0$-definable. That is, there is a $\Delta_0$-formula $\delta_a(x)$ such that $x=a\iff\delta_a(x)$.
+
+The propostion says that we don't need to add terms for elements of HF, we can already represent these elements in the language.
+
+**Definition**. Given a theory $T$ of $\in$, a formula $\phi$, and an element $a\in HF$, we will say that $T\vdash\phi(\langle a\rangle)$ if and only if $T\vdash\exists x\delta_a(x)\wedge\phi(x)$. CHECK
+
+**Definition**. Let $T$ be any theory of $\in$ and let $A\subset HF$. Then $A$ is *representable* in $T$ if there is a formula $\phi$ such that $a\in A$ if and only if $T\vdash\phi(\langle a\rangle)$.
+
+**Proposition**. Let $T$ be a consistent extension of CST. Then every $\Delta_0$-definable set is representable in $T$.
+
+*Proof*. In fact we can prove that for any $\Delta_$-formula we have $CST\proves\phi(\langle a\rangle)$ if and only if $HF\models\phi[a]$. For this we can simply use induction on the complexity of $\phi$. $\blacksquare$
+
+**Proposition**. Let $T$ be a consistent extension of CST. Then every $\Delta_1$-definable set is representable in $T$.
+
+*Proof*.  $\blacksquare$
+
+**Theorem**. Suppose $T$ is a theory such that every $\Delta_1$-definable subset of HF is representable in $T$. Then $\bar T$ is undecidable.
+
+*Proof*.  $\blacksquare$
+
+The first incompleteness theorem can be phrased as follows.
+
+**Corollary**. If $T$ is any consistent, decidable extension of CST then $T$ is incomplete.
+
+To see that this result follows from the first incompleteness theorem, note that if $T$ were complete then we would have $\bar T=T$.
+
+The corollary is rather stunning, since it implies mathematicians will never know all truths about sets or arithmetic. We can't simply add axioms to ZFC (such as CH etc) to obtain a deciable theory which can prove or disprove all statements.
+
+The corollary provides conditions under which there exists a sentence that is neither provable nor disprovable from $T$. However it does not provide an example of such a sentence $\sigma$. The second incompleteness theorem gives an explicit and relevant example of such a sentence $\sigma$.
+
+**Second incompleteness theorem**. If $T$ is any consistent, decidable extension of CST then, and $\sigma$ is the sentence which asserts that $T$ is consistent, then $T\not\vdash\sigma$.
+
+We will omit the proof of the second incompleteness theorem. It involves formalizing the liar paradox in set theory, with provability replacing the notion of proof.
 
 <script type='text/x-mathjax-config'>
   MathJax.Hub.Config({
