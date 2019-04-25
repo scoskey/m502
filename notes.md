@@ -965,25 +965,53 @@ For bounded quantification, we will show that $\Sigma_1$ is closed under bounded
 
 The Church--Turing thesis implies that we can informally say that $f$ is computable if and only if there is a procedure which, given any input $x$, halts and outputs $f(x)$. To see this equivalence, first if the graph of $f$ is decidable then given $x$ we can search through all possible values $y$ until we find one with $(x,y)\in f$ and then we can halt and output $y$. Coversely if there is such a procedure for evaluating $f$ then given $(x,y)$ we can decide whether $(x,y)\in f$ by calculating $f(x)$ and asking whether $f(x)=y$.
 
-The simplest example of a computable function is the characteristic function $\chi_A$ of any decidable set $A$.
+The simplest example of a computable function is the characteristic function $\chi_A$ of any decidable set $A$. Indeed $(x,i)\in\chi_A$ if and only if $i=1$ and $x\in A$ or else $i=0$ and $x\notin A$. This statement is a boolean combination of $\Delta_1$-formulas.
 
-Another example of a computable function is the cardinality function $f(x)=\abs{x}$.
+Another example of a computable function is the cardinality function $f(x)=\abs{x}$. Here $\abs{x}=y$ if and only if $y\in\omega$ and there exists a bijection between $x$ and $y$, and $\abs{x}=y$ if and only if $y\in\omega$ and every injection from $x$ to $y$ is a surjection.
 
 Some more interesting examples of computable functions are $+,\cdot$. However to prove this we will need the recursion theorem. You may recall that we have proved the classical recursion theorm and the transfinite recursion theorem. What we need is the computable version of the recursion theorem.
 
-**Theorem**.
+**Theorem**. If $G\colon\mathbb N^{\lt\omega}\to\mathbb N$ is computable, then there exists a computable function $F\colon\mathbb N\to\mathbb N$ such that $F(n)=G(F\restriction n)$.
 
-*Proof idea*. $\blacksquare$
+*Proof idea*. The ordinary recursion theorem implies that the function $F$ exists. To see that $F$ is computable observe that $F(n)=y$ if and only if there exists a finite partial function $f$ obeying the recursion and satisfying $f(n)=y$, and $F(n)=y$ if and only if for all finite partial functions $f$ obeying the recursion if $n$ is in the domain then $f(n)=y$. Thus the graph of $F$ is $\Delta_1$-definable. $\blacksquare$
 
-For example, the function $f(n)=$ the $n$th Fibonacci number is a computable function.
+Thus the well-known enumerations such as $n!$, the $n$th Fibonacci number, as well as $+,\cdot$ are computable because they are defined recursively by computable rules. There is also a version of the recursion theorem along $\in$, so that functions such as the cardinality and rank functions may be defined recursively.
 
+Another application of the recursion theorem is the following.
 
-### 26. Undecidable sets and incompleteness
+**Proposition**. Let $A$ be the set consisting of all pairs $\phi,\sigma$, where $\phi$ is a code for a $\Delta_0$-formula and $\sigma$ is a substitution function, such that $HF\models\phi[\sigma]$. Then $A$ is decidable.
 
-We have given numerous examples of decidable sets and computable functions. What kinds of things are not decidable?
+The idea of the proof is to use the partial order of subformulas, and then to define a function $f$ which maps inputs $\phi,\sigma$ to values $T,F$ by recursion. The recursive definition $G$ is simply a formalizing our definition of satisfaction.
+
+### 26. Undecidable sets
+
+We have given numerous examples of decidable sets and computable functions. What kinds of things are not decidable? We first begin with the following.
 
 **Theorem**. There exists a set which is $\Sigma_1$-definable but not $\Delta_1$-definable.
 
+This theorem is hardly surprising, since otherwise we would probably not have given different names to the concepts $\Delta_1$ and $\Sigma_1$. To prove this we will first shor that there is a $\Sigma_1$ set which is universal in the sense that it is of maximum complexity among the $\Sigma_1$ sets. We will then prove that a universal $\Sigma_1$ set cannot be $\Delta_1$.
+
+**Lemma**. There exists a $\Sigma_1$-definable set $U\subset HF^2$ such that for every $\Sigma_1$-definable set $A\subset HF$ there exists $r\in HF$ such that $A=\set{x\mid (r,x)\in U}$.
+
+*Proof of Lemma*. Let $V$ be the set of all triples $(\phi,x,y)$ where $\phi$ is a code for a $\Delta_0$-formula and $HF\models\phi(x,y)$. Then we have shown $V$ is $\Delta_1$. Next let $U$ be the set of all pairs $(\phi,x)$ such that $\exists y(\phi,x,y)\in V$. Then $U$ is clearly $\Sigma_1$.
+
+Now if $A$ is any $\Sigma_1$ set, then $A$ is defined by $x\in A$ if and only if $\exists y\phi(x,y)$ for some $\phi$. Thus $A$ is precisely $\set{x\mid(\phi,x)\in U}$, as desired. $\blacksquare$
+
+To prove the theorem, we once again return to the diagonalization idea of Cantor and Russell.
+
+*Proof of Theorem*. Let $U$ be a universal $\Sigma_1$ set. Let $D=\set{x\in HF\mid (x,x)\notin U}$. Then $D$ fails the conclusion of the Lemma, since it disagrees with every horizontal section of $U$. Thus $D$ is not $\Sigma_1$. However the definition of $D$ is clearly $\Pi_1$. It follows that $HF\setminus D$ is a $\Sigma_1$ set which is not $\Pi_1$ and in particular not $\Delta_1$, as desired. $\blacksquare$
+
+While the universal set the first place one would look for an example of an undecidable set, it is not very natural in the sense that it would not arise in practice. We next introduce one of the most naturally occuring examples of an undecidable set.
+
+In the following result, fix any model computation you like, and fix some way of coding programs in that model as elements of HF. For example if you like python programs, you can code the symbols of python as natural numbers, and code a whole program as a finite sequence of natural numbers. Now some python programs halt, and others run forever. We let $H\subset HF$ consist of the set of codes for programs that halt.
+
+**Theorem**. The set $H$ of codes for halting programs is undecidable.
+
+*Proof*. Let $A$ be a $\Sigma_1$ set which is not $\Delta_1$. Let $\phi$ be a $\Delta_0$-formula such that $x\in A$ if and only if $\exists y\phi(x,y)$. For each $x$ let $h_x$ be a code for the program which searches through all possible $y\in HF$ until it finds one such that $\phi(x,y)$. Then $x\in A$ if and only if $h_x\in H$. Thus if $H$ were $\Delta_1$ then so would $A$ be $\Delta_1$, a contradicton. $\blacksquare$
+
+
+
+### 27. Incompleteness
 
 
 <script type='text/x-mathjax-config'>
