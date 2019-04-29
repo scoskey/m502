@@ -96,12 +96,12 @@ Operations on sets. look at Joy of Sets.
 ### 5. Well-orders
 
 * We have introduced functions as relations but there are several other special types of relations.
-* Order relations: Like the $<$ relation on $\mathbb R$.
+* Order relations: Like the $\lt$ relation on $\mathbb R$.
 * Def: A (strict) linear order is a binary relation $R$ on a set $X$ (meaning both the domain and range are contained in $X$) satisfying the axioms transitive, irreflexive, and trichotomy
 * Equivalence relations: Like equality, congruence, similarity, isomorphism.
 * Def: An equivalence relation is a binary relation R on a set X satisfying the axioms transitive, reflexive, and symmetric.
 * Isomorpism of linear orders: ...
-* For example, on $\mathbb R$ the $<$ and $>$ relations are isomorphic to one another. However on $[0,1)$ they are not.
+* For example, on $\mathbb R$ the $\lt$ and $>$ relations are isomorphic to one another. However on $[0,1)$ they are not.
 * Examples of linear orders: most number sets such as $\mathbb N,\mathbb Z,\mathbb Q,\mathbb R$, and the induced ordering on any subset of these.
 * The key example in set theory is the ordering of the ordinals as introduced above. The $\in$ relation is a linear order.
 * What is an ordinal really? In addition to being a linear order, one key property is that it only has ...'s that go to the right.
@@ -1037,15 +1037,29 @@ The propostion says that we don't need to add terms for elements of HF, we can a
 
 **Proposition**. Let $T$ be a consistent extension of CST. Then every $\Delta_0$-definable set is representable in $T$.
 
-*Proof*. In fact we can prove that for any $\Delta_$-formula we have $CST\proves\phi(\langle a\rangle)$ if and only if $HF\models\phi[a]$. For this we can simply use induction on the complexity of $\phi$. $\blacksquare$
+*Proof*. We will prove that for any $\Delta_0$-formula, we have $CST\vdash\phi(\langle a\rangle)$ if and only if $HF\models\phi[a]$. For atomic and negated atomic formulas $x\in y$, $x\notin y$, $x=y$, and $x\neq y$ are proved by induction on the rank of the elements $a,b$ that are plugged in for $x,y$. For general $\Delta_0$-formulas $\phi$ we use induction on the complexity of $\phi$. The boundedness of quantifiers is key because they reduce to conjuctions or disjunctions of atomics. $\blacksquare$
+
+The claim that $CST\vdash\phi(\langle a\rangle)$ if and only if $HF\models\phi[a]$ fails for arbitrary formulas since for instance the negation of the Axiom of Infinity is true in HF but not provable from CST.
 
 **Proposition**. Let $T$ be a consistent extension of CST. Then every $\Delta_1$-definable set is representable in $T$.
 
-*Proof*.  $\blacksquare$
+*Proof*. Let $A$ be a $\Delta_1$-definable subset of HF, and let $\alpha,\beta$ be $\Delta_0$-formulas such that $a\in A$ iff $\exists y\alpha(a,y)$ iff $\forall z\beta(a,z)$. Note that we cannot use either of these two expressions directly to represent $A$, because they may be true without being witnessed in HF (that is, they may be witnessed by nonstandard elements). Instead we let $\psi(x)$ be the formula:
+
+\begin{equation*}
+\exists y\left[\alpha(x,y)\wedge\forall z \mathrm{rk}(z)\lt \mathrm{rk}(y)\rightarrow\beta(x,z)\right]
+\end{equation*}
+
+We claim that $a\in A\iff T\vdash\psi(\langle a\rangle)$. First assume that $a\in A$.
+
+Conversely assume that $a\notin A$. 
+
+ $\blacksquare$
 
 **Theorem**. Suppose $T$ is a theory such that every $\Delta_1$-definable subset of HF is representable in $T$. Then $\bar T$ is undecidable.
 
-*Proof*.  $\blacksquare$
+*Proof*. Let $U=\set{(\phi,a)\mid T\vdash\phi(\langle a\rangle)}$. Then since every $\Delta_1$-definable set is representable in $T$, every $\Delta_1$-definable set  appears as a cross-section of $U$, namely $\set{a\mid (\phi,a)\in U}$. We say that $U$ is universal for $\Delta_1$ sets.
+
+Now if $\bar T$ were decidable then $U$ would be decidable and hence $\Delta_1$-definable. Thus the diagonal set $D=\set{x\mid (x,x)\notin U}$ would be $\Delta_1$-definable. This is a contradiction because $D$ does not appear as a cross-section of $U$. $\blacksquare$
 
 The first incompleteness theorem can be phrased as follows.
 
