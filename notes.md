@@ -1049,11 +1049,17 @@ The claim that $CST\vdash\phi(\langle a\rangle)$ if and only if $HF\models\phi[a
 \exists y\left[\alpha(x,y)\wedge\forall z \mathrm{rk}(z)\lt \mathrm{rk}(y)\rightarrow\beta(x,z)\right]
 \end{equation*}
 
-We claim that $a\in A\iff T\vdash\psi(\langle a\rangle)$. First assume that $a\in A$.
+We claim that $a\in A\iff T\vdash\psi(\langle a\rangle)$. First assume that $a\in A$. Then there is $y\in HF$ with the desired property. Since the inner portion of the sentence is $\Delta_0$, the previous proposition implies $T$ proves $\psi(\langle a\rangle)$.
 
-Conversely assume that $a\notin A$. 
+Conversely assume that $a\notin A$. We claim that $CST\vdash\neg\psi(\langle a\rangle)$, that is,
 
- $\blacksquare$
+\begin{equation*}
+\forall y\left[\neg\alpha(\langle a\rangle,y)\vee\exists z \mathrm{rk}(z)\lt \mathrm{rk}(y)\wedge\neg\beta(\langle a\rangle,z)\right]
+\end{equation*}
+
+Indeed first find $z$ such that $CST\vdash\neg\beta(\langle a\rangle,\langle z\rangle)$. Next given any $y$, if $y\in HF$ then the first clause holds, and if not then the second clause holds. Now since $T$ is a consistent extension of CST, we conclude $T\not\vdash\psi(\langle a\rangle)$. $\blacksquare$
+
+We are now ready to prove the final step of the first incompleteness theorem.
 
 **Theorem**. Suppose $T$ is a theory such that every $\Delta_1$-definable subset of HF is representable in $T$. Then $\bar T$ is undecidable.
 
@@ -1061,7 +1067,7 @@ Conversely assume that $a\notin A$.
 
 Now if $\bar T$ were decidable then $U$ would be decidable and hence $\Delta_1$-definable. Thus the diagonal set $D=\set{x\mid (x,x)\notin U}$ would be $\Delta_1$-definable. This is a contradiction because $D$ does not appear as a cross-section of $U$. $\blacksquare$
 
-The first incompleteness theorem can be phrased as follows.
+This completes the proof of the first incompleteness theorem. We can rephrase the first incompleteness theorem as follows.
 
 **Corollary**. If $T$ is any consistent, decidable extension of CST then $T$ is incomplete.
 
@@ -1073,7 +1079,7 @@ The corollary provides conditions under which there exists a sentence that is ne
 
 **Second incompleteness theorem**. If $T$ is any consistent, decidable extension of CST then, and $\sigma$ is the sentence which asserts that $T$ is consistent, then $T\not\vdash\sigma$.
 
-We will omit the proof of the second incompleteness theorem. It involves formalizing the liar paradox in set theory, with provability replacing the notion of proof.
+*Proof idea*. It is possible to formalize consistency and provability in CST. It is further possible to construct a diagonal sentence $\tau$ which asserts in the formalization that "$T\not\vdash\tau$", that is, there is no proof from $T$ of $\tau$ itself. We omit the details---it is like the liar paradox statement "this sentence is false", but with truth replaced by provability. Then $T\vdash\tau$ implies $T\not\vdash\tau$ and vice versa. This is a contradicton! $\blacksquare$
 
 <script type='text/x-mathjax-config'>
   MathJax.Hub.Config({
