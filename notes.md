@@ -384,7 +384,7 @@ Operations on sets. look at Joy of Sets.
 * Now we do so more explicitly.
 * Def. $\mathbb N=\omega$.
 * Def. $\mathbb Q$ is the set of triples $(i,m,n)$ in $2\times\omega\times\omega$ satisfying $n\neq0$ and $\mathrm{gcd}(m,n)=1$.
-* Here we intrepret $i=0$ as positivet, $i=1 as negative, $m$ as the numerator, and $n$ as the denominator.
+* Here we intrepret $i=0$ as positive, $i=1$ as negative, $m$ as the numerator, and $n$ as the denominator.
 * Def. $\mathbb Z$ is the subset of $\mathbb Q$ where $n=1$.
 * It is an exercise to define the operations $+,\times$ and the $<$ relation on $\mathbb Q$ with this definition. For instance $(0,m,n)\times(0,m',n')=$ the result of canceling common factors from $(0,mm',nn')$.
 * Observe that with this definiton we don't have $\mathbb N\subset\mathbb Z$. However we can identify $\mathbb N$ with the subset of $(0,m,1)$. This identification would be cumbersome to write explicitly, but once we agree it can be done in principle, we abuse notation and pretend it is being done behind the scenes.
