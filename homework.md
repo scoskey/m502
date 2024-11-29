@@ -142,7 +142,7 @@
 * Kunen, exercise I.7.23. The lexicographic product of two well-orders is again a well-order.
 * If $R,S,T$ are arbitrary relations show that $(R\circ S)\circ T=R\circ(S\circ T)$.
 * If $f$ and $g$ are functions, show that $f\cap g$ is a function. Under what circumstances will $f\cup g$ be a function?
-* Let $\mathcal F$ is a family of functions such that for all $f,g\in F$ we have $f\cup g$ is a function. Show that $\bigcup\mathcal F$ is a function.
+* Let $\mathcal F$ be a family of functions such that for all $f,g\in F$ we have $f\cup g$ is a function. Show that $\bigcup\mathcal F$ is a function.
 * Show that the class of all ordered pairs is not a set.
 * Kunen, exercise I.7.16. Suppose $[x,y]$ is an arbitrary pairing function and $R$ is a set of such pairs. Then the domain $\\{x:\exists y [x,y]\in R\\}$ is a set.
 * (2pts) Let $A$ and $B$ be finite *disjoint* sets, and consider the following game. Two players alternate playing an element $\langle a,b\rangle\in A\times B$ subject to the condition that $a$ and $b$ may not *both* have been used already. The game ends when one player is left without a legal move, and that player is the loser. What is an upper bound on the number of moves in this game? Which player has a winning strategy?
